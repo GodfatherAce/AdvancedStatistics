@@ -1,0 +1,12 @@
+Influence
+
+http://stat.ethz.ch/R-manual/R-patched/library/stats/html/lm.influence.html
+
+Cook's Distance
+
+http://stat.ethz.ch/R-manual/R-patched/library/stats/html/influence.measures.html
+
+Influence.ME 
+cran.r-project.org/web/packages/influence.ME/influence.ME.pdf
+http://www.rensenieuwenhuis.nl/r-project/influenceme/
+http://www.rensenieuwenhuis.nl/r-project/influenceme/overview/
