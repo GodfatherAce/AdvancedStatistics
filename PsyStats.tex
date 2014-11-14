@@ -1,0 +1,125 @@
+
+ 
+
+ 
+
+
+
+Statistical Conclusion valdity measures
+
+Variance Inflation Factor (VIF)
+
+Unusual and Influential data
+
+Multicollinearity
+
+
+--------------------------------------------------------------------------------
+ Statistical Conclusion valdity measures
+•
+alpha level
+
+•
+power
+
+•
+sample size
+
+
+ 
+
+
+--------------------------------------------------------------------------------
+Variance Inflation Factor (VIF)
+
+Interpretation
+
+The square root of the variance inflation factor tells you how much larger the standard error is, compared with what it would be if that variable were uncorrelated with the other independent variables in the equation.
+
+ 
+
+Example
+
+If the variance inflation factor of an independent variable were 5.27 (√5.27 = 2.3) this means that the standard error for the coefficient of that independent variable is 2.3 times as large as it would be if that independent variable were uncorrelated with the other independent variables.
+
+ 
+
+ 
+
+
+--------------------------------------------------------------------------------
+Unusual and Influential data
+
+A single observation that is substantially different from all other observations can make a large difference in the results of your regression analysis.  If a single observation (or small group of observations) substantially changes your results, you would want to know about this and investigate further.  There are three ways that an observation can be unusual.
+
+ 
+
+Outliers: In linear regression, an outlier is an observation with large residual. In other words, it is an observation whose dependent-variable value is unusual given its values on the predictor variables. An outlier may indicate a sample peculiarity or may indicate a data entry error or other problem.
+
+ 
+
+Leverage: An observation with an extreme value on a predictor variable is called a point with high leverage. Leverage is a measure of how far an independent variable deviates from its mean. These leverage points can have an unusually large effect on the estimate of regression coefficients.
+
+ 
+
+Influence: An observation is said to be influential if removing the observation substantially changes the estimate of coefficients. Influence can be thought of as the product of leverage and outlierness.
+
+ 
+
+
+--------------------------------------------------------------------------------
+Multicollinearity 
+
+Multicollinearity is a problem in multiple regression that develops when one or more of the independent variables is highly correlated with one or more of the other independent variables. 
+
+
+If one independent variable is a perfect linear combination of the other independent variables; that is, if it is regressed on the other independent variables and the resulting R2 = 1.0, then the matrix of intercorrelations among the independent variables is singular and there exists no unique solution for the regression coefficients.
+
+
+If, however, the independent variables are not perfectly correlated, but only highly correlated, there exists a solution for the regression coefficients but the estimates, while unbiased, are unstable, and their standard errors are typically large. 
+
+
+As a rule of thumb, if reading an article or seeing a presentation, whenever you see estimated beta weights larger than 1.0, you should consider the possibility of multicollinearity.
+
+
+We need to examine the R2's of each independent variable regressed on the other independent variables. This is easy with SPSS since we can ask for multicollinearity diagnostics. The tolerance printed on the output is the proportion of variance in the independent variable NOT explained by it's relationship with the other independent variables. Thus, it is 1 - R2, with the R2 resulting from regressing that particular independent variable on all other independent variables.
+
+
+
+
+--------------------------------------------------------------------------------
+ 
+•
+Linearity - the relationships between the predictors and the outcome variable should be linear
+
+•
+Normality - the errors should be normally distributed - technically normality is necessary only for the t-tests to be valid, estimation of the coefficients only requires that the errors be identically and independently distributed
+
+•
+Homogeneity of variance (homoscedasticity) - the error variance should be constant
+
+•
+Independence - the errors associated with one observation are not correlated with the errors of any other observation
+
+•
+Model specification - the model should be properly specified (including all relevant variables, and excluding irrelevant variables)
+
+
+ 
+
+Additionally, there are issues that can arise during the analysis that, while strictly speaking are not assumptions of regression, are none the less, of great concern to regression analysts.
+
+ 
+•
+Influence - individual observations that exert undue influence on the coefficients
+
+•
+Collinearity - predictors that are highly collinear, i.e. linearly related, can cause problems in estimating the regression coefficients.
+
+
+ 
+
+Tolerance
+
+ 
+
