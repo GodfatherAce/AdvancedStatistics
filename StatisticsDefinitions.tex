@@ -1,0 +1,412 @@
+
+Statistics Definitions
+
+ 
+
+
+
+Statistics Definitions
+
+Acceptance Sampling
+
+ANOVA
+
+Confidence Interval
+
+Degrees of Freedom
+
+Ecological Fallacy
+
+Error Terms
+
+McNemar's test
+
+Missing data
+
+Null Hypothesis
+
+P-values
+
+Random Error
+
+Sampling
+
+Significance Level
+
+Type I and II errors
+
+
+Acceptance Sampling
+
+Acceptance sampling is a method used to determine if merchandise or other items meet certain standards. This kind of sampling is employed in different manufacturing venues and often favored because it can give manufacturers specific control over what type of standards to exert. Various methods are utilized to determine how to sample from batches, what percentage of error is acceptable, and when to discard batches based on finding too many errors.
+
+
+One reason acceptance sampling is useful is because it avoids taking an entire batch of product, testing it, and then discarding it. Once tested, many items aren’t saleable anymore and must be discarded. By testing some of a batch, determined either with random samples, simple random samples or another form of selection guaranteeing random picks, most of the batch can still be used, if deemed acceptable.
+
+
+The easiest way to illustrate acceptance sampling is through example. Company Z wants to test their candy hearts to make certain that no more than 10% of the product manufactured is broken. With a batch of candy hearts, they determine that they will randomly select 5% of that batch and see if any of the hearts are broken. If that smaller sample has more than 10% broken hearts, Company Z will discard the entire batch. With less than 10% broken hearts, the batch is considered good, is packaged and sent to stores.
+
+
+There are a few things to note about this example. Company Z gets to decide percentage of defects it will accept. It could easily accept up to 20% broken hearts, or could set a more stringent standard and only accept 3%. The company also gets to determine how to select samples from the batch and the sample size. Many companies run such sampling on every batch they produce to achieve consistent quality control.
+
+
+There are specific statistical operations that can help companies determine sample size needed that is representative of the batch. In other words, companies must select a size that will be big enough to truly represent their population or the batch from which they come. This number is small enough that there are still plenty of leftover saleable pieces in the batch.
+
+
+Acceptance sampling can be a very good way to determine the quality of a batch, given consideration to sample size and after setting a reasonable quality percentage. There are circumstances under which companies will draw a random bad sample, which could mean discarding a batch or selling a product that is more flawed than expected. Most frequently, the sample is representative of the batch and will serve as a good way to test quality.
+
+
+The degree to which this means a company delivers a quality product really is based on the company determining acceptable level of error. With higher percentages of error allowed, quality will be poorer. Using lower error thresholds means most batches produced are of greater quality. In any type of equipment that is extremely delicate, companies may set low percentages for batch error in acceptance sampling.
+
+
+
+--------------------------------------------------------------------------------
+ANOVA
+
+
+
+Grand Mean
+
+
+The grand mean of a set of samples is the total of all the data values divided by the total sample size. This requires that you have all of the sample data available to you, which is usually the case, but not always. It turns out that all that is necessary to find perform a one-way analysis of variance are the number of samples, the sample means, the sample variances, and the sample sizes.
+
+Another way to find the grand mean is to find the weighted average of the sample means. The weight applied is the sample size.
+
+
+Total Variation
+
+
+The total variation (not variance) is comprised the sum of the squares of the differences of each mean with the grand mean.
+
+There is the between group variation and the within group variation. The whole idea behind the analysis of variance is to compare the ratio of between group variance to within group variance. If the variance caused by the interaction between the samples is much larger when compared to the variance that appears within each group, then it is because the means aren't the same.
+
+Between Group Variation
+
+
+The variation due to the interaction between the samples is denoted SS(B) for Sum of Squares Between groups. If the sample means are close to each other (and therefore the Grand Mean) this will be small. There are k samples involved with one data value for each sample (the sample mean), so there are k-1 degrees of freedom.
+
+The variance due to the interaction between the samples is denoted MS(B) for Mean Square Between groups. This is the between group variation divided by its degrees of freedom. It is also denoted by .
+
+Within Group Variation
+
+
+The variation due to differences within individual samples, denoted SS(W) for Sum of Squares Within groups. Each sample is considered independently, no interaction between samples is involved. The degrees of freedom is equal to the sum of the individual degrees of freedom for each sample. Since each sample has degrees of freedom equal to one less than their sample sizes, and there are k samples, the total degrees of freedom is k less than the total sample size: df = N - k.
+
+
+The variance due to the differences within individual samples is denoted MS(W) for Mean Square Within groups. This is the within group variation divided by its degrees of freedom. It is also denoted by . It is the weighted average of the variances (weighted with the degrees of freedom).
+
+F test statistic
+
+
+Recall that a F variable is the ratio of two independent chi-square variables divided by their respective degrees of freedom. Also recall that the F test statistic is the ratio of two sample variances, well, it turns out that's exactly what we have here. The F test statistic is found by dividing the between group variance by the within group variance. 
+
+
+The degrees of freedom for the numerator are the degrees of freedom for the between group (k-1) and the degrees of freedom for the denominator are the degrees of freedom for the within group (N-k).
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------
+
+
+
+
+--------------------------------------------------------------------------------
+Cluster Sampling 
+
+ 
+
+Cluster sampling is a sampling technique that generates statistics about certain populations. It has a specific format required to obtain an appropriate sample, and though this sampling can help accurately gauge some information, it is not thought as accurate as simple random samples, where all groups of the same size have the same exact chance of being selected. Despite lacking the assurance that comes from using simple random samples or random samples, cluster sampling is used frequently in business and other applications.
+
+ 
+
+The basic procedure for creating cluster sampling is to divide the full population into some sort of meaningful groups. For instance, McDonald’s® might want a sense of what the most popular item ordered on their menu is. They might create a cluster/group for each McDonald’s store. They would then pick some of these clusters and obtain a sample from all people in that cluster. They could keep track of each customer’s order and decide which menu item is most popular or survey customers eating, but the company would only survey or track people in the chosen clusters; they’d also try to get all people at selected clusters.
+
+ 
+
+Cluster sampling is very popular on big voting nights. A natural division exists between voter precincts. By choosing some of the precincts and surveying or using exit polls at the chosen ones, there’s often a good sense what issues or what elected officials appear to be winning. The results of cluster samples are extrapolated to the entire population, and they’re often fairly representative of it.
+
+ 
+
+When people study statistics, they often find it challenging to remember the features of cluster sampling as opposed to the features of stratified sampling. The two have some similarities and key differences that are worth understanding.
+
+ 
+
+In a stratified sample, a population is also divided into groups, though number of groups tends to be smaller. Population could be divided by gender, age, income, and region in which they live, and comparing the result of each group may be part of the reason the stratified sample is performed. The huge and appreciable difference between stratified and cluster sampling is that when the groups are created, some members from each group or strata are selected. With a cluster, when clusters are created, the whole population of some of the clusters are used.
+
+ 
+
+The degree to which cluster sampling works tends to depend on what is being evaluated and how diverse of a population clusters represent. Say a statistician decided to break down voting precincts in a predominantly Republican state and create clusters of some of them to look for predictions about a national election. These results would likely be skewed and not representative of the complete population in the US. On the other hand, cluster sampling with exit polling in a Republican or Democrat state could say a lot about the voting trends in the individual state.
+
+
+--------------------------------------------------------------------------------
+Degrees of Freedom
+
+The degrees of freedom indicate the number of values that are in fact “free to vary” in the sample that
+
+serves as the basis for the confidence interval.
+
+
+
+
+
+
+--------------------------------------------------------------------------------
+Ecological Fallacy
+
+In the 200 Gubernatorial election for the State of Washington, out of the 2.8 million votes cast, just 261 votes separated the leading Republican candidates Dino Rossi from the secon-placed Democrat candidate Christine Gregoire.
+
+647 Convicts had voted despite having lost the right to vote.
+
+ 
+
+"The illegal voters were disproportionately male and less likely to have voted for the female candidate".
+
+
+
+--------------------------------------------------------------------------------
+Error Terms
+
+In statistics, an error term is the sum of the deviations of each actual observation from a model regression line. 
+
+
+Regression analysis is used to establish the degree of correlation between two variables, one independent and one dependent, the result of which is a line that best "fits" the actually observed values of the dependent value in relation to the independent variable or variables. 
+
+
+Put another way, an error term is the term in a model regression equation that tallies up and accounts for the unexplained difference between the actually observed values of the independent variable and the results predicted by the model. Hence, the error term is a measure of how accurately the regression model reflects the actual relationship between the independent and dependent variable or variables. 
+
+
+The error term can indicate either that the model can be improved, such as by adding in another independent variable that explains some or all of the difference, or by randomness, meaning that the dependent and independent  variable or variables are not correlated to any greater degree.
+
+
+Also known as the residual term or disturbance term, according to mathematical convention, the error term is the last term in a model regression equation and is represented by the Greek letter epsilon (ε). Economists and financial industry professionals regularly make use of regression models, or at least their results, to better understand and forecast a wide range of relationships, such as how changes in the money supply are related to inflation, how stock market prices are related to unemployment rates or how changes in commodity prices affect specific companies in an economic sector. Hence, the error term is an important variable to keep in mind and keep track of in that it measures the degree to which any given model does not reflect, or account for, the actual relationship between the dependent and independent variables.
+
+
+There are actually two types of error terms commonly used in regression analysis: absolute error and relative error. Absolute error is the error term as previously defined, the difference between the actually observed values of the independent variable and the results predicted by the model. 
+
+
+Derived from this, relative error is defined as the absolute error divided by the exact value predicted by the model. Expressed in percentage terms, relative error is known as percent error, which is helpful because it puts the error term into greater perspective. For example, an error term of 1 when the predicted value is 10 is much worse than an error term of 1 when the predicted value is 1 million when attempting to come up with a regression model that shows how well two or more variables are correlated.
+
+
+
+--------------------------------------------------------------------------------
+McNemar's test
+
+McNemar's test assess the significance of the difference between two correlated proportions, such as might be found in the case where the two proportions are based on the same sample of subjects or on matched-pair samples.
+
+ 
+
+
+--------------------------------------------------------------------------------
+Missing data
+
+During the second world war, a group of technicians was studying airplaces returning from bombing Germany. They drew a rough diagram showing where bullet holes were most likely to be found, recommending that each of those areas be re-inforced. A statistician, Abraham Wald [1980] pointed out that the essential data were missing from the sample they were studying. They were missing the information on the bombers that didn't come back from Germany.
+
+
+
+CEIS
+•
+Non participation
+
+•
+ineligible
+
+•
+Withdrawal
+
+•
+crossovers
+
+•
+missing data
+
+
+ 
+
+ 
+--------------------------------------------------------------------------------
+
+
+Null Hypothesis
+
+The null hypothesis is an hypothesis about a population parameter. The purpose of hypothesis testing is to test the viability of the null hypothesis in the light of experimental data. Depending on the data, the null hypothesis either will or will not be rejected as a viable possibility. 
+
+
+Consider a researcher interested in whether the time to respond to a tone is affected by the consumption of alcohol. The null hypothesis is that µ1 - µ2 = 0 where µ1 is the mean time to respond after consuming alcohol and µ2 is the mean time to respond otherwise. Thus, the null hypothesis concerns the parameter µ1 - µ2 and the null hypothesis is that the parameter equals zero. 
+
+
+The null hypothesis is often the reverse of what the experimenter actually believes; it is put forward to allow the data to contradict it. In the experiment on the effect of alcohol, the experimenter probably expects alcohol to have a harmful effect. If the experimental data show a sufficiently large effect of alcohol, then the null hypothesis that alcohol has no effect can be rejected. 
+
+
+It should be stressed that researchers very frequently put forward a null hypothesis in the hope that they can discredit it. For a second example, consider an educational researcher who designed a new way to teach a particular concept in science, and wanted to test experimentally whether this new method worked better than the existing method. The researcher would design an experiment comparing the two methods. Since the null hypothesis would be that there is no difference between the two methods, the researcher would be hoping to reject the null hypothesis and conclude that the method he or she developed is the better of the two. 
+
+
+The symbol H0 is used to indicate the null hypothesis. For the example just given, the null hypothesis would be designated by the following symbols:
+
+
+H0: µ1 - µ2 = 0
+
+
+or by
+
+
+H0: μ1 = μ2.
+
+
+The null hypothesis is typically a hypothesis of no difference as in this example where it is the hypothesis of no difference between population means. That is why the word "null" in "null hypothesis" is used -- it is the hypothesis of no difference. 
+
+
+Despite the "null" in "null hypothesis," there are occasions when the parameter is not hypothesized to be 0. For instance, it is possible for the null hypothesis to be that the difference between population means is a particular value. Or, the null hypothesis could be that the mean SAT score in some population is 600. The null hypothesis would then be stated as: H0: μ = 600. although the null hypotheses discussed so far have all involved the testing of hypotheses about one or more population means, null hypotheses can involve any parameter. An experiment investigating the correlation between job satisfaction and performance on the job would test the null hypothesis that the population correlation (ρ) is 0. Symbolically, H0: ρ = 0.
+
+
+A null hypothesis is not accepted just because it is not rejected. Data not sufficient to show convincingly that a difference between means is not zero do not prove that the difference is zero. Such data may even suggest that the null hypothesis is false but not be strong enough to make a convincing case that the null hypothesis is false. For example, if the probability value were 0.15, then one would not be ready to present one's case that the null hypothesis is false to the (properly) skeptical scientific community. More convincing data would be needed to do that. However, there would be no basis to conclude that the null hypothesis is true. It may or may not be true, there just is not strong enough evidence to reject it. Not even in cases where there is no evidence that the null hypothesis is false is it valid to conclude the null hypothesis is true. If the null hypothesis is that µ1 - µ2 is zero then the hypothesis is that the difference is exactly zero. No experiment can distinguish between the case of no difference between means and an extremely small difference between means. If data are consistent with the null hypothesis, they are also consistent with other similar hypotheses. 
+
+
+Thus, if the data do not provide a basis for rejecting the null hypothesis that µ1- µ2 = 0 then they almost certainly will not provide a basis for rejecting the hypothesis that µ1- µ2 = 0.001. The data are consistent with both hypotheses. When the null hypothesis is not rejected then it is legitimate to conclude that the data are consistent with the null hypothesis. It is not legitimate to conclude that the data support the acceptance of the null hypothesis since the data are consistent with other hypotheses as well. In some respects, rejecting the null hypothesis is comparable to a jury finding a defendant guilty. In both cases, the evidence is convincing beyond a reasonable doubt. Failing to reject the null hypothesis is comparable to a finding of not guilty. The defendant is not declared innocent. There is just not enough evidence to be convincing beyond a reasonable doubt. In the judicial system, a decision has to be made and the defendant is set free. In science, no decision has to be made immediately. More experiments are conducted.
+
+
+One experiment might provide data sufficient to reject the null hypothesis, although no experiment can demonstrate that the null hypothesis is true. Where does this leave the researcher who wishes to argue that a variable does not have an effect? If the null hypothesis cannot be accepted, even in principle, then what type of statistical evidence can be used to support the hypothesis that a variable does not have an effect. The answer lies in relaxing the claim a little and arguing not that a variable has no effect whatsoever but that it has, at most, a negligible effect. This can be done by constructing a confidence interval around the parameter value.
+
+
+Consider a researcher interested in the possible effectiveness of a new psychotherapeutic drug. The researcher conducted an experiment comparing a drug-treatment group to a control group and found no significant difference between them. Although the experimenter cannot claim the drug has no effect, he or she can estimate the size of the effect using a confidence interval. If µ1 were the population mean for the drug group and µ2 were the population mean for the control group, then the confidence interval would be on the parameter µ1 - µ2. 
+
+
+
+
+--------------------------------------------------------------------------------
+P-values
+
+A p-value does not tell us the probability that a hypothesis is true, nor does a significance level apply to any particular sample.
+
+ 
+
+The p-value is a random variable that varies from sample to sample.
+
+
+The precise meaning of the p-value
+
+
+There is often confusion about the precise meaning of the probability computed in a significance test. The convention in hypothesis testing is that the null hypothesis (H0) is assumed to be true. 
+
+
+The difference between the statistic computed in the sample and the parameter specified by H0 is computed and the probability of obtaining a difference this large or large is calculated. This probability value is the probability of obtaining data as extreme or more extreme than the current data (assuming H0 is true). 
+
+
+It is not the probability of the null hypothesis itself. Thus, if the probability value is 0.005, this does not mean that the probability that the null hypothesis is true is .005. It means that the probability of obtaining data as different or more different from the null hypothesis as those obtained in the experiment is 0.005.
+
+
+The inferential step to conclude that the null hypothesis is false goes as follows: The data (or data more extreme) are very unlikely given that the null hypothesis is true. 
+
+This means that: (1) a very unlikely event occurred or (2) the null hypothesis is false. The inference usually made is that the null hypothesis is false. 
+
+
+To illustrate that the probability is not the probability of the hypothesis, consider a test of a person who claims to be able to predict whether a coin will come up heads or tails. One should take a rather skeptical attitude toward this claim and require strong evidence to believe in its validity. 
+
+
+The null hypothesis is that the person can predict correctly half the time (H0: π = 0.5). In the test, a coin is flipped 20 times and the person is correct 11 times. If the person has no special ability (H0 is true), then the probability of being correct 11 or more times out of 20 is 0.41. Would someone who was originally skeptical now believe that there is only a 0.41 chance that the null hypothesis is true? 
+
+
+They almost certainly would not since they probably originally thought H0 had a very high probability of being true (perhaps as high as 0.9999). There is no logical reason for them to decrease their belief in the validity of the null hypothesis since the outcome was perfectly consistent with the null hypothesis. 
+
+
+The proper interpretation of the test is as follows: A person made a rather extraordinary claim and should be able to provide strong evidence in support of the claim if the claim is to believed. The test provided data consistent with the null hypothesis that the person has no special ability since a person with no special ability would be able to predict as well or better more than 40% of the time. Therefore, there is no compelling reason to believe the extraordinary claim. However, the test does not prove the person cannot predict better than chance; it simply fails to provide evidence that he or she can. The probability that the null hypothesis is true is not determined by the statistical analysis conducted as part of hypothesis testing. Rather, the probability computed is the probability of obtaining data as different or more different from the null hypothesis (given that the null hypothesis is true) as the data actually obtained. 
+
+
+--------------------------------------------------------------------------------
+Random Error
+
+Random error is caused by any factors that randomly affect measurement of the variable across the sample. 
+
+
+
+--------------------------------------------------------------------------------
+Others might use systematic sampling, in which every nth person in the population is studied. The most dangerous and unreliable selection system for statistical sampling is convenience sampling; someone standing on a street corner with surveys is using convenience sampling, which can yield highly inaccurate results.
+
+
+After the data is collected, the researcher analyzes it and uses it to make generalizations about a population. In studies which rely on statistical sampling, the method used is usually clearly detailed, so that other scientists can decide whether or not the method was valid. An invalid method can cause sampling error, which would call the results of the study into question.
+
+
+--------------------------------------------------------------------------------
+Significance Level
+
+In hypothesis testing, the significance level is the criterion used for rejecting the null hypothesis. The significance level is used in hypothesis testing as follows: First, the difference between the results of the experiment and the null hypothesis is determined. Then, assuming the null hypothesis is true, the probability of a difference that large or larger is computed . Finally, this probability is compared to the significance level. If the probability is less than or equal to the significance level, then the null hypothesis is rejected and the outcome is said to be statistically significant. 
+
+
+Traditionally, experimenters have used either the 0.05 level (sometimes called the 5% level) or the 0.01 level (1% level), although the choice of levels is largely subjective. The lower the significance level, the more the data must diverge from the null hypothesis to be significant. Therefore, the 0.01 level is more conservative than the 0.05 level. The Greek letter alpha (α) is sometimes used to indicate the significance level
+
+
+
+--------------------------------------------------------------------------------
+Type I and II errors
+
+This is called Type I error. The probability of Type I error is always equal to the level of significance that is used as the standard for rejecting the null hypothesis; it is designated by the
+
+lowercase Greek (alpha), and thus a also designates the level of significance. 
+
+
+The most frequently used levels of significance in hypothesis testing are the 5 percent and 1 percent levels.
+
+
+A Type II error occurs if the null hypothesis is not rejected, and therefore accepted, when it is in fact false.
+
+
+There are two kinds of errors that can be made in significance testing: (1) a true null hypothesis can be incorrectly rejected and (2) a false null hypothesis can fail to be rejected. The former error is called a Type I error and the latter error is called a Type II error. These two types of errors are defined in the table below. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+True State: H0 True
+ 
+
+True State: H0 False
+ 
+
+
+
+Decision: Reject H0
+ 
+
+Type I error
+ 
+
+Correct
+ 
+
+
+
+Decision: Do not Reject H0
+ 
+
+Correct 
+ 
+
+Type II error
+ 
+
+
+
+The probability of a Type I error is designated by the Greek letter alpha () and is called the Type I error rate; the probability of a Type II error (the Type II error rate) is designated by the Greek letter beta () . A Type II error is only an error in the sense that an opportunity to reject the null hypothesis correctly was lost. It is not an error in the sense that an
+
+incorrect conclusion was drawn since no conclusion is drawn when the null hypothesis is not rejected.
+
+
+A Type I error, on the other hand, is an error in every sense of the word. A conclusion is drawn that the null hypothesis is false when, in fact, it is true. Therefore, Type I errors are generally considered more serious than Type II errors. 
+
+
+The probability of a Type I error () is called the significance level and is set by the experimenter. There is a tradeoff between Type I and Type II errors. The more an experimenter protects himself or herself against Type I errors by choosing a low level, the greater the chance of a Type II error. Requiring very strong evidence to reject the null hypothesis makes it very unlikely that a true null hypothesis will be rejected. However, it increases the chance that a false null hypothesis will not be rejected, thus lowering power. 
+
+
+The Type I error rate is almost always set at .05 or at .01, the latter being more conservative since it requires stronger evidence to reject the null hypothesis at the .01 level then at the .05 level. 
+
