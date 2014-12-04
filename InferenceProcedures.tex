@@ -9,7 +9,56 @@ One and two-tailed tests
 
 Two-tailed tests are used when you are not certain in which direction your alternative hypothesis goes. So, if you hypothesize that a sample mean is somehow different than the population‟s mean, in either a positive or negative direction, then split the alpha into two parts of .025 and place them at either ends of the normal distribution.
  
+%===============================================================================================%
 
+
+Inference Procedures
+
+\subsection*{Tests for normality}
+
+(not used this year : Grubbs test and Dixon Test for Outliers )
+
+\subsection*{Non parametric procedures }
+
+tbese are usedwhen data is not normally distributed.
+
+Wilcoxon test test for equal medians (locations)
+
+kolmogorov smirnov test test for distribution. ( histograms and boxplots are same shape )
+
+(I would use both.although KS test is usyally sufficient  on its own)
+
+
+\subsection*{Inference procedures}
+
+Earlier in the semester i had advised a threshold of 1% for the rection of hypothese. This was arbitrarily chosen.
+
+Later some procedures would identify significant results with one or more asterisks. 
+
+\subsection*{Testing normality}
+
+ Shapiro Wilk test ( There are other procedures for testing normality. Such as the Anderson Darling test. Different tests are appropriate in different circumstances.
+
+We will concentrate on SW specifically
+
+A graphical procedure which compkements the SW procedure is the QQplot. If the points follow the diagonal trendline on a plot then the data can assumed to be normally distributed.
+
+
+There are two different variants of the t -test. one test assunes that there is equal variance between the two sets, the other does not. 
+
+A hypothesis test for equality of variances can be implemented using the \texttt{var.test()} function in R
+
+
+Inference procedures that are commonly used in Experimental Design. such as ANOVA test for equality of means and the Bartlett Test for homogeneity of variances shall be discussed in that section rather than this
+
+\subsection*{Regression for ANOVA  }
+
+degrees of freedom for independent variables. Not the same for groups as in ED
+
+
+
+
+%===================================================================================================%
 
  
 There are situations in which an experimenter is concerned only with differences in one direction. For example, an experimenter may be concerned with whether or not  is greater than zero. However, if  is not greater than zero, the experimenter may not care whether it equals zero or is less than zero. For instance, if a new drug treatment is developed, the main issue is whether or not it is better than a placebo. If the treatment is not better than a placebo, then it will not be used. It does not really matter whether or not it is worse than the placebo.
@@ -33,12 +82,12 @@ One-tailed tests are not used frequently. Unless otherwise indicated, a test sho
 
  
  
-Hypothesis test of proportion
+\subsection*{Hypothesis test of proportion}
 This procedure is used to assess whether an assumed proportion is supported by evidence. For two tailed tests, the null hypothesis states that the population proportion  π has a specified value, with the alternative stating that π has a different value.
  
 The hypotheses are typically as follows: 
  
-Example
+\subsection*{Example}
 A manufacturer is interested in whether people can tell the difference between a new formulation of a soft drink and the original formulation. The new formulation is cheaper to produce so if people cannot tell the difference, the new formulation will be manufactured. A sample of 100 people is taken. Each person is given a taste of both formulations and asked to identify the original. Sixty-two percent of the subjects correctly identified the new formulation. Is this proportion significantly different from 50%?
  
 The first step in hypothesis testing is to specify the null hypothesis and an alternative hypothesis. In testing proportions, the null hypothesis is that π, the proportion in the population, is equal to 0.5. The alternate hypothesis is π ≠ 0.5.
@@ -51,7 +100,7 @@ This result might be described in a report as follows:
  
 	The proportion of subjects choosing the original formulation (0.62) was significantly greater than 0.50, with p-value = 0.021. 
 	Apparently at least some people are able to distinguish between the original formulation and the new formulation.
-Correlation  and Regression tests
+\subsection*{Correlation  and Regression tests}
 The null hypothesis is that the correlation coefficient is zero.
 The alternative hypothesis is that the correlation coefficients is greater than zero.
 The slope and intercept estimates
@@ -60,7 +109,7 @@ The one tailed format compares a null hypothesis where the parameter of interest
 versus an alternative hypothesis stating that it has a value greater than zero.
 
  
-
+%==============================================================================================%
 Next Class
 The F-test for equality of variance
 The ANOVA F-test
