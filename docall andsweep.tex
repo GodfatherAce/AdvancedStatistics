@@ -1,0 +1,80 @@
+
+
+
+Advanced R programming
+
+
+Advanced R programming
+
+do.call()  - Execute a Function Call
+
+
+
+
+do.call()  - Execute a Function Call
+
+
+Description
+
+
+do.call constructs and executes a function call from a name or a function and a list of arguments to be passed to it.
+
+
+Usage
+
+
+do.call(what, args, quote = FALSE, envir = parent.frame())
+
+
+Arguments
+
+
+what    either a function or a non-empty character string naming the function to be called.
+
+args    a list of arguments to the function call. The names attribute of args gives the argument names.
+
+quote    a logical value indicating whether to quote the arguments.
+
+envir    an environment within which to evaluate the call. This will be most useful if what is a character string and the arguments are symbols or quoted expressions.
+
+
+
+
+--------------------------------------------------------------------------------
+
+
+The sweep function
+
+
+The sweep function returns an array like the input array with stats swept out.
+
+
+sweep(array, margin, stats, function, ...)
+
+
+The input array can be any dimensional array. The stats argument is a vector containing the summary statistics of array which are to be "swept" out. The argument margin specifies which dimensions of array corresponds to the summary statistics in stats. If array is a matrix then margin=1 refers to the rows and stats has to contain row summary statistics; margin=2 refers to the columns and stats then has to contain column summary statistics. The function argument specifies which function is to be used in the "sweep" operation; most often this is either "/" or "-".
+
+
+
+
+
+
+
+
+
+#creating the data set
+
+a <- matrix(runif(100, 1, 2),20)
+
+a.df <- data.frame(a)
+
+#subtract column means from each column
+
+#centering each column around mean
+
+colMeans(a)
+ 
+
+
+
+
