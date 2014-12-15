@@ -17,3 +17,6 @@ The goal is to calculate the Bayesian average of the heights of various occupati
 	\hline 
 \end{tabular} 
 Here, the Bayesian average correctly reduces the effect of a single anomalously large value. If the sample sizes for basketball players were similarly small, the Bayesian average would have mis-estimated basketball players as being far closer to average.
+
+%- http://masanjin.net/blog/bayesian-average
+Is this arbitarary? Actually, no. It’s the mean (i.e. MLE) of the posterior distribution you get when you have a Normal prior with mean C  and precision m , and a Normal conditional with variance 1.0.
