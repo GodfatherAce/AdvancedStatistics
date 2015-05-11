@@ -1,0 +1,27 @@
+SEVERAL INDEPENDENT SAMPLES: THE KRUSKAL–WALLIS TEST
+The Kruskal–Wallis test is used to test the null hypothesis that several populations have the same
+medians. As such, it is the nonparametric equivalent of the one-factor completely randomized design of the
+322 NONPARAMETRIC STATISTICS [CHAP. 17
+analysis of variance. It is assumed that the several populations have the same form and dispersion for the
+above hypothesis to be applicable, because differences in form or dispersion would also lead to rejection of
+the null hypothesis. The values for the several independent random samples are required to be at least at the
+ordinal scale.
+The several samples are first viewed as one array of values, and each value in this combined group is
+ranked from lowest to highest. For equal values the mean rank is assigned to the tied values. If the null
+hypothesis is true, the average of the ranks for each sample group should be about equal. The test statistic
+calculated is designated H and is based on the sum of the ranks in each of the several random samples, as
+follows:
+
+where N ¼ combined sample size of the several samples
+(note that N does not designate population size in this case)
+Rj ¼ sum of the ranks for the jth sample or treatment group
+nj ¼ number of observations in the jth sample
+Given that the size of each sample group is at least nj " 5 and the null hypothesis is true, the sampling
+distribution of H is approximately distributed as the x
+2 distribution with df ¼ K ! 1, where K is the number
+of treatment or sample groups. The x
+2 value that approximates the critical value of the test statistic is
+always the upper-tail value. This test procedure is analogous to the upper tail of the F distribution being
+used in the analysis of variance.
+For tied ranks the test statistic H should be corrected. The corrected value of the test statistic is designated
+Hc and is computed as follows:
