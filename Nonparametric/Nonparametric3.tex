@@ -16,3 +16,62 @@ the R test statistic when the sequence is random are
 \[ Equation 1 \]
 
 \[ Equation 2\]
+THE RUNS TEST FOR RANDOMNESS
+
+%=======================================================================================================================================%
+17.1. A sample of 36 individuals were interviewed in a market-research survey, with 22 women (W) and 14
+men (M) included in the sample. The sampled individuals were obtained in the following order: 
+
+M, W,
+W,W,W,M,M,M,W,M,W,W,W,M,M,W,W,W,W,M,W,W,W,M,M,W,W,W,M,W,M,M,
+W, W, W, M. 
+Use the runs test to test the randomness of this set of observations, using the 5 percent
+level of significance.
+
+The number of runs in this sample is R ¼ 17, as indicated by the underscores above. Where n1 ¼ the number of
+women and n2 ¼ the number of men, we can use the normal distribution to test the null hypothesis that the sampling
+process was random, because n1 . 20. We compute the mean and the standard error of the sampling distribution of
+R as follows:
+%=======================================================================================================================================%
+mR ¼
+2n1n2
+n1 þ n2 þ 1 ¼
+2(22)(14)
+22 þ 14 þ 1 ¼
+616
+36 þ 1 ¼ 18:1
+sR ¼
+
+2n1n2(2n1n2 ! n1 ! n2)
+(n1 þ n2)2(n1 þ n2 ! 1)
+s
+¼
+%=======================================================================================================================================================================================%
+2(22)(14)[2(22)(14) ! 22 ! 14]
+(22 þ 14)2(22 þ 14 ! 1)
+s
+¼
+%=======================================================================================%i
+616(616 ! 36)
+362(35)
+s
+%=============================================%
+357,280
+45,360
+s
+¼
+%=======================================%
+7:8765 p
+¼ 2:81
+When the 5 percent level of significance is used, the critical values of the z statistic are z ¼ +1.96. The value
+of the z test statistic for these data is
+z ¼
+R !mR
+sR ¼
+17 ! 18:1
+2:81 ¼ !1:1
+2:81 ¼ !0:39
+
+Therefore, using the 5 percent level of significance, we cannot reject the null hypothesis that the sequence of
+women and men occurred randomly.
+%=======================================================================================================================================%
