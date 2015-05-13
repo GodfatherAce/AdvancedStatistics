@@ -1,4 +1,29 @@
 ONE SAMPLE: THE SIGN TEST
+In statistics, the sign test can be used to test the hypothesis that the difference median is zero between the continuous distributions of two random variables X and Y, in the situation when we can draw paired samples from X and Y. It is a non-parametric test which makes very few assumptions about the nature of the distributions under test - this means that it has very general applicability but may lack the statistical power of other tests such as the paired-samples t-test[1] or the Wilcoxon signed-rank test.[2]
+Contents  [hide] 
+1 Method
+2 Assumptions
+3 Significance testing
+4 See also
+5 References
+Method[edit]
+Let p = Pr(X > Y), and then test the null hypothesis H0: p = 0.50. In other words, the null hypothesis states that given a random pair of measurements (xi, yi), then xi and yi are equally likely to be larger than the other.
+To test the null hypothesis, independent pairs of sample data are collected from the populations {(x1, y1), (x2, y2), . . ., (xn, yn)}. Pairs are omitted for which there is no difference so that there is a possibility of a reduced sample of m pairs.[3]
+Then let W be the number of pairs for which yi − xi > 0. Assuming that H0 is true, then W follows a binomial distribution W ~ b(m, 0.5).
+\subsection*{Assumptions}
+\begin{itemize}
+\item Let Zi = Yi – Xi for i = 1, ... , n.
+\item The differences Zi are assumed to be independent.
+\item Each Zi comes from the same continuous population.
+\item The values Xi and Yi represent are ordered (at least the ordinal scale), so the comparisons "greater than", "less than", and "equal to" are meaningful.
+\end{itemize}
+\subsection*{Significance testing}
+Since the test statistic is expected to follow a binomial distribution, the standard binomial test is used to calculate significance. The normal approximation to the binomial distribution can be used for large sample sizes, m>25.[3]
+The left-tail value is computed by Pr(W ≤ w), which is the p-value for the alternative H1: p < 0.50. This alternative means that the X measurements tend to be higher.
+The right-tail value is computed by Pr(W ≥ w), which is the p-value for the alternative H1: p > 0.50. This alternative means that the Y measurements tend to be higher.
+For a two-sided alternative H1 the p-value is twice the smaller tail-value.
+
+%----------------------------------------------------------------------------------%
 %------------------------------------------------------------------------------%
 The sign test can be used to test a null hypothesis concerning the value of the population median. Therefore,
 it is the nonparametric equivalent to testing a hypothesis concerning the value of the population mean. The
@@ -8,8 +33,8 @@ the form of the population distribution.
 The null and alternative hypotheses can designate either a two-sided or a one-sided test. Where Med
 denotes the population median and Med0 designates the hypothesized value, the null and alternative hypotheses
 for a two-sided test are
-H0: Med ¼ Med0
-H1: Med = Med0
+\[H0: Med \neq Med0\]
+\[H1: Med = Med0\]
 %------------------------------------------------------------------------------%
 A plus sign is assigned for each observed sample value that is larger than the hypothesized value of the
 median, and a minus sign is assigned for each value that is smaller than the hypothesized value of the median. If
