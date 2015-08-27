@@ -1,0 +1,40 @@
+%=======================================================================================%
+\section*{Negative Binomial Distribution}
+
+In probability theory and statistics, the negative binomial distribution is a discrete probability distribution of the number of successes in a sequence of independent and identically distributed Bernoulli trials before a specified (non-random) number of failures (denoted r) occurs. For example, if we define a "1" as failure, all non-"1"s as successes, and we throw a die repeatedly until the third time “1” appears (r = three failures), then the probability distribution of the number of non-“1”s that had appeared will be a negative binomial.
+ 
+The Pascal distribution (after Blaise Pascal) and Polya distribution (for George Pólya) are special cases of the negative binomial. There is a convention among engineers, climatologists, and others to reserve “negative binomial” in a strict sense or “Pascal” for the case of an integer-valued stopping-time parameter r, and use “Polya” for the real-valued case. The Polya distribution more accurately models occurrences of “contagious” discrete events, like tornado outbreaks, than the Poisson distribution by allowing the mean and variance to be different, unlike the Poisson. “Contagious” events have positively correlated occurrences causing a larger variance than if the occurrences were independent, due to a positive covariance term.
+
+%=======================================================================================%
+
+\subsection*{Definition}
+ 
+Suppose there is a sequence of independent Bernoulli trials, each trial having two potential outcomes called “success” and “failure”. In each trial the probability of success is p and of failure is (1 − p). We are observing this sequence until a predefined number r of failures has occurred. Then the random number of successes we have seen, X, will have the negative binomial (or Pascal) distribution:
+ 
+When applied to real-world problems, outcomes of success and failure may or may not be outcomes we ordinarily view as good and bad, respectively. Suppose we used the negative binomial distribution to model the number of days a certain machine works before it breaks down. In this case “success” would be the result on a day when the machine worked properly, whereas a breakdown would be a “failure”. If we used the negative binomial distribution to model the number of goal attempts a sportsman makes before scoring a goal, though, then each unsuccessful attempt would be a “success”, and scoring a goal would be “failure”. If we are tossing a coin, then the negative binomial distribution can give the number of heads (“success”) we are likely to encounter before we encounter a certain number of tails (“failure”). In the probability mass function below, p is the probability of success, and (1-p) is the probability of failure.
+
+%=======================================================================================%
+
+Length of stay
+
+Length of stay (LOS) is a term to describe the duration of a single episode of hospitalization. Inpatient days are calculated by subtracting day of admission from day of discharge. (However, persons entering and leaving a hospital on the same day have a length of stay of one.[citation needed])
+ 
+
+Analysis[edit]
+ 
+A common statistic associated with length of stay is the average length of stay (ALOS), a mean calculated by dividing the sum of inpatient days by the number of patients admissions with the same diagnosis-related group classification. A variation in the calculation of ALOS can be to consider only length of stay during the period under analysis.
+ 
+Length of stay is typically highly skewed, so statistical approaches taking that into account are recommended.[1] While the mean length of stay is useful from the point of view of costs, it may be a poor statistics in terms of representing a typical length of stay; the median may be preferred.
+ 
+It is useful to be able to predict an individual's expected length of stay or to model length of stay to determine factors that affect it. Various analyses have sought to model length of stay in different condition contexts. This has usually been done with regression models, but Markov chain methods have also been applied.[2][3] Within regression approaches, linear, log-normal and logistic regression approaches have been applied, but have been criticised by other researchers.[1][3] Carter & Potts (2014) instead recommend use of negative binomial regression.[1]
+ 
+Quality metric[edit]
+ 
+Length of stay is commonly used as a quality metric. The prospective payment system in U.S. Medicare for reimbursing hospital care promotes shorter length of stay by paying the same amount for procedures, regardless of days spent in the hospital.
+ 
+Non-health usages[edit]
+ 
+The term "average length of stay" (ALOS) is also applicable to other industries, e.g. entertainment, event marketing, trade show and leisure. ALOS is used to determine the length of time an attendee is expected to spend on a site or in a venue and is part of the calculation used to determine the gross sales potential for selling space to vendors etc. and affects everything from parking to sanitation, staffing and food and beverage. Almost all operational aspects can be altered by an attendee's ALOS.
+
+%=======================================================================================%
+\end{document}

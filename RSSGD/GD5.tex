@@ -1,0 +1,95 @@
+\section*{MODULE 5: Topics in applied statistics}
+This module covers four application areas, denoted by bold sub-headings below. It introduces some general techniques for data analysis and some that are more specialised to particular areas. The paper for this module will not be formally divided into sections but it will always consist of two questions on each of the four application areas covered by the syllabus. Candidates are particularly advised that some questions on the paper are likely to require knowledge of material covered in the module on Modelling Experimental Data (module 4).
+Critical evaluation of computer output is required throughout this module. An appreciation of the problems raised by missing values in data is expected throughout this module.
+Note that this syllabus is continued on the next page.
+%-------------------------------------------------------------------------------%
+\subsection*{Multivariate methods}
+
+\begin{itemize}
+\item	Vectors of expected values. Covariance and correlation matrices.
+\item	Discriminant analysis, choice between two populations, calculation of discriminant function, and probability of misclassification, test and training samples, leave-one-out and k-fold cross-validation, idea of extension to several populations.
+\item	Principal components; definition, interpretation of calculated components, use in regression.
+\item	Cluster analysis, similarity measures, single-link and other hierarchical methods, k-means.
+\item	Informal approaches to checking for multivariate Normality. Tests and confidence regions for multivariate means.
+\item	Linear and quadratic discrimination.
+\item	Based on covariance and correlation matrices.
+\item	Hotelling's $T^2$.
+\item	Censored data: survival and reliability
+\item	Problems involving censored data, for example in clinical and engineering contexts.
+\end{itemize}
+
+%-------------------------------------------------------------------------------%
+\subsection*{Reliability and life testing.}
+
+\begin{itemize}
+\item	Hazard and survivor functions.
+\item	Kaplan-Meier estimate of survivor function.
+\item	Weibull and hazard plots.
+\item	Confidence intervals for survivor function using Greenwood's formula.
+\item	Logrank test.
+\item	Parametric survival distributions - exponential, Weibull.
+\item	Use of log cumulative hazard plot to check Weibull and proportional hazards assumptions. Use of these distributions in modelling survival data. Fitting methods not required.
+\item	Proportional hazards and Cox regression.
+\item	An understanding of the assumptions and interpretation of the fitted model. Details of partial likelihood and numerical methods for fitting the model not required. Calculation and interpretation of hazard ratios and confidence intervals.
+\item	Checking for non-proportionality of hazards.
+\item	Checking for non-proportional hazards using a log cumulative hazard plot and plots of hazard functions.
+\end{itemize}
+
+%-------------------------------------------------------------------------------%
+\subsection*{Demography and epidemiology}
+\begin{itemize}
+\item	Population pyramids.
+\item	Life tables.
+\item	Standardised rates (e.g. mortality).
+\item	Construction and use of life tables; derived quantities, including calculation of life expectancy. Direct and indirect standardisation.
+\item	Incidence and prevalence.
+\item	Design and analysis of cohort (prospective) studies.
+\item	Design and analysis of case-control (retro-spective) studies.
+\item	Confounding and interaction.
+\item	Matched case control design and analyses, using McNemar's test.
+\item	Causation.
+\item	Relative risk. Odds ratio. Estimation and confidence intervals for 2 by 2 tables.
+\item	Mantel-Haenszel procedure.
+\item	Sensitivity, specificity, ROC curves, positive predictive value, negative predictive value.
+\item	Distinction between these concepts.
+\item	Reasons for matching; advantages and dis-advantages relative to unmatched studies.
+\item	Inferring causality from observational studies.
+\item	Use in adjusting for confounding variables.
+\item	Uses in screening and diagnosis.
+\end{itemize}
+%-------------------------------------------------------------------------------%
+\subsection*{Sampling}
+\begin{itemize}
+\item	Census and sample survey design. Target and study populations, uses and limitations of non-probability sampling methods, sampling frames, sampling fraction.
+\item	Revision and extension of basic concepts from Higher Certificate.
+\item	Simple random sampling. Estimators of totals, means and proportions; bias. Estimated standard errors, confidence intervals and precision. Sampling fraction and finite population correction. Ratio and regression estimators.
+\item	Examples of practical use in various contexts.
+\item	Use of supplementary information.
+\item	Stratified random sampling. Estimators of totals, means and proportions; bias. 
+\item Estimated standard errors, confidence intervals and precision. 
+\item Cost functions. Proportional and optimal allocations. Limitations of stratified sampling.
+\item	Examples of practical use in various contexts.
+\item	Minimisation of cost × variance.
+\item	One-stage cluster sampling. Estimators for totals, means and proportions with equal cluster sizes and with different cluster sizes. Estimated standard errors, confidence intervals and precision. Link with systematic sampling. Description of two-stage sampling and of multi-stage sampling. Limitations.
+\item	Examples of practical use in various contexts.
+\end{itemize}
+%------------------------------------------------------------------------------%
+\newpage
+\subsection*{Proportional hazards models}
+Proportional hazards models are a class of survival models in statistics. Survival models relate the time that passes before some event occurs to one or more covariates that may be associated with that quantity of time. In a proportional hazards model, the unique effect of a unit increase in a covariate is multiplicative with respect to the hazard rate. For example, taking a drug may halve one's hazard rate for a stroke occurring, or, changing the material from which a manufactured component is constructed may double its hazard rate for failure. Other types of survival models such as accelerated failure time models do not exhibit proportional hazards. The accelerated failure time model describes a situation where the biological or mechanical life history of an event is accelerated.
+
+\subsection*{The Hazard Ratio (HR)}
+In survival analysis, the hazard ratio (HR) is the ratio of the hazard rates corresponding to the conditions described by two levels of an explanatory variable. For example, in a drug study, the treated population may die at twice the rate per unit time as the control population. The hazard ratio would be 2, indicating higher hazard of death from the treatment. Or in another study, men receiving the same treatment may suffer a certain complication ten times more frequently per unit time than women, giving a hazard ratio of 10.
+ 
+Hazard ratios differ from relative risks in that the latter are cumulative over an entire study, using a defined endpoint, while the former represent instantaneous risk over the study time period, or some subset thereof. Hazard ratios suffer somewhat less from selection bias with respect to the endpoints chosen and can indicate risks that happen before the endpoint.
+%------------------------------------------------------------------------------%
+\newpage
+\subsection*{The log-rank test}
+In statistics, the log-rank test is a hypothesis test to compare the survival distributions of two samples. It is a nonparametric test and appropriate to use when the data are right skewed and censored (technically, the censoring must be non-informative). It is widely used in clinical trials to establish the efficacy of a new treatment in comparison with a control treatment when the measurement is the time to event (such as the time from initial treatment to a heart attack). The test is sometimes called the Mantel–Cox test, named after Nathan Mantel and David Cox. 
+The log-rank test can also be viewed as a time-stratified Cochran–Mantel–Haenszel test.
+%------------------------------------------------------------------------------%
+\newpage
+\subsection*{Hotelling's T-squared distribution}
+In statistics Hotelling's T-squared distribution is a univariate distribution proportional to the F-distribution and arises importantly as the distribution of a set of statistics which are natural generalizations of the statistics underlying Student's t-distribution. In particular, the distribution arises in multivariate statistics in undertaking tests of the differences between the (multivariate) means of different populations, where tests for univariate problems would make use of a t-test.
+%-------------------------------------------------------------------------------%
+\end{document}

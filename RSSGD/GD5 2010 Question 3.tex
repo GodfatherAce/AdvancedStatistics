@@ -1,0 +1,207 @@
+
+
+GD5 2010 Question 3
+Nelson-Aalen Estimator
+Censoring
+Actuaries CT4 September 2011 Question 4.
+
+RSS GD5 2010 Question 3
+Consider a random variable T measuring the time to failure of machinery and defined by the probability density function
+ fT(t) ,(t0)
+ 
+(a) Define the survivor function as used in survival analysis, and show how it is related to the probability density function.
+ 
+(b) Derive the survivor function for the Weibull distribution with probability density function
+     
+ 
+(c) Show that if time to failure follows a Weibull distribution, a scatter plot of a suitable function of the survivor function plotted against log(time) can be used to estimate the parameters  and  .
+
+Nelson-Aalen Estimator
+Censoring
+
+Censoring is a form of missing data problem which is common in survival analysis. Ideally, both the birth and death dates of a subject are known, in which case the lifetime is known.
+If it is known only that the date of death is after some date, this is called right censoring. Right censoring will occur for those subjects whose birth date is known but who are still alive when they are lost to follow-up or when the study ends.If a subject's lifetime is known to be less than a certain duration, the lifetime is said to be left-censored. Left-truncated data is common in actuarial work for life insurance and pensions (Richards, 2010).
+Actuaries CT4 September 2011 Question 4.
+A new weedkiller was tested which was designed to kill weeds growing in grass. The weedkiller was administered via a single application to 20 test areas of grass. Within
+hours of applying the weedkiller, the leaves of all the weeds went black and died, but after a time some of the weeds re-grew as the weedkiller did not always kill the roots.
+The test lasted for 12 months, but after six months five of the test areas were accidentally ploughed up and so the trial on these areas had to be discontinued. None
+of these five areas had shown any weed re-growth at the time they were ploughed up.
+
+• Ten of the remaining 15 areas experienced a re-growth of weeds at the following durations (in months): 1, 2, 2, 2, 5, 5, 8, 8, 8, 8.
+• Five areas still had no weed re-growth when the trial ended after 12 months.
+
+(i) Describe, giving reasons, the types of censoring present in the data. 
+(ii) Estimate the probability that there is no re-growth of weeds nine months after application of the weedkiller using either the Kaplan-Meier or the Nelson-
+Aalen estimator. 
+
+
+At Miracle Cure hospital a pioneering new surgery was tested to replace human lungs with synthetic implants. Operations were carried out throughout June 2010. Patients
+who underwent the surgery were monitored daily until the end of August 2010, or until they died or left hospital if sooner. The results are shown below. Where no date
+is given, the patient was alive and still in hospital at the end of August. 
+
+Patient
+Date of surgery
+Date of leaving
+observation
+Reason for leaving
+observation
+A
+B
+C
+D
+E
+F
+G
+H
+I
+J
+K
+L
+M
+N
+June 1
+June 3
+June 5
+June 8
+June 9
+June 12
+June 16
+June 17
+June 22
+June 24
+June 25
+June 26
+June 29
+June 30
+June 3
+July 2
+
+
+July 11
+
+June 21
+Aug 12
+
+June 29
+Aug 20
+
+Aug 6
+
+
+Died
+Left Hospital
+
+
+Died
+
+Died
+Left Hospital
+
+Died
+Died
+
+Left Hospital
+
+
+
+(i) Explain whether each of the following types of censoring is present and for those present explain where they occur:
+• right censoring
+• left censoring
+• informative censoring
+
+
+Right censoring is present for those still alive and in hospital at the end of August OR for those who left hospital while still alive.
+Left censoring is not present
+The censoring is likely to be informative, since those leaving hospital are likely to be in much better health than those who remain.  
+		(The idea of going home to die when you have had a lung transplant is a little tenuous.)
+
+
+[3]
+(ii) Calculate the Kaplan-Meier estimate of the survival function for these patients, stating all assumptions that you make. [6]
+(iii) Sketch, on a suitably labelled graph, the Kaplan-Meier estimate of the survival function. [2]
+(iv) Estimate the probability that a patient will die within four weeks of surgery. [1]
+[Total 12]
+
+Patient 
+Died/Censored 
+Duration
+ A 
+ G 
+ J 
+ B 
+ E 
+ M 
+ H 
+ K 
+ N 
+ L 
+ I 
+ F 
+ D 
+ C 
+Died   
+Died   
+Died   
+Censored   
+Died   
+Censored   
+Censored   
+Died   
+Censored   
+Censored   
+Censored   
+Censored   
+Censored   
+Censored 
+ 2
+ 5
+ 5
+ 29
+ 32
+ 38
+ 56
+ 56
+ 62
+ 66
+ 70
+ 80
+ 84
+ 87
+
+
+Failure Rates
+The failure rate can be defined as the following: The total number of failures within an item population, divided by the total time expended by that population, during a particular measurement interval under stated conditions. (MacDiarmid et al.)
+ 
+Although the failure rate, (t) is often thought of as the probability that a failure occurs in a specified interval given no failure before time t,it is not actually a probability because it can exceed 1. Erroneous expression of the failure rate in % could result in incorrect perception of the measure, specially if it would be measured from repairable systems and multiple systems with non-constant failure rates or different operation times.
+ 
+It can be defined with the aid of the reliability function or survival function R(t), the probability of no failure before time t. 
+ 
+Failure_rate(t)= f(t)/R(t), where f(t) is the time to (first) failure distribution and R(t) is 1 - F(t):
+ 
+
+ 
+over a time interval (t2-t1) from t1 (or t)to t2 and t is defined as (t2-t1). Note that this is a conditional probability, hence the R(t) in the denominator.
+ 
+The failure_rate (t) function is a CONDITIONAL probability of failure DENSITY function. The condition is that the failure has not occurred at time t. Hazard rate and ROCOF (rate of occurrence of failures) is often incorrectly seen as the same and equal to the failure rate. And literature is even contaminated with inconsistent definitions. The hazard rate is in contrast to the ROCOF  the same a failure rate. ROCOF is used for repairable systems only. In practice not many serious errors are made due to this confusion (although this statement is hard to validate).
+ 
+Calculating the failure rate for ever smaller intervals of time, results in the hazard function (or '''hazard rate'''), h(t). 
+This becomes the ''instantaneous'' failure rate as t tends to zero:
+h(t)=t0R(t)-R(t+t)tR(t).
+ 
+A continuous failure rate depends on the existence of a '''failure distribution''', F(t) which is a cumulative distribution function that describes the probability of failure (at least) up to and including time ''t'',
+ 
+
+where T is the failure time.
+The failure distribution function is the integral of the failure ''density'' function, f(t)
+ 
+The hazard function can be defined now as  h(t)=f(t)R(t).
+ 
+Many probability distributions can be used to model the failure distribution.
+ 
+A common model is the '''exponential failure distribution''', which is based on the exponential density function.
+ 
+The hazard rate function for this is: h(t) =f(t)R(t)=e-te-t=.
+ 
+Thus, for an exponential failure distribution, the hazard rate is a constant with respect to time (that is, the distribution is "memory-less").  For other distributions, such as a Weibull distribution or a log-normal distribution, the hazard function may not be constant with respect to time. For some such as the deterministic distribution, it is monotonic increasing (analogous to wearing out"), for others such as the Pareto distribution,it is monotonic decreasing (analogous to "burning in"), while for many it is not monotonic.
+ 
+

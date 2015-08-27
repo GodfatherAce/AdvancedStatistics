@@ -1,0 +1,47 @@
+
+\subsection{Censoring}
+
+\begin{itemize}
+\item Censoring occurs when the value of an observation is only partially known. 
+\item \textbf{Survivorship} For example, suppose a study is conducted to measure the impact of a drug on mortality. 
+In such a study, it may be known that an individual's age at death is at least 75 years. 
+Such a situation could occur if the individual withdrew from the study at age 75, or if the individual is currently 
+alive at the age of 75.
+\item \textbf{Range} Censoring also occurs when a value occurs outside the range of a measuring instrument. 
+\item For example, a bathroom scale might only measure up to 300 lbs. 
+If a 350 lb individual is weighed using the scale, the observer would only know that the individual's weight is at 
+least 300 lbs.
+\end{itemize}
+%-------------------------------------------------------------------------------%
+\newpage
+\subsection*{Types of Censorship and Truncation}
+\begin{itemize}
+\item Right censoring occurs when a subject leaves the study before an event occurs,
+or the study ends before the event has occurred. 
+\item For example, we consider
+patients in a clinical trial to study the e¤ect of treatments on stroke occurrence.
+The study ends after 5 years. Those patients who have had no strokes by the
+end of the year are censored. If the patient leaves the study at time $t_e$; then the
+event occurs in $(t_e, \infty)$ :
+\item Left censoring is when the event of interest has already occurred before
+enrolment. This is very rarely encountered.
+\item Truncation is deliberate and due to study design.
+\item Right truncation occurs when the entire study population has already
+experienced the event of interest (for example: a historical survey of patients
+on a cancer registry).
+\item Left truncation occurs when the subjects have been at risk before entering
+the study (for example: life insurance policy holders where the study starts on
+a fixed date, event of interest is age at death).
+\item Generally we deal with right censoring and sometimes left truncation.
+\end{itemize}
+
+%-----------------------------------------------------------------------%
+\newpage
+Two types of independent right censoring:
+\begin{description}
+\item[Type I :] completely random dropout (eg emigration) and/or fixed time of
+end of study no event having occurred.
+\item[Type II:] study ends when a fixed number of events amongst the subjects
+has occurred.
+\end{description}
+\end{document}

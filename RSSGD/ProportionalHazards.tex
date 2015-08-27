@@ -1,0 +1,68 @@
+
+
+Proportional Hazard Models
+GD5 2010 Question 4
+Hazard function
+Proportional Hazards
+Weibull Distribution
+
+Proportional Hazard Models
+ 
+Proportional hazards models are a sub-class of survival models in statistics, in which the effect of a treatment under study has a multiplicative effect on the subject's hazard rate. For example, a drug may halve one's immediate probability of stroke. This is in contrast to additive hazards models, wherein a treatment may increase one's hazard by a fixed amount which is independent of other covariates.
+ 
+For the purposes of this article, consider survival models to consist of two parts: the underlying hazard function, often denoted 0(t), describing how hazard (risk) changes over time at baseline levels of covariates; and the effect parameters, describing how the hazard varies in response to explanatory covariates. A typical medical example would include as covariates, treatment assignment as well as patient characteristics to reduce variability and/or control for confounding.
+ 
+The proportional hazards assumption is the assumption that covariates multiply hazard. In the simplest case of stationary coefficients, for example, a treatment with a drug may, say, halve a subject's hazard at any given time t, while the baseline hazard may vary. Note however, that the covariate is not restricted to binary predictors; in the case of a continuous covariate x, the hazard responds logarithmically; each unit increase in x results in proportional scaling of the hazard. Typically under the fully-general Cox model, the baseline hazard is "integrated out", or heuristically removed from consideration, and the remaining partial likelihood is maximized. The effect of covariates estimated by any proportional hazards model can thus be reported as hazard ratios.
+ 
+Sir David Cox observed that if the proportional hazards assumption holds (or, is assumed to hold) then it is possible to estimate the effect parameter(s) without any consideration of the hazard function. This approach to survival data is called application of the Cox proportional hazards model, sometimes abbreviated to Cox model or to proportional hazards model.
+ 
+The Cox model may be specialized if a reason exists to assume that the baseline hazard follows a parametric form. In this case, the baseline hazard Λ0(t) is replaced by a parametric density; typically one can then just maximize the full likelihood which greatly simplifies model-fitting and provides interpretability, at the cost of flexibility. For example, assuming the hazard function to be the Weibull hazard function gives the Weibull proportional hazards model (in which the survival times follow a Weibull distribution which is rescaled by the covariates).
+ 
+Incidentally, the Weibull distribution for the baseline hazard is the only assumption under which a model satisfies both the proportional hazards, and accelerated failure time models.
+ 
+
+
+GD5 2010 Question 4
+An engineer is investigating the time to failure of certain components.
+ 
+He has studied a random sample of 50 of these components of which 18 failed before the end of the study.
+ 
+The engineer believes that there are three variables that affect time to failure; a factor F (with values 0 and 1), and two covariates X1 and X2.
+ 
+The covariates X1 and X2 are known to be positively correlated.
+ 
+(i)  Define the Cox proportional hazards model and explain how it could be used to model these data.
+Hazard function
+The hazard function h(t) is given by
+
+h(t) =f(t)1-F(t)
+
+where  f(t) is the pdf and  F(t) the cdf.  
+
+Force of mortality is a synonym of hazard function which is used particularly in demography and actuarial science, where it is denoted by . The term hazard rate is another synonym.
+
+Proportional Hazards
+
+
+The proportional hazards assumption is that the hazard function is
+
+h(t) =h0( t)exp(1X +(other terms in the model)
+
+where h0(t) is the baseline hazard function, the key point being that this implies that the hazard function is proportional to the baseline hazard function at all time points.  This may be checked for any variable in a model either graphically or by statistical tests.
+
+Weibull Distribution
+
+The probability density function of a Weibull random variable x is:
+
+
+where k > 0 is the shape parameter and  >0 is the scale parameter of the distribution. Its complementary cumulative distribution function is a stretched exponential function. 
+
+The Weibull distribution is related to a number of other probability distributions; in particular, it interpolates between the exponential distribution (k = 1) and the Rayleigh distribution (k = 2).
+
+If the quantity x is a "time-to-failure", the Weibull distribution gives a distribution for which the failure rate is proportional to a power of time. The shape parameter, k, is that power plus one, and so this parameter can be interpreted directly as follows:
+
+A value of k<1 indicates that the failure rate decreases over time. This happens if there is significant "infant mortality", or defective items failing early and the failure rate decreasing over time as the defective items are weeded out of the population.
+A value of k=1 indicates that the failure rate is constant over time. This might suggest random external events are causing mortality, or failure.
+A value of k>1 indicates that the failure rate increases with time. This happens if there is an "aging" process, or parts that are more likely to fail as time goes on.
+
+

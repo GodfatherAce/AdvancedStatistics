@@ -1,0 +1,82 @@
+ 
+ 
+%-----------------------------------------------------------------------------------------%
+Introduction
+Examples of Statistics and Probability
+Variables
+Descriptive statistics
+Tukey's five number summary
+Sample size.
+Measures of Centrality
+The mean
+The Median
+Quartiles
+Range
+Standard Deviation
+Interquartile Range (IQR)
+Variance
+The Normal Distribution
+Use of the Standard Normal Distribution in Finance
+A Fat Tail
+Wild Randomness
+The Central Limit Theorem
+Confidence Intervals
+The Chi-Square Test
+Simple Linear regression
+The residual
+Correlation
+
+
+%-----------------------------------------------------------------------------------------%
+\subsubsection*{Introduction}
+
+Finance itself is a relatively young field of research in which data have been available in large quantities only over the last 20 years. Thanks to electronic trading, it is now possible to quantify and analyze the fluctuations of financial markets on a large scale, but much interdisciplinary expertise is necessary to make headway in understanding it all.
+Examples of Statistics and Probability
+getstats campaign
+Florence Nightingale
+AdHoc Fallacy
+Post Hoc Ergo Propter Hoc
+Ecological Fallacy
+2004 Washington State Gubernatorial Election
+
+%-----------------------------------------------------------------------------------------%
+Shewhart Control Charts
+Deming
+
+
+The Normal Distribution
+Use of the Standard Normal Distribution in Finance
+
+Nicholas Nassim Taleb, author of the "Black Swan" and “Fooled by Randomness” has cautioned against the use of the normal distributions in finance.
+%-----------------------------------------------------------------------------------------%
+\subsubsection*{A Fat Tail}
+A fat tailed probability distribution is one in which extreme events are more probable.
+
+For example the normal distribution is typically a very good fit over a wide range of the most likely outcomes in finance. However, it is generally accepted that extreme events such as crashes are more probable it suggests.
+
+This means that a model based on the normal distribution will give good estimates over a reasonable range, but still under-estimate extremes. For example a model might accurately estimate the chance of a share price falling 10%, but greatly under-estimate the chance of the market falling 50%.
+
+Although there is no great difficulty in producing fat tailed probability distributions, actually producing useful valuation or risk models with these is more difficult.
+
+A great advantage of the normal distribution is that it is mathematically easy to handle. Assuming it makes it possible to derive formulae such as Black-Scholes. Using a fat-tailed distribution would make deriving a formula more difficult or impossible. It is sometimes possible to avoid the need for formulae by modelling using a computational approach such as a Monte-Carlo simulation.
+
+
+%-----------------------------------------------------------------------------------------%
+\subsubsection*{Wild Randomness}
+
+What is wild randomness? Simply put, it is an environment in which a single observation or a particular number can impact the total in a disproportionate way. The bell curve has “thin tails” in the sense that large events are considered possible but far too rare to be consequential. 
+
+But many fundamental quantities follow distributions that have “fat tails” – namely, a higher probability of extreme values that can have a significant impact on the total.
+
+Ignorance probably played the larger role, he thinks. Rating agencies, like investors and regulators, rely on relatively simple models to forecast the risk associated with future market movements. Those models often assume a "mild randomness" of market fluctuations. 
+
+In reality, Cont argues, what visionary mathematician Benoît Mandelbrot calls "wild randomness" prevails: Risk is concentrated in a few rare, hard-to-predict, but extreme, market events.
+The Central Limit Theorem
+
+The Standard Error
+%-----------------------------------------------------------------------------------------%
+
+
+%-----------------------------------------------------------------------------------------%
+\subsubsection*{Simpson's paradox}
+

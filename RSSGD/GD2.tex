@@ -1,0 +1,199 @@
+% RSS GD STM 2
+%----------------------------------------------------------------------------------%
+\subsection*{Estimation}
+\begin{itemize}
+\item Unbiasedness, mean square error, consistency, 
+relative efficiency, sufficiency, minimum variance. 
+\item 
+Fisher information for a function of a parameter, 
+Cramér-Rao lower bound, efficiency. 
+\item Fitting 
+standard distributions to discrete and continuous 
+data. 
+\item Method of moments. 
+\item Maximum likelihood 
+estimation: finding estimators analytically and 
+numerically, invariance.
+\end{itemize}
+%----------------------------------------------------------------------------------%
+\subsection*{Hypothesis testing}
+
+\begin{itemize}
+\item	Simple and composite hypotheses, types of error, 
+\item	power, operating characteristic curves, p-value. 
+
+\item	Neyman-Pearson method. 
+\item	Generalised likelihood ratio test. 
+
+\item	Use of asymptotic results to construct tests. 
+
+\item	Central limit theorem, asymptotic distributions of 
+maximum likelihood estimator and generalised 
+likelihood ratio test statistic.
+
+\end{itemize}
+\textit{Proof of the asymptotic distributions of the maximum likelihood estimator and the 
+generalised likelihood ratio test statistic are not required.}
+%----------------------------------------------------------------------------------%
+\subsection*{Confidence intervals and sets}
+
+\begin{itemize}
+\item	Random intervals and sets. 
+\item	Use of pivotal quantities. 
+\item	Relationship between tests and confidence intervals. 
+\item	Use of asymptotic results.
+\item	Data resampling
+\item	Reduction of bias. 
+\item	Estimation of precision. 
+\item	Confidence interval estimation.
+\end{itemize}
+
+%----------------------------------------------------------------------------------%
+\subsection*{Decision Theory}
+
+\begin{itemize}
+\item	Loss
+\item	Risk
+\item	Admissible and Inadmiossible Decisions
+\item	Randomized Decisions
+\item	Minimax Decisions and Bayes Solution
+\end{itemize}
+%----------------------------------------------------------------------------------%
+\subsection*{Non-Paramtric Inference}
+
+\begin{itemize}
+\item[(i)] Use of Ranks and Randomization
+\item[(ii)] Wilcoxon Rank-Sum
+\item[(iii)] Wilcoxon Signed Sum
+\item[(iv)] One and Two Sample KS test
+\item[(v)] Goodness of Fit and Rank correlation tests
+\item[(vi)] Non Parametric Confidence Intervals
+\item[(vii)] Applications using the Wilcoxon Tests
+\end{itemize}
+%----------------------------------------------------------------------------------%
+\subsection*{Bayesian inference}
+
+\begin{itemize}
+\item	Prior and posterior distributions. 
+\item	Choice of prior: bets, conjugate families of distributions, vague and improper priors. 
+\item	Predictive distributions. 
+\item	Bayesian estimates and intervals for parameters and predictions. 
+\item	Bayes factors and implications for hypothesis tests. 
+\item	Use of Monte Carlo simulation of the posterior distribution to draw inferences.
+\end{itemize}
+%----------------------------------------------------------------------------------%
+\newpage
+\subsection*{Generalised Likelihood Ratio Test}
+Generalised likelihood ratio tests may be used to test a composite hypothesis about the parameter(s) in the model.
+The natural logarithm of the Likelihood Ratio is used as a test statistic to test the null hypothesis H0:θ−∈Ω, where 
+$\theta$ is some numerical value (or vector of values with one value for each parameter in the model) against the 
+alternative hypothesis H1:θ−∈Θ.The test statistic is D=2lnΩsupLθΘsupLθ. 
+D is approximately distributed by the chi2 distribution with the degrees of freedom equal to the number of 
+independent unknown parameters in the likelihood model.If D is greater than the chi2 statistic with the 
+appropriate degrees of freedom, reject the null hypothesis that the parameter(s) takes the specified value(s).
+A special case of the Generalised Likelihood Ratio Test (GLRT) tests H0:θ−=θ0 against H1: no restriction on θ. 
+In this case, the value θ takes under the alternative hypothesis is the Maximum Likelihood Estimator of the 
+Likelihood Function.
+ 
+ \newpage
+ 
+ 
+
+RSS Graduate Diploma Paper 2 – Statistical Inference
+
+ 
+
+ 
+
+
+
+--------------------------------------------------------------------------------
+
+%=================================================================================%
+\subsection*{Neyman-Pearson approach to Hypothesis Testing}
+
+Explain the Neyman-Pearson approach to hypothesis testing when the null and alternative hypotheses are simple.
+
+ 
+
+Suppose that θ is the parameter of a distribution. We want to test
+
+ 
+
+
+ 
+
+where $\theta_0$ and $\theta_1(\theta_0)$ are given
+
+ 
+
+Let $\alpha$ be the required significance level. The Neyman-Pearson approach is to choose
+
+the test with the largest power at $\theta_1$ , subject to its size being $ \leq \alpha$.
+
+ 
+
+The Neyman-Pearson lemma shows that this property is satisfied by a \textbf{\textit{likelihood ratio test}}.
+
+
+
+
+%%--------------------------------------------------------------------------------%%
+
+\newpage
+
+Decision making: the actions "accept
+
+H0" or "accept H1" must be taken after
+
+analysing the data. Usually no wider issues are involved; the data are relevant only to
+
+the immediate situation (e.g. quality control – either want to stop the production line
+
+or let it continue).
+
+ 
+
+Strength of evidence: it is not necessarily expected that the current experiment will
+
+lead to immediate actions, rather that it will add to previously gained information.
+
+Wider issues are involved and it is often felt important that significant evidence is
+
+found in several independent studies (e.g. at independent centres). In principle,
+
+p values can be combined (meta-analysis).
+
+ 
+
+One application is clinical trials.The contrast should not be taken too far. In the former case, a value near the critical value ("just accept" H0 or "just accept" H1) may lead to a suspension of action until
+
+further evidence is obtained. On the other hand, a "very significant" result in the
+
+second case may lead to immediate action.
+\newpage
+ 
+
+Significance level: in decision making, this will deliberately be chosen to reflect the
+
+"cost" of wrongly rejecting H0 (e.g. stopping the production line when nothing is
+
+wrong). In the strength of evidence approach, it is customary to use one of the
+
+traditional values (e.g. 0.05), or to quote the exact p-value.
+
+ 
+
+Sample size: in decision making, this will be deliberately chosen to reflect the cost of
+
+making wrong decisions (e.g. continuing operating the production line when in fact
+
+there is a fault). In the strength of evidence approach, it is common practice to ensure
+
+that the sample size is sufficiently large that the power of detecting an effect of
+
+practical importance is sufficiently high.
+
+
+ \end{document} 
+ 

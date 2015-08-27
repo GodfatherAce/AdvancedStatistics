@@ -1,0 +1,360 @@
+\documentclass[serif]{beamer} % Get Computer Modern math font.
+\hypersetup{colorlinks,linkcolor=,urlcolor=red}
+
+%  To create handout using article mode: Comment above and uncomment below (2 places)
+%\documentclass[12pt]{article}
+%\usepackage{beamerarticle}
+%\usepackage[colorlinks=true, pdfstartview=FitV, linkcolor=blue, citecolor=blue, urlcolor=red]{hyperref} % For live Web links with href in article mode
+%\usepackage{amsmath} % For \binom{n}{y}
+%\usepackage{graphicx} % To include pdf files!
+%\usepackage{fullpage}
+
+
+\usefonttheme{serif} % Looks like Computer Modern for non-math text -- nice!
+\setbeamertemplate{navigation symbols}{} % Suppress navigation symbols
+% \usetheme{Berlin} % Displays sections on top
+\usetheme{Frankfurt}  % Displays section titles on top: Fairly thin but still swallows some material at bottom of crowded slides
+%\usetheme{Berkeley}
+
+\usepackage[english]{babel}
+\usepackage{amsmath} % for binom
+% \usepackage{graphicx} % To include pdf files!
+% \definecolor{links}{HTML}{2A1B81}
+% \definecolor{links}{red}
+\setbeamertemplate{footline}[frame number] 
+
+\mode<presentation>
+% \mode<handout>{\setbeamercolor{background canvas}{bg=black!5}}
+
+% Comment this out for handout
+\title{The Bootstrap\footnote{See last slide for copyright information.}}
+\subtitle{STA442/2101 Fall 2012}
+\date{} % To suppress date
+
+\begin{document}
+
+% More material required for handout in article mode. Also eliminate vspace
+%\title{The Multinomial Model\footnote{See last slide for copyright information.}}
+%\subtitle{STA 442/2101: Fall 2012}
+%\date{} % To suppress date
+%\maketitle
+
+% Don't want a separate title page for handout
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Background Reading}
+%\framesubtitle{It may be a little bit helpful.} 
+  \begin{itemize}
+    \item Davison's \emph{Statistical models} has almost nothing.
+    \item The White whale has some material that is specific to regression, and is best left for later.
+    \item The best we can do for now is the \href{http://en.wikipedia.org}{Wikipedia}
+          under 
+         \href{http://en.wikipedia.org/wiki/Bootstrapping_(statistics)}
+         {Bootstrapping (Statistics)}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Overview}
+\tableofcontents
+\end{frame}
+
+\section{Sampling distributions}
+
+\begin{frame}
+\frametitle{Sampling distributions} 
+%\framesubtitle{} 
+  \begin{itemize}
+    \item Let $\mathbf{X} = (X_1, \ldots, X_n)$ be a random sample from some distribution $F$.
+    \item $T=T(\mathbf{X})$ is a statistic (could be a vector of statistics).
+    \item Need to know about the distribution of $T$.
+    \item Sometimes it's not easy, even asymptotically.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sampling distribution of $T$: The elementary version}
+%\framesubtitle{} 
+  \begin{itemize}
+    \item Sample repeatedly from this population (pretend).
+    \item For each sample, calculate $T$.
+    \item Make a relative frequency histogram of the $T$ values you observe.
+    \item As the number of samples becomes very large, the histogram approximates the distribution of $T$.
+  \end{itemize}
+\end{frame}
+
+\section{Bootstrap}
+
+\begin{frame}
+\frametitle{What is a bootstrap?}
+\framesubtitle{Pull yourself up by your bootstraps} 
+
+\begin{center}
+\includegraphics[width=2.5in]{Dr_Martens,_black,_old.jpg}
+\end{center}
+
+{\scriptsize
+This photograph was taken by Tarquin. It is licensed under a 
+\href{http://creativecommons.org/licenses/by-sa/3.0/deed.en_US}
+     {Creative Commons Attribution - ShareAlike 3.0 Unported License}.
+For more information, see the entry at the
+\href{http://commons.wikimedia.org/wiki/File:Dr_Martens,_black,_old.jpg}
+     {wikimedia site}.
+} % End size
+\end{frame}
+
+\begin{frame}
+\frametitle{The (statistical) Bootstrap}
+%\framesubtitle{Bradley Efron, 1979} 
+  \begin{itemize}
+    \item Select a random sample from the population.
+    \item If the sample size is large, the sample is similar to the population.
+    \item Sample repeatedly from the sample. This is called \emph{resampling}.
+    \item Sample from the sample? Think of putting the sample data values in a jar \ldots
+    \item Calculate the statistic for every bootstrap sample.
+    \item A histogram of the resulting values approximates the shape of the sampling distribution of the statistic.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Notation}
+%\framesubtitle{} 
+  \begin{itemize}
+    \item Let $\mathbf{X} = (X_1, \ldots, X_n)$ be a random sample from some distribution $F$.
+    \item $T=T(\mathbf{X})$ is a statistic (could be a vector of statistics).
+    \item Form a ``bootstrap sample" $\mathbf{X}^*$ by sampling $n$ values from $\mathbf{X}$ \emph{with replacement}.
+    \item Repeat this process $B$ times, obtaining $\mathbf{X}^*_1, \ldots, \mathbf{X}^*_B$
+    \item Calculate the statistic for each bootstrap sample, obtaining $T^*_1, \ldots, T^*_B$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{What can we do with $T^*_1, \ldots, T^*_B$?}
+We can do lots of interesting things, including constructing confidence intervals (sometimes).
+
+\vspace{5mm}
+
+In this course, we will use it mostly to calculate standard errors the easy way.
+
+\vspace{5mm}
+
+
+  \begin{itemize}
+    \item Approximate $Var(T)$ with the sample variance of the $T^*$ values.
+    \item Or, if $T$ is a vector, approximate the asymptotic covariance matrix with the sample covariance matrix of the $T^*$ vectors.
+    \item It can be a lot less work than the delta method.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Why does it work?}
+% 
+  \begin{itemize}
+    \item Resampling from $\mathbf{X}$ is the same as simulation of a random variable whose distribution is the empirical distribution function $\widehat{F}(x)$. 
+    \item $\widehat{F}(x)$ is the proportion of sample observations less than or equal to $x$.
+    \item The empirical distribution function converges almost surely to the true distribution function by the Law of Large Numbers.
+    \item Moments and lots of other useful quantities are smooth functions of the distribution function.
+    \item So as $n\rightarrow\infty$ and $B\rightarrow\infty$, bootstrap sample moments of $T^*_1, \ldots, T^*_B$ converge to the corresponding moments of the sampling distribution of $T$.
+  \end{itemize}
+\end{frame}
+
+\section{Distribution-free regression example}
+
+\begin{frame}
+\frametitle{Example: Distribution-free regression}
+\framesubtitle{} 
+Independently for $i=1, \ldots, n$, let
+\begin{displaymath}
+    Y_i = \beta_0 + \beta_1 X_i + \epsilon_i,
+\end{displaymath}
+
+where 
+
+\begin{itemize}
+     \item $X_i$ and $\epsilon_i$ come from unknown distributions
+     \item $E(\epsilon_i=0)$, $Var(\epsilon_i=\sigma^2)$
+     \item Moments of $X_i$ will be denoted $E(X)$, $E(X^2)$, etc.
+     \item $X_i$ and $\epsilon_i$ are independent
+\end{itemize}
+
+\vspace{10mm}
+Observable data consist of the pairs $(X_1,Y_1), \ldots, (X_n,Y_n)$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Estimation}
+%\framesubtitle{} 
+Estimate $\beta_0$ and $\beta_1$ as usual by
+
+\begin{eqnarray*}
+    \widehat{\beta}_0 
+       & = & \frac{\sum_{i=1}^n(X_i-\overline{X})(Y_i-\overline{Y})}
+                  {\sum_{i=1}^n(X_i-\overline{X})^2} \\ \\
+       & = & \frac{\sum_{i=1}^n X_i Y_i - n \overline{X} \, \overline{Y}}
+                  {\sum_{i=1}^n X_i^2 - n \overline{X}^2} \mbox{ and} \\ \\ \\
+    \widehat{\beta}_1 & = & \overline{Y} -  \widehat{\beta}_0 \overline{X}
+\end{eqnarray*} 
+
+\begin{itemize}
+     \item Consistency follows from the Law of Large Numbers and continuous mapping.
+     \item Looks like $\widehat{\beta}_0$ and $\widehat{\beta}_1$ are asymptotically normal.
+     \item Use this to get tests and confidence intervals.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Set up the problem systematically}
+%\framesubtitle{} 
+Denoting the ``data vector" for case $i$ by $\mathbf{D}_i$,
+{\small
+\begin{displaymath}
+    \mathbf{D}_i = 
+    \left( 
+    \begin{array}{c}
+    X_i \\ X^2_i \\ Y_i \\ X_i Y_i 
+    \end{array}
+    \right), \mbox{ and~~ }
+     \overline{\mathbf{D}}_n = 
+    \left( 
+    \begin{array}{l}
+    \frac{1}{n}\sum_{i=1}^n X_i \\\\ \frac{1}{n}\sum_{i=1}^n X^2_i \\\\ 
+    \frac{1}{n}\sum_{i=1}^n Y_i \\\\ \frac{1}{n}\sum_{i=1}^n  X_i Y_i 
+    \end{array}
+    \right) \stackrel{a.s.}{\rightarrow}
+    \left(
+    \begin{array}{l}
+    E(X) \\\\ E(X^2) \\\\ 
+    E(Y) \\\\ E(XY) 
+    \end{array}
+    \right) = \boldsymbol{\mu}
+\end{displaymath} 
+} % End size
+
+Then $\left( 
+    \begin{array}{c}
+    \widehat{\beta}_0 \\ \widehat{\beta}_1
+    \end{array}
+    \right) = g(\overline{\mathbf{D}}_n) \stackrel{a.s.}{\rightarrow} g(\boldsymbol{\mu})
+    = \left( 
+    \begin{array}{c}
+    \beta_0 \\ \beta_1
+    \end{array}
+    \right)$
+\end{frame}
+
+\begin{frame}
+\frametitle{What would we do next}
+\framesubtitle{To use the Central Limit Theorem and Delta method?} 
+CLT says $\sqrt{n}(\overline{\mathbf{D}}_n-\boldsymbol{\mu}) \stackrel{d}{\rightarrow} 
+    \mathbf{T} \sim N\left(\mathbf{0}, \boldsymbol{\Sigma} \right)$. Delta method says
+
+ $\sqrt{n}(g(\overline{\mathbf{D}}_n)-g(\boldsymbol{\mu})) \stackrel{d}{\rightarrow} 
+\mathbf{Y} \sim N(\mathbf{0},
+\mbox{\.{g}}(\boldsymbol{\mu})\mathbf{\Sigma}\mbox{\.{g}}(\boldsymbol{\mu}) ^\prime)$, where
+
+{\small
+\begin{displaymath}
+    \mathbf{D}_i = 
+    \left( 
+    \begin{array}{c}
+    X_i \\ X^2_i \\ Y_i \\ X_i Y_i 
+    \end{array}
+    \right)
+\end{displaymath} }
+
+  \begin{itemize}
+    \item Calculate $\boldsymbol{\Sigma}(\boldsymbol{\mu}) = V(\mathbf{D}_i)$ by hand.
+    \item Calculate \.{g}$(\boldsymbol{\mu})$ by hand.
+    \item Estimate $\boldsymbol{\Sigma}$ using sample moments, by computer.
+    \item Calculate the asymptotic covariance matrix 
+    $\frac{1}{n}\mbox{\.{g}}(\boldsymbol{\mu})
+\widehat{\boldsymbol{\Sigma}}_n \mbox{\.{g}}(\boldsymbol{\mu}) ^\prime$ by computer
+    \item Use that in confidence intervals and Wald-like tests.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{It's a lot of work.}
+%\framesubtitle{} 
+  \begin{itemize}
+    \item Most problems have more than one explanatory variable
+    \item You could easily make a ``little" mistake.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Bootstrap approach: All by computer}
+%\framesubtitle{} 
+  \begin{itemize}
+    \item Earlier discussion implies $\widehat{\boldsymbol{\beta}}$ is asymptotically normal.
+    \item All we need is a good estimated covariance matrix of the sampling distribution.
+    \item Put data vectors $\mathbf{D}_i = (\mathbf{X}_i,Y_i)^\prime$ in a jar.
+    \item Sample $n$ vectors with replacement, yielding $\mathbf{D}_1^*$. Fit the regression model, obtaining $\widehat{\boldsymbol{\beta}}^*_1$.
+    \item Repeat $B$ times. This yields $\widehat{\boldsymbol{\beta}}^*_1 \ldots \widehat{\boldsymbol{\beta}}^*_B$.
+    \item The sample covariance matrix of $\widehat{\boldsymbol{\beta}}^*_1 \ldots \widehat{\boldsymbol{\beta}}^*_B$ is the estimated asymptotic covariance matrix we want.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Remark}
+%\framesubtitle{} 
+This is not a typical bootstrap regression.
+  \begin{itemize}
+    \item Usually people fit a model and then bootstrap the residuals, not the whole data vector.
+    \item Bootstrapping the residuals applies to conditional regression (conditional on $\mathbf{X}=\mathbf{x}$).
+    \item Our regression model is unconditional.
+    \item The large-sample arguments are simpler in the unconditional case. 
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+\frametitle{Copyright Information}
+
+This slide show was prepared by  \href{http://www.utstat.toronto.edu/~brunner}{Jerry Brunner},
+Department of Statistics, University of Toronto. It is licensed under a 
+\href{http://creativecommons.org/licenses/by-sa/3.0/deed.en_US}
+     {Creative Commons Attribution - ShareAlike 3.0 Unported License}. Use any part of it as you like and share the result freely. The \LaTeX~source code is available from the course website:
+\href{http://www.utstat.toronto.edu/~brunner/oldclass/appliedf12} {\small\texttt{http://www.utstat.toronto.edu/$^\sim$brunner/oldclass/appliedf12}}
+
+
+
+
+
+\end{frame}
+
+
+\end{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{}
+%\framesubtitle{} 
+  \begin{itemize}
+    \item 
+    \item 
+    \item 
+  \end{itemize}
+\end{frame}
+
+{\LARGE
+\begin{displaymath}
+    
+\end{displaymath} }
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

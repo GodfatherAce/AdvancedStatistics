@@ -1,0 +1,178 @@
+MODULE 4: Linear models
+%-------------------------------%
+\subsection*{Correlation}
+\begin{itemize}
+\item	Product-moment correlation (Pearson). 
+\item	Rank correlation – Spearman’s coefficient. 
+\item	Calculation and interpretation.
+\item	Association versus causality. 
+\item	Simple tests using tables, with informal understanding of when each measure of correlation is appropriate. 
+\item	Consideration of tied ranks will not be expected.
+\end{itemize}
+%-------------------------------%
+\subsection*{Design of experiments}
+\begin{itemize}
+\item	Reasons for experimentation, causality.
+\item	Principles of replication and randomisation, completely randomised design.
+\end{itemize}
+
+%-------------------------------%
+\subsection*{Regression}
+\begin{itemize}
+\item	Simple linear regression. Least squares estimation.
+\item	Multiple linear regression – concepts, interpretation of computer output, inference for regression coefficients using estimates and estimated standard errors from computer output.
+\item	Analysis of variance for regression models.
+\item	Calculation and interpretation of the multiple correlation coefficient (coefficient of determination).
+\item	Models involving qualitative regressor variables are not included in this module.
+\item	Knowledge of F test for regression and partial t test for regression coefficients. 
+\item	Methods for selecting variables are not included in this module.
+\item	R2 as a measure of the proportion of variation explained.
+\item	Calculation of prediction intervals will not be required.
+\item	Simple cases of transforming to linearity.
+\item	For example, problems (such as growth curves) in which taking logarithms or reciprocals leads to a straight-line relationship.
+\end{itemize}
+%-------------------------------%
+\subsection*{Analysis of variance}
+\begin{itemize}
+\item	One-way analysis of variance.
+
+\item	Relationship to completely randomised design.
+\item	Inference for means and for differences in means.
+\item	Multiple comparison procedures will not be required.
+\end{itemize}
+
+\newpage
+\subsection{Spearman's Rank Correlation}
+In statistics, Spearman's rank correlation coefficient or Spearman's rho, named after Charles Spearman and often denoted by the Greek letter $\rho$ (rho) or as r_s, is a nonparametric measure of statistical dependence between two variables. It assesses how well the relationship between two variables can be described using a monotonic function. If there are no repeated data values, a perfect Spearman correlation of +1 or −1 occurs when each of the variables is a perfect monotone function of the other.
+Spearman's coefficient, like any correlation calculation, is appropriate for both continuous and discrete variables, including ordinal variables.
+\end{document}
+
+
+ 
+
+Variables
+
+ 
+
+independent variable X  ( also called predictor variable)
+
+ 
+
+dependent variable Y (also called the response variable)
+
+ 
+
+A change in variable X causes a change in variable Y.
+
+ 
+
+Linear model
+
+ 
+
+Linear model :  yi=+xi+ei 
+
+ 
+
+ 
+
+parameters (for population of items)
+
+ 
+
+ $\alpha$ : intercept       $\beta$      : slope
+
+ 
+
+If $\alpha$ = 0     y=0 when x = 0. (In many situations, this make sense).
+
+ 
+
+If $\beta$  = 0     no linear relationship exists.
+
+ 
+
+Hypothesis tests are carried out on each to determine importance of each in a linear model.
+
+ 
+
+Estimates ( based on a sample of n items)
+
+ 
+
+yi=+xi
+
+ 
+
+ : estimate for  based on sample data.
+
+ 
+
+ : estimate for  based on sample data.
+
+ 
+
+ For a known value xi , yi is an estimate for the dependent variable Y 
+
+ 
+
+
+
+%--------------------------------------------------------------------------------%
+Residuals
+
+ 
+
+Definition:    i=yi-y
+
+ 
+
+yi   Sample value
+
+ 
+
+yi  Value for yi predicted by the model.
+
+ 
+
+  
+
+Distributional assumptions
+
+ 
+
+Residuals are assumed to be normally distributed with mean 0. 
+
+ 
+
+ 
+
+ 
+
+ Module 4: Linear Models
+
+
+[2008 Question 4]
+
+Two explanatory variables are used to predict a dependent variable Y.
+
+ 
+
+Write down a multiple linear regression model which can be used as a basis for the analysis, and explain the meanings and properties of the terms in the model.
+
+ 
+
+ 
+
+The following coded pairs of measurements were taken of the temperature (X) and thrust (Y) of a jet engine while it was being tested under uniform operating conditions.
+
+
+(Σx = 540, Σx2 = 21412, Σy = 33.0, Σy2 = 78.54, Σxy = 1276.6.)
+
+
+
+A colleague wishes to test at the 5% significance level the hypothesis of no trend against the alternative of an increasing trend, without assuming that the trend is necessarily linear. State what measure of association he should use, calculate it for the above data and carry out the desired test. Compare the result of this test with your findings in part (i).
+
+(8)
+
+

@@ -1,0 +1,29 @@
+%------------------------------------------------%
+\section{Exponential Smoothing}
+
+\[
+\mbox{New Forecast} = \mbox{Old Forecast} + \alpha \mbox{(Latest Observation - Old Forecast)}
+\]
+
+\begin{itemize}
+\item Greater weight is given to more recent data.
+\item All past data is incorporated, and there is no cut-off point as with moving averages.
+\end{itemize}
+
+%------------------------------------------------%
+
+Exponential smoothing is commonly applied to financial market and economic data, but it can be used with any discrete 
+set of repeated measurements. The simplest form of exponential smoothing should be used only for data without any 
+systematic trend or seasonal components
+ 
+The raw data sequence is often represented by $\{x_t\}$ beginning at time t=0, and the output of the exponential 
+smoothing algorithm is commonly written as $\{s_t\}$, which may be regarded as a best estimate of what the next value of 
+x will be. When the sequence of observations begins at time t = 0, the simplest form of exponential smoothing is given 
+by the formulae:
+ 
+%% FORMULAE HERE %%
+
+where $\alpha$ is the smoothing factor, and $0 < \alpha < 1 $.
+
+
+\end{document}

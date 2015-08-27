@@ -1,0 +1,45 @@
+
+
+Missing data
+Types of Missing Data
+Data Imputation
+Censoring
+Response bias
+Non-Response Bias
+
+In last class, we looked at data quality issues, such as "dirty data". In this class we will look at some important issues regarding the quality of the data set.
+\subsection{Missing data}
+Missing data occurs when no data value is stored for the variable in the current observation. 
+
+Missing values can badly distort a statistical analysis. Researchers try to estimate the relationships that exist among variables in a defined population of interest. To do this, researchers take a representative sample from that population and conduct research on this group to gain information about the relationships among variables in the sample. 
+The sample relationships are then taken to estimate the population relationships, because the sample is representative. However, if certain kinds of cases in the population are systematically missing from the sample, then the sample cannot be representative of the population.
+
+Potential sources of missing data should be considered carefully so that it can be minimized by preventative strategies. 
+The implications the missing data might have should be anticipated for the outcome of any analysis in terms of the the reliability and validity of the study the data is used for.
+In most research settings, however, missing data are indicative of some pattern and cannot safely be assumed to reflect randomness. Therefore it is not advisable to delete cases where there is missing data. 
+In such circumstances, deletion can introduce substantial bias into the study. Moreover, the loss in sample size can appreciably diminish the statistical power of the analysis. The "Missing Data" phenomenum appears regularly in fields like archeology, where a deletion strategy would rapidly undermine a statistical study. 
+
+Missing data is a common occurrence, and statistical methods, such as data imputation, have been developed to deal with this problem. 
+
+\subsection{Types of Missing Data}
+There are three types of missing data.
+
+1)Missing Completely at Random (MCAR)
+			
+MCAR values are randomly distributed across all observations. In other words, data is considered to be missing completely at random if the absence is not related to the information it should otherwise contain (e.g. equipment malfunctioned, the weather was terrible, or people got sick, or the data were not entered correctly). 
+
+2) Missing at Random (MAR)
+
+MAR values are not randomly distributed across all observations but are randomly distributed within one or more subsamples. Data is considered to be missing at random, but not "completely at random" if the absence could be related to the information it should otherwise contain. MAR is much more common than MCAR.
+
+For example, people who are depressed might be less inclined to report their income, and thus reported income will be related to depression. Depressed people might also have a lower income in general, and thus when there is a high rate of missing data among depressed individuals, the existing mean income might be lower than it would be without missing data. 
+
+3) Missing Not at Random (MNAR)
+
+If data is not missing at random or completely at random then it is classed as Missing Not at Random (MNAR). Missingness is no longer "at random" if it depends on information that has not been recorded and this information also predicts the missing values. 
+A familiar example from medical studies is that if a particular treatment causes discomfort, a patient is more likely to drop out of the study. This missingness is not at random (unless “discomfort” is measured and observed for all patients).
+Data Imputation
+
+Imputation is the substitution of some value for a missing data point or a missing component of a data point. Once all missing values have been imputed, the dataset can then be analysed using standard techniques for complete data. The analysis should ideally take into account that there is a greater degree of uncertainty than if the imputed values had actually been observed, however, and this generally requires some modification of the standard complete-data analysis methods. 
+
+

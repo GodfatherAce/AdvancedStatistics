@@ -1,0 +1,58 @@
+%-----------------------------------------------------%
+\begin{itemize}
+\item	Stochastic processes
+\item	General stochastic process models.
+\item	Random walks.
+\item	Reflecting and absorbing barriers.
+\item	Mean recurrence time, mean time to absorption.
+\item	Difference equations.
+\item	Branching processes.
+\item	Markov chain models for discrete-state processes.
+\item	Transition matrices: 1-step and n-step.
+\item	Classification of states.
+\item	Equilibrium distributions for time-homogeneous chains.
+\item	Poisson processes.
+\item	Differential-difference equations.
+\item	Birth and death processes.
+\end{itemize}
+
+\subsection*{Stochastic Process}
+
+
+
+A stochastic process is a collection of random variables that are indexed by time, {Xt}.  A Time Series is an example of a stochastic process.
+ 
+If the index set at which the process is observed is continuous (usually t ≥ 0) then the stochastic process is referred to as a continuous time stochastic process. If the index set is discrete(possibly time points 0, 1, 2, ...), then the process is referred to as a discrete time stochastic process.
+ 
+The state space is the space of all possible values of Xt.  Again, the state space may be continuous or discrete depending on the context.
+ 
+Increments of the process in disjoint time intervals are also independent of each other such that Xd-Xc is independent of Xb-Xa if a<b≤c<d.
+ 
+A stochastic process might also have the Markov property such that, if we know the current value of Xt, then the value of Xt+1 does not depend on the values of Xt-1, Xt-2, or earlier time points.
+ . 
+ 
+%-----------------------------------------------------%
+\subsubsection*{Reflective state}
+
+A reflective state is a state in a Markov Process. A reflective state occurs when the probability that the process will leave the state is 1. In random walk processes, this is known as a reflective boundaries.
+
+%-----------------------------------------------------%
+\subsection*{Branching Process}
+
+The branching process is an example of a Stochastic Process that is used in modelling populations which vary over time. 
+
+Suppose that $X_i$ is the population size of the ith generation. The population is able to produce offspring of the same kind. The individual will by the end of its life, produce j offspring with probability pj.The branching process is the sequence X1, X2, X3,...and is an example of a Markov Process. The question of interest for a branching process is the probability of extinction of the population being examined. Extinction occurs if ∑∞j=0 jpj≤1, where pj is the probability each individual in a generation has of having j descendants in the next.
+
+%-----------------------------------------------------%
+\subsection*{Poisson Processes}
+In probability theory, a Poisson process is a stochastic process that counts the number of events and the time points at which these events occur in a given time interval. The time between each pair of consecutive events has an exponential distribution with parameter λ and each of these inter-arrival times is assumed to be independent of other inter-arrival times. The process is named after the French mathematician Siméon Denis Poisson and is a good model of radioactive decay,[1] telephone calls[2] and requests for a particular document on a web server,[3] among many other phenomena.
+ 
+The Poisson process is a continuous-time process; the sum of a Bernoulli process can be thought of as its discrete-time counterpart. A Poisson process is a pure-birth process, the simplest example of a birth-death process. It is also a point process on the real half-line.
+
+%-----------------------------------------------------%
+\subsection*{Birth and death processes}
+
+The birth–death process is a special case of continuous-time Markov process where the state transitions are of only two types: "births", which increase the state variable by one and "deaths", which decrease the state by one. The model's name comes from a common application, the use of such models to represent the current size of a population where the transitions are literal births and deaths. Birth–death processes have many applications in demography, queueing theory, performance engineering, epidemiology or in biology. They may be used, for example to study the evolution of bacteria, the number of people with a disease within a population, or the number of customers in line at the supermarket.
+ 
+When a birth occurs, the process goes from state n to n + 1. When a death occurs, the process goes from state n to state n − 1. 
+%-----------------------------------------------------%

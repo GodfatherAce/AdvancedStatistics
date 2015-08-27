@@ -1,0 +1,62 @@
+ 
+Life Tables
+ 
+In actuarial science, a life table (also called a mortality table or actuarial table) is a table which shows, for each age, what the probability is that a person of that age will die before his or her next birthday. From this starting point, a number of inferences can be derived.
+ 
+the probability of surviving any particular year of age
+remaining life expectancy for people at different ages
+Mathematics of Life Tables
+ 
+qx: the probability that someone aged exactly x will die before reaching age (x+1).
+px: the probability that someone aged exactly x will survive to age (x+1)
+ 
+px=1-qx
+ 
+lx the number of people who survive to age x
+ 
+Note that this is based on a starting point of l0 lives, typically taken as 100,000
+ 
+ 
+        lx + 1=lx(1-qx) =lxpx            also  lx + 1lx=px
+ 
+dx the number of people who die aged x last birthday
+        dx=lx-lx+1=lx(1-px) =lxqx 
+ 
+tpx the probability that someone aged exactly x will survive for t more years, i.e. live up to at least age x+t years
+        tpx=lx+tlx 
+ 
+ t|kqx: the probability that someone aged exactly x will survive for t more years, then die within the following k years
+        t|kqx=tpxkqx+t=lx+t-lx+t+klx 
+ 
+ 
+x: the force of mortality, ie the instantaneous mortality rate at age x, ie the number of people dying in a short interval starting at age x, divided by lx and also divided by the length of the interval.
+ 
+Unlike qx, the instantaneous mortality rate, x, may exceed 1.
+ 
+mx  This symbol refers to Central rate of mortality. It is approximately equal to the average force of mortality, averaged over the year of age.
+ 
+ 
+Actuaries September 2011 CT6 Question 9
+(i) State the principle of correspondence as it applies to the estimation of mortality rates. 
+(ii) Explain why it might be difficult to ensure the principle of correspondence is adhered to, and give a specific example of an investigation where this may be
+the case. 
+An actuary was asked to investigate the mortality of lives in a particular geographical area. Data are available of the population of this area, classified by age last birthday,
+on 1 January in each year. Data on the number of deaths in this area in each calendar year, classified by age nearest birthday at death, are also available.
+(iii) Derive a formula which would allow the actuary to estimate the force of mortality at age x + f, x+ f , in a particular calendar year, in terms of the
+available data, and derive a value for f. [6]
+(iv) List four factors other than geographical location which a government statistical office might use to subdivide data for national mortality analysis. [2]
+
+Actuaries April 2011 CT6 Question 6
+A study of the mortality of a certain species of insect reveals that for the first 30 days of life, the insects are subject to a constant force of mortality of 0.05. After 30 days,
+the force of mortality increases according to the formula:
+
+30+x=0.05exp(0.01x), 
+
+where x is the number of days after day 30.
+
+(i) Calculate the probability that a newly born insect will survive for at least 10 days. [1]
+(ii) Calculate the probability that an insect aged 10 days will survive for at least a further 30 days. [3]
+(iii) Calculate the age in days by which 90 per cent of insects are expected to havedied. [4]
+
+
+
