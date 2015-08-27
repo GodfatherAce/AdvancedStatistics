@@ -1,0 +1,19 @@
+Tukey and Dunnett methods
+ Previous topic	Next topic	No expanding text in this topic	Print this topic	Mail us feedback on this topic!	 
+Tukey and Dunnett tests in Prism
+
+Prism can perform either Tukey or Dunnett tests as part of one- and two-way ANOVA. Choose to assume a Gaussian distribution and to use a multiple comparison test that also reports confidence intervals. If you choose to compare every mean with every other mean, you'll be choosing a Tukey test. If you choose to compare every mean to a control mean, Prism will perform the Dunnett test.
+
+Key facts about the Tukey and Dunnett tests
+
+•	The Tukey and Dunnet tests are only used as followup tests to ANOVA. They cannot be used to analyze a stack of P values.
+•	The Tukey test compares every mean with every other mean.
+•	The Dunnett test compares every mean to a control mean.
+•	Both tests take into account the scatter of all the groups. This gives you a more precise value for scatter (Mean Square of Residuals) which is reflected in more degrees of freedom. When you compare mean A to mean C, the test compares the difference between means to the amount of scatter, quantified using information from all the groups, not just groups A and C. This gives the test more power to detect differences, and only makes sense when you accept the assumption that all the data are sampled from populations with the same standard deviation, even if the means are different.
+•	The results are a set of decisions: "statistically significant" or "not statistically significant". These decisions take into account multiple comparisons.
+•	It is possible to compute multiplicity adjusted P values for these tests.
+•	Both tests can compute a confidence interval for the difference between the two means. This confidence interval accounts for multiple comparisons. If you choose 95% intervals, then you can be 95% confident that all of the intervals contain the true population value.
+•	Prism reports the q ratio for each comparison. By historical tradition, this q ratio is computed differently for the two tests. For the Dunnett test, q is the difference between the two means (D) divided by the standard error of that difference (computed from all the data): q=D/SED. For the Tukey test, q=sqrt(2)*D/SED. The only reason to look at these q ratios is to compare Prism's results with texts or other programs.
+•	Different tables (or algorithms) are used for the Tukey and Dunnett tests to determine whether or not a q value is large enough for a difference to be declared to be statistically significant. This calculation depends on the value of q, the number of groups being compared, and the number of degrees of freedom.
+•	Read the details of how these (and other) tests are calculated here. We use the original single step Dunnett method, not the newer step-up or step-down methods.
+ 
