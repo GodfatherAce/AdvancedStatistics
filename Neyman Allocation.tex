@@ -1,6 +1,102 @@
-Neyman Allocation
+Sample Size: Stratified Random Samples
 
-Neyman allocation is a sample allocation method that may be used with stratified samples. The purpose of the method is to maximize survey precision, given a fixed sample size. With Neyman allocation, the "best" sample size for stratum h would be:
-nh = n * ( Nh * Sh ) / [ Σ ( Ni * Si ) ]
-where nh is the sample size for stratum h, n is total sample size, Nh is the population size for stratum h, and Sh is the standard deviation of stratum h.
-Neyman allocation is actually a special case of optimal allocation .
+The precision and cost of a stratified design is influenced by the way that sample elements are allocated to strata.
+
+How to Assign Sample to Strata
+One approach is proportionate stratification. With proportionate stratification, the sample size of each stratum is proportionate to the population size of the stratum. Strata sample sizes are determined by the following equation :
+
+nh = ( Nh / N ) * n
+
+where nh is the  sample size for stratum h, Nh is the population size for stratum h, N is total population size, and n is total sample size.
+
+Another approach is disproportionate stratification, which can be a better choice (e.g., less cost, more precision) if sample elements are assigned correctly to strata. To take advantage of disproportionate stratification, researchers need to answer such questions as:
+
+Given a fixed budget, how should sample be allocated to get the most precision from a stratified sample?
+Given a fixed sample size, how should sample be allocated to get the most precision from a stratified sample?
+Given a fixed budget, what is the most precision that I can get from a stratified sample?
+Given a fixed sample size, what is the most precision that I can get from a stratified sample?
+What is the smallest sample size that will provide a given level of survey precision?
+What is the minimum cost to achieve a given level of survey precision?
+Given a particular sample allocation plan, what level of precision can I expect?
+And so on.
+Although a consideration of all these questions is beyond the scope of this tutorial, the remainder of this lesson does address the first two questions. (To answer the other questions, as well as the first two questions, consider using the Sample Planning Wizard.)
+
+%==================================================================================================%
+
+
+How to Maximize Precision, Given a Stratified Sample With a Fixed Budget
+The ideal sample allocation plan would provide the most precision for the least cost. Optimal allocation does just that. Based on optimal allocation, the best sample size for stratum h would be:
+
+nh = n * [ ( Nh * σh ) / sqrt( ch ) ] / [ Σ ( Ni * σi ) / sqrt( ci ) ]
+
+where nh is the sample size for stratum h, n is total sample size, Nh is the population size for stratum h, σh is the standard deviation of stratum h, and ch is the direct cost to sample an individual element from stratum h. Note that ch does not include indirect costs, such as overhead costs.
+
+The effect of the above equation is to sample more heavily from a stratum when
+
+The cost to sample an element from the stratum is low.
+The population size of the stratum is large.
+The variability within the stratum is large.
+How to Maximize Precision, Given a Stratified Sample With a Fixed Sample Size
+Sometimes, researchers want to find the sample allocation plan that provides the most precision, given a fixed sample size. The solution to this problem is a special case of optimal allocation, called Neyman allocation.
+
+The equation for Neyman allocation can be derived from the equation for optimal allocation by assuming that the direct cost to sample an individual element is equal across strata. Based on Neyman allocation, the best sample size for stratum h would be:
+
+nh = n * ( Nh * σh ) / [ Σ ( Ni * σi ) ]
+
+where nh is the sample size for stratum h, n is total sample size, Nh is the population size for stratum h, and σh is the standard deviation of stratum h.
+
+Sample Problem
+This section presents a sample problem that illustrates how to maximize precision, given a fixed sample size and a stratified sample. (In a subsequent lesson, we re-visit this problem and see how stratified sampling compares to other sampling methods.)
+
+Problem 1
+
+At the end of every school year, the state administers a reading test to a sample of 36 third graders. The school system has 20,000 third graders, half boys and half girls. The results from last year's test are shown in the table below.
+
+Stratum	Mean score	Standard deviation
+Boys	70	10.27
+Girls	80	6.66
+This year, the researchers plan to use a stratified sample, with one stratum consisting of boys and the other, girls. Use the results from last year to answer the following questions?
+
+To maximize precision, how many sampled students should be boys and how many should be girls?
+What is the mean reading achievement level in the population?
+Compute the confidence interval.
+Find the margin of error
+Assume a 95% confidence level.
+
+Solution: The first step is to decide how to allocate sample in order to maximize precision. Based on Neyman allocation, the best sample size for stratum h is:
+
+nh = n * ( Nh * σh ) / [ Σ ( Ni * σi ) ]
+
+where nh is the sample size for stratum h, n is total sample size, Nh is the population size for stratum h, and σh is the standard deviation of stratum h. By this equation, the number of boys in the sample is:
+
+nboys = 36 * ( 10,000 * 10.27 ) / [ ( 10,000 * 10.27 ) + ( 10,000 * 6.67 ) ] = 21.83
+
+Therefore, to maximize precision, the total sample of 36 students should consist of 22 boys and (36 - 22) = 14 girls.
+
+The remaining questions can be answered during the process of computing the confidence interval. Previously, we described how to compute a confidence interval. We employ that process below.
+
+Identify a sample statistic. For this problem, we use the overall sample mean to estimate the population mean. To compute the overall sample mean, we use the following equation (which was introduced in a previous lesson):
+x = Σ ( Nh / N ) * xh = ( 10,000/20,000 ) * 70 + ( 10,000/20,000 ) * 80 = 75
+
+Therefore, based on data from the sample strata, we estimate that the mean reading achievement level in the population is equal to 75.
+
+Select a confidence level. In this analysis, the confidence level is defined for us in the problem. We are working with a 95% confidence level.
+
+Find the margin of error. Elsewhere on this site, we show how to compute the margin of error when the sampling distribution is approximately normal. The key steps are shown below.
+
+Find standard deviation or standard error. The equation to compute the standard error was introduced in a previous lesson. We use that equation here:
+SE = (1 / N) * sqrt { Σ [ Nh2 * ( 1 - nh/Nh ) * sh2 / nh ] } 
+SE = (1 / 20,000) * sqrt { [ 10,0002 * ( 1 - 22/10,000 ) * (10.27)2 / 22 ] + [ 10,0002 * ( 1 - 14/10,000 ) * (6.66)2 / 14 ] } = 1.41
+
+Thus, the standard deviation of the sampling distribution (i.e., the standard error) is 1.41.
+
+Find critical value. The critical value is a factor used to compute the margin of error. We express the critical value as a z score. To find the critical value, we take these steps.
+
+Compute alpha (α): α = 1 - (confidence level / 100) = 1 - 99/100 = 0.01
+Find the critical probability (p*): p* = 1 - α/2 = 1 - 0.05/2 = 0.975
+The critical value is the z score having a cumulative probability equal to 0.975. From the Normal Distribution Calculator, we find that the critical value is 1.96.
+
+Compute margin of error (ME): ME = critical value * standard error = 1.96 * 1.41 = 2.76
+
+Specify the confidence interval. The range of the confidence interval is defined by the sample statistic + margin of error. And the uncertainty is denoted by the confidence level. Thus, with this sample design, we are 95% confident that the sample estimate of reading achievement is 75 + 2.76.
+In summary, given a total sample size of 36 students, we can get the greatest precision from a stratified sample if we sample 22 boys and 14 girls. This results in a 95% confidence interval of 72.24 to 77.76. The margin of error is 2.76.
