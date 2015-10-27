@@ -1,0 +1,102 @@
+
+\documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{framed}
+\usepackage{subfigure}
+\usepackage{fancyhdr}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2570}
+%TCIDATA{<META NAME="SaveForMode"CONTENT="1">}
+%TCIDATA{LastRevised=Wednesday, February 23, 201113:24:34}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+
+\pagestyle{fancy}
+\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+\lhead{MA4128} \rhead{Kevin O'Brien} \chead{Multicollinearity} %\input{tcilatex}
+
+%http://www.electronics.dit.ie/staff/ysemenova/Opto2/CO_IntroLab.pdf
+\begin{document}
+	
+	\tableofcontents
+	
+\section{Variable Selection Procedures}
+
+\begin{itemize}
+	\item Enter: This is the forced entry option. SPSS will enter at one time all specified variables regardless of significance levels.
+	\item Forward: This method will enter variables one at a time, based on the significance value to enter.
+	\item Backward: This enters all independent variables at one time and then removes variables one at a time based on a preset significance value to remove.
+	\item Stepwise: This combines both forward and backward procedures. Since inter correlations are complex, the variance due to certain variables will change when new variables are entered into the equation. This is the most frequently used of the regression methods.
+	\item Remove: This is the forced removal option. It requires an initial regression analysis usingthe Enter procedure. In the next block (Block 1 of 1) you may specify one or morevariables to remove. SPSS will then remove the specified variables and run the analysis again.
+\end{itemize}
+There are different ways that the relative contribution of each predictor variable can be assessed. In the “simultaneous” method (which SPSS calls the Enter method), the researcher specifies the set of predictor variables that make up the model. The success of this model in predicting the criterion variable is then assessed.
+
+In contrast, “hierarchical” methods enter the variables into the model in a specified order. The order specified should reflect some theoretical consideration or previous
+findings. If you have no reason to believe that one variable is likely to be more important than another you should not use this method. As each variable is entered into the model its contribution is assessed. If adding the variable does not significantly increase the predictive power of the model then the variable is
+dropped.
+
+In “statistical” methods, the order in which the predictor variables are entered into (or taken out of) the model is determined according to the strength of their correlation with the criterion variable. Actually there are several versions of this method, called forward selection, backward selection and stepwise selection.
+
+\subsection{Forward Selection}
+In Forward selection, SPSS enters the variables into the model one at a time in an
+order determined by the strength of their correlation with the criterion variable. The effect of adding each is assessed as it is entered, and variables that do not significantly add to the success of the model are excluded.
+
+\subsection{Forward Regression}
+We consider first SPSS’s forward regression. In this procedure, once a predictor is selected into the model, it cannot be removed. Other predictors may be added at future steps, but predictors already in the model remain in the model. As we will see, this is in contrast to SPSS’s stepwise regression, in which we can specify criteria for both adding and removing predictors at each step.
+We detail now a procedural description of SPSS’s forward selection procedure.
+
+\textbf{Step 1}\\
+The predictor with the largest squared correlation with Y is entered into the model. Since this is the first step of the selection procedure, entering the predictor with the largest squared correlation is equivalent to entering the predictor with the largest squared semipartial correlation. It may seem trivial to bring up the idea of semipartial correlation at step 1 of the procedure, but we do so because at subsequent steps, the criterion for entrance into the regression equation will be the squared semipartial correlation (or equivalently, the amount of variance contributed by the new predictor over and above variables already entered into the equation).
+
+\textbf{Step 2}\\
+The predictor with the largest squared semipartial correlation with Y is selected. That is, the predictor with the largest correlation with Y after being adjusted for the first predictor, is entered if it meets entrance criteria in terms of preset statistical significance for entry, what SPSS refers to as “PIN” (probability of entry, or “in”) criteria. Be sure to note that even once this new predictor is entered at step 2, the predictor entered at step 1 remains in the equation, even if it’s new semipartial correlation with Y is now less than what it was at step 1. This is the nature of the forward selection procedure, it does not re-evaluate already-entered predictors into the model after adding new variables. That is, it only add predictors to the model. Again, this is in contrast to SPSS’s stepwise procedure (to be discussed in some detail shortly) in which in addition to entrance criteria being specified for new variables, removal criteria is also specified at each stage of the variable-selection procedure.
+\textbf{Step 3}\\
+The predictor with the largest squared semipartial correlation with Y is selected. That is, the predictor with the largest correlation with Y after being adjusted for both of the first predictors is entered. Be sure to note that the entrance of this variable is conditional upon its relationship with the previously entered variables at step 1 and step 2. Hence, for a variable to be entered at step 3, SPSS asks the question, “Which among available variables currently not entered into the regression equation contribute most to variance explained in Y given that variables entered at steps 1 and 2 remain in the model?” Translated into statistical language, what this question boils down to is selecting the variable that has the largest statistically significant squared semipartial correlation with Y.
+
+\textbf{Steps 4, 5, 6, } \\
+We do not detail subsequent steps for the reason that they mimic the preceding steps. It is worth noting that we didn’t even really need to detail steps 2 and 3, and could have just stated the “rule” of forward regression by referring to the first step alone. We can state the general rule of forward regression as follows:
+Forward regression, at each step of the selection procedure from step 1 through subsequent steps, chooses the predictor variable with the greatest squared semipartial correlation with the response variable for entry into the regression equation. The given predictor will be entered if it satisfies entrance criteria (significance level, PIN) specified in advance by the researcher.
+
+The above is the simplest way to describe the procedural routine of how forward regression operates. What is perhaps most noteworthy about the above rule is what is not included just as much as what is included in the statement. Notice that nowhere in the rule is there any mention of removal of predictors at any step of the selection process. Forward selection only
+
+\subsection{Backward Selection}
+In Backward selection, SPSS enters all the predictor variables into the model. The weakest predictor variable is then removed and the regression re-calculated. If this
+significantly weakens the model then the predictor variable is re-entered – otherwise it is deleted. This procedure is then repeated until only useful predictor variables remain in the model.
+
+\subsection{Stepwise Selection}
+Stepwise is the most sophisticated of these statistical methods. Each variable is entered in sequence and its value assessed. If adding the variable contributes to the model then it is retained, but all other variables in the model are then re-tested to see if they are still contributing to the success of the model. If they no longer contribute significantly they are removed. Thus, this method should ensure that you end up with the smallest possible set of predictor variables included in your model.
+
+
+In addition to the Enter, Stepwise, Forward and Backward methods, SPSS also offers the Remove method in which variables are removed from the model in a block – the use of this method will not be described here.
+
+If you have no theoretical model in mind, and/or you have relatively low numbers
+of cases, then it is probably safest to use Enter, the simultaneous method. Statistical
+procedures should be used with caution and only when you have a large number of
+cases. This is because minor variations in the data due to sampling errors can have a
+large effect on the order in which variables are entered and therefore the likelihood
+of them being retained. However, one advantage of the Stepwise method is that it
+should always result in the most parsimonious model. This could be important if
+you wanted to know the minimum number of variables you would need to measure
+to predict the criterion variable. If for this, or some other reason, you decide to
+select a statistical method, then you should really attempt to validate your results
+with a second independent set of data. The can be done either by conducting a
+second study, or by randomly splitting your data set into two halves . Only results that are common to both analyses should be reported.
+
+\subsection{Stepwise Regression}
+Stepwise regression combines forward selection and backward elimination. At each
+step, the best remaining variable is added, provided it passes the significant at 5%
+criterion, then all variables currently in the regression are checked to see if any can be
+removed, using the greater than 10\% significance criterion. The process continues
+until no more variables are added or removed. This is the one we shall use. It is not
+guaranteed to find the best subset of independents but it will find a subset close to the
+best.
+
+%============================================================================ %
+\end{document}
