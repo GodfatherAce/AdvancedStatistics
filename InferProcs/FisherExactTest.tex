@@ -1,0 +1,32 @@
+\section{Fisher's exact test}
+
+Fisher's exact test is a statistical significance test used for small sample sizes. It is one of a number of tests used to analyze contingency tables, which display the interaction of two or more variables. Fisher's exact test was invented by English scientist Ronald Fisher, and it is called exact because it calculates statistical significance exactly, rather than by using an approximation.
+
+To understand how Fisher's exact test works, it is essential to understand what a contingency table is and how it is used. In the simplest example, there are only two variables to be compared in a contingency table. Usually, these are categorical variables. As an example, imagine you are conducting a study on whether gender correlates with owning pets. There are two categorical variables in this study: gender, either male or female, and pet ownership.
+
+A contingency table is set up with one variable on the top, and the other on the left side, so that there is a box for each combination of variables. Totals are given on the bottom and at the far right. Here is what a contingency table would look like for the example study, assuming a survey of 24 individuals:
+\begin{verbatim}
+ Pet Owner Not a Pet Owner Total
+Male 1 9 10
+Female 11 3 14
+Total 12 12 24
+\end{verbatim}
+Fisher's exact test calculates deviance from the null hypothesis, which holds that there is no bias in the data, or that the two categorical variables have no correlation with each other. In the case of the present example, the null hypothesis is that men and women are equally likely to own pets. Fisher's exact test was designed for contingency tables with a small sample size, or large discrepancies between cell numbers, like the one shown above. For contingency tables with a large sample size and well-balanced numbers in each cell of the table, Fisher's exact test is not accurate, and the chi-square test is preferred.
+
+In analyzing the data in the table above, Fisher's exact test serves to determine the probability that pet-ownership is unevenly distributed among men and women in the sample. We know that ten of the 24 people surveyed own pets, and that 12 of the 24 are female. The probability that ten people chosen at random from the sample will consist of nine women and one man will suggest the statistical significance of the distribution of pet owners in the sample.
+
+Probability is denoted by the letter p. Fisher's exact test determines the p-value for the above data by multiplying the factorials of each marginal total -- in the table above, 10, 14, 12, and 12 -- and dividing the result by the product of the factorials of each cell number and of the grand total. A factorial is the product of all positive integers less than or equal to a given number. $10!$, pronounced "ten factorial," is therefore equal to $10\times 9\times8 \times \ldots\times 3 \times 2 \times 1$, or 3,628,800.
+
+For the table above, then, $p= (10!)(14!)(12!)(12!)/(1!)(9!)(11!)(3!)(24!)$. Using a calculator, one can determine that the probability of getting the numbers in the table above is under $2\%$, well below chance, if the null hypothesis is true. Therefore, it is very unlikely that there is no contingency, or significant relationship, between gender and pet-ownership in the study sample.
+
+
+Continuous data protection is a type of backup system that allows for information on a computer system to be constantly backed up on a different server, possibly even at a different physical location. Many consider this to be one of the safest forms of backup protection. While some systems back up the information stored on the main computer every day or even every few days, continuous data protection ensures that not even a day's work is lost in the event of a catastrophic computer failure.
+
+In most cases, continuous data protection works by saving an exact copy of a file a user is working with to a different location. Each time the user changes the file, a new file is saved remotely, usually overwriting the previous file saved under that same name. Thus, it is not real-time backup in that each keystroke or move of the mouse is recorded and saved. That may be a very important distinction for those who are expecting to recover lost work because of things like power failures, where a computer will shut down unexpectedly. Real-time backup products are also available, for those who want them.
+
+Computer users can utilize continuous data backup in a number of different ways. Software products currently on the market allow users to save backup settings so that each file saved will go automatically to a backup system. Those who do not want the extra expense of more servers, can utilize an Internet service that offers continuous data protection. In such cases, each file saved is sent through an Internet connection to the service's servers.
+
+If using an Internet service that provides continuous data protection, there is usually a monthly or yearly charge for the service. Also, some companies may only allow a certain amount of space, or at least have tiered pricing levels, so that customers can choose the amount of space they will need. That allows users to have a certain amount of control over their pricing, but that could also lead to higher charges or loss of data if users go beyond their maximum storage level allowed.
+
+For those who want the ultimate in protection using a real-time process, it may be best to consider a continuous data protection system with a uninterruptible power supply. This allows the computer to maintain power in the event the regular power has gone off. While these power supplies generally only have a limit of a few minutes or hours, it should be enough time to save all critical files to the data protection system, and shut down the machines safely.
+
