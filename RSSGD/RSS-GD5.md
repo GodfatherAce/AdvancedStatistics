@@ -1,7 +1,7 @@
 RSS -  Graduate Diploma - Paper 5
+====================================== 
  
- 
-Topics in applied statistics
+### Topics in applied statistics
  
 Overview of course
  
@@ -13,6 +13,6 @@ Overview of course
 2 Questions from each of the four sections (i.e. 8 Questions).
 Candidates must answer 5 questions from this 8.
  
- 
+ <hr>
  
 
