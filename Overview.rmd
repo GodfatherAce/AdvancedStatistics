@@ -1,7 +1,0 @@
-Advanced statistical modelling with R
-=========================================
-
-1. Density estimation
-2. Survival analysis
-3. Classification
-4. Clustering
