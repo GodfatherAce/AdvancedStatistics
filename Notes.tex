@@ -1,0 +1,661 @@
+\documentclass[12pt, a4paper]{report}
+\usepackage{epsfig}
+\usepackage{subfigure}
+%\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{graphicx}
+%\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsthm, amsmath}
+\usepackage{amsbsy}
+\usepackage[usenames]{color}
+\usepackage{listings}
+
+\title{Introduction to Computer Aided Data Analysis}
+\author{ } \date{ }
+
+
+\begin{document}
+\author{Kevin O'Brien}
+\title{Introduction to Computer Aided Data Analysis}
+
+
+
+\addcontentsline{toc}{section}{Bibliography}
+
+%-----------------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------------------%
+\newpage
+
+
+\section{Course Overview}
+\begin{enumerate}
+\item Exploratory Data Analysis. Revision of measures of centrality and dispersion.
+\item Inference Procedures. Confidence Intervals. Hypothesis tests. Significance and the probability value.
+\item Regression Models. revision of simple linear regression. Introduction to multiple linear regression. Correlation matrices. Multicollinearity.
+\item Analysis of Variance. Variable Selection procedures; Backward elimination, forward selection, stepwise regression.
+\item The Data Deluge. What is Data. Sources of Data. Storage Issues.
+\item Data Quality. Data scrubbing
+\item Introduction to Research . Qualitative Research. Quantitative Research. The purpose of Research.
+\item Introduction to Databases. Structures Query Language (SQL).
+
+\end{enumerate}
+\newpage
+\tableofcontents
+\newpage
+
+
+\chapter{Exploratory Data Analysis}
+
+\section{Introduction}
+In this course, we shall be looking at Quantitative data analysis specifically.
+
+
+
+Exploratory Data Analysis (EDA) is an approach/philosophy for data analysis that employs a variety of techniques (mostly graphical) to
+\begin{itemize}
+\item maximize insight into a data set;
+\item uncover underlying structure;
+\item extract important variables;
+\item detect outliers and anomalies;
+\item test underlying assumptions;
+\item develop parsimonious models; and
+\item determine optimal factor settings.
+\end{itemize}
+
+The seminal work in EDA is Exploratory Data Analysis, Tukey, (1977).
+
+Most EDA techniques are graphical in nature with a few quantitative techniques. The reason for the heavy reliance on graphics is that by its very nature the main role of EDA is to open-mindedly explore, and graphics gives the analysts unparalleled power to do so, enticing the data to reveal its structural secrets, and being always ready to gain some new, often unsuspected, insight into the data. In combination with the natural pattern-recognition capabilities that we all possess, graphics provides, of course, unparalleled power to carry this out.
+
+EDA techniques are subjective and depend on interpretation which may differ from analyst to analyst, although experienced analysts commonly arrive at identical conclusions. The particular graphical techniques employed in EDA are often quite simple, consisting of various techniques of:
+\begin{itemize}
+\item Plotting the raw data (such as data traces, histograms, bihistograms, probability plots, lag plots, block plots, and Youden plots.
+
+\item Plotting simple statistics such as mean plots, standard deviation plots, box plots, and main effects plots of the raw data.
+
+\item Positioning such plots so as to maximize our natural pattern-recognition abilities, such as using multiple plots per page.
+\end{itemize}
+
+\newpage
+
+
+\subsection{Summary Analysis}
+A summary analysis is simply a numeric reduction of a historical data set. It is quite passive. Its focus is in the past. Quite commonly, its purpose is to simply arrive at a few key statistics (for example, mean and standard deviation) which may then either replace the data set or be added to the data set in the form of a summary table.
+
+\section{Revision of basic measures}
+
+\subsection{Measures of Centrality}
+The most common measures of centrality are the mean and median.
+
+\textbf{Median} Another measure of location just like the mean. The value that divides the frequency distribution in half when all data values are listed in order. It is insensitive to small numbers of extreme scores in a distribution. Therefore, it is the preferred measure of central tendency for a skewed distribution (in which the mean would be biased) and is usually paired with the \textbf{interquartile range} (IQR) as the accompanying measure of dispersion.
+
+\subsection{Variance and Covariance}
+Covariance is a measure of how much two variables change together. 
+
+Variance can be considered as a special case of the covariance when the two variables are identical.
+$var(x) = cov(X,X)$
+
+Covariance can be computed as product of the variance of two datasets, multiplied by their correlation.
+
+\[
+cov(X,Y) = std.dev (x) std.dev(y) cor(x,y)
+\]
+
+A covariance matrix is a useful tool for assessing variances in multiple data sets.
+
+
+If X and Y are independent, then their covariance is zero. However it is possible for X and Y to have covariance zero when they are not independent.
+
+
+
+
+
+
+\subsection{Measures of Dispersion}
+
+The most common measures of dispersion are the variance and standard deviation. The range is also quite useful.
+
+\textbf{Variance} is the major measure of variability for a data set. To calculate the variance, all data values, their mean, and the number of data values are required. It is expressed in the squared unit of measurement. Its square root is the \textbf{standard deviation}. It is symbolized by $\sigma^2$ for a population and $s^2$ for a sample
+
+
+%-----------------------------------------------------------------------------------------%
+\newpage
+\section{Other measures}
+%-----------------------------------------------------------------------------------------%
+\section{Simpson's Paradox}
+
+\subsection{Example}
+\begin{itemize}
+\item Say a company tests two treatments for an illness. In trial No. 1, treatment A cures 20\% of its cases (40 out of 200) and treatment B cures 15\% of its cases (30 out of 200). In trial No. 2, treatment A cures 85\% of its cases (85 out of 100) and treatment B cures 75\% of its cases (300 out of 400)....
+\item
+So, in two trials, treatment A scored 20\% and 85\%. Also in two trials, treatment B scored only 15\% and 75\%. No matter how many people were in those trials, treatment A (at 20\% and 85\%) is surely better than treatment B (at 15\% and 75\%)?
+\item
+No, Treatment B performed better. It cured 330 (300+30) out of the 600 cases.
+\item
+(200+400) in which it was tried--a success rate of 55\%. By contrast, treatment A cured 125 (40+85) out of the 300 cases (200+100) in which it was tried, a success rate of only about 42\%.
+\end{itemize}
+
+%-----------------------------------------------------------------------------------------%
+
+\section{The Ecological Fallacy}
+Ecological fallacy: The aggregation bias, which is the unfortunate consequence of making inferences for individuals from aggregate data. It results from thinking that relationships observed for groups necessarily hold for individuals. The problem is that it is not valid to apply group statistics to an individual member of the same group.
+
+%-----------------------------------------------------------------------------------------%
+
+
+%-----------------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------------------%
+\newpage
+\chapter{Inference Procedures}
+\section{Inference Procedures}
+
+SPSS supports the following hypothesis tests.
+\begin{enumerate}
+\item One Sample Test for means
+\item Independent sample T-Test
+\item Paired Sample T-test
+\item
+\end{enumerate}
+
+
+\begin{minipage}[b]{0.5\linewidth}
+Type I error: If the null hypothesis is true but we reject it this is an error of first kind or type I error (also called a error). This results in a false positive finding.
+
+Type II error: If the null hypothesis is accepted when it is in fact wrong, this is an error of the second kind or type II error (also called b error). This results in a false negative result.
+\end{minipage}
+
+\subsection{Types of Error}
+Type I error: If the null hypothesis is true but we reject it this is an error of first kind or type I error (also called a error). This results in a false positive finding.
+
+Type II error: If the null hypothesis is accepted when it is in fact wrong, this is an error of the second kind or type II error (also called b error). This results in a false negative result.
+
+\subsection{Hypotheses}
+
+Null model: A model in which all parameters except the intercept are 0. It is also called the intercept-only model. The null model in linear regression is that the slope is 0, so that the predicted value of Y is the mean of Y for all values of X. The F test for the linear regression tests whether the slope is significantly different from 0, which is equivalent to testing whether the fit using non-zero slope is significantly better than the null model with 0 slope.
+
+Alternative hypothesis: In practice, this is the hypothesis that is being tested in an experiment. It is the conclusion that is reached when a null hypothesis is rejected. It is the opposite of null hypothesis, which states that there is a difference between the groups or something to that effect.
+
+
+\begin{itemize}
+\item a single proportion,
+\item a single mean,
+\item the difference between two proportions	
+\item the difference between two means;
+\end{itemize}
+
+Some commonly used tests
+   Hypothesis test for the mean of a single sample
+   Hypothesis test for the mean of two independent samples
+   Hypothesis test for the proportion of a single group
+   Hypothesis test for the proportions of two independent samples
+
+
+\subsection{Hypothesis test for the mean of a single sample}
+This procedure is used to assess whether the population mean  has a specified value, based on the sample mean. The hypotheses are conventionally written in a form similar to below (here the hypothesized population mean is zero).
+
+
+There are two hypothesis test for the mean of a single sample.
+
+1) The sample is of a normally-distributed variable for which the population standard deviation (s) is known.
+2) The sample is of a normally-distributed variable where s is estimated by the sample standard deviation (s).
+
+In practice, the population standard deviation is rarely known. For this reason, we will consider the second case only in this course.In most statistical packages, this analysis is performed in the summary statistics functions.
+
+\subsection{Hypothesis test for the means of two independent samples.}
+The procedure associated with testing a hypothesis concerning the difference between two population means is similar to that for testing a hypothesis concerning the value of one population mean. The procedure differs only in that the standard error of the difference between the means is used to determine the test statistic associated with the sample result. For two tailed tests, the null hypothesis states that the population means are the same, with the alternative stating that the population means are not equal.
+
+
+The Independent Samples T Test compares the mean scores of two groups on a given variable.
+
+Where to find it: Under the Analyze menu, choose Compare Means, the Independent Samples T Test. Move your dependent variable into the box marked "Test Variable." Move your independent variable into the box marked "Grouping Variable." Click on the box marked "Define Groups" and specify the value labels of the two groups you wish to compare.
+
+\subsubsection{Assumptions}
+\begin{itemize}
+\item The dependent variable is normally distributed. You can check for normal distribution with a Q-Q plot.
+\item The two groups have approximately equal variance on the dependent variable. You can check this by looking at the Levene's Test.
+\item The two groups are independent of one another.
+\end{itemize}
+
+\subsubsection{Hypotheses}
+Null: The means of the two groups are not significantly different.
+Alternate: The means of the two groups are significantly different.
+
+\subsubsection{Levene's Test for Equality of Variances}
+The Levene's Test for Equality of Variances  tells us if the second assumption has been met ( i.e. the two groups have approximately equal variance on the dependent variable).
+
+If the Levene's Test is significant (the value under "Sig." is less than .05), the two variances are significantly different. If it is not significant (Sig. is greater than .05), the two variances are not significantly different; that is, the two variances are approximately equal. If the Levene's test is not significant, we have met our second assumption. Here, we see that the significance is .448, which is greater than .05. We can assume that the variances are approximately equal.
+
+
+\begin{figure}[h!]
+\begin{center}
+  \includegraphics[width=150mm]{EqualVar.jpg}
+  \caption{SPSS output for two independent samples.}\label{EqualVar}
+\end{center}
+\end{figure}
+
+
+\subsection{Hypothesis test of proportion}
+This procedure is used to assess whether an assumed proportion is supported by evidence. For two tailed tests, the null hypothesis states that the population proportion  p has a specified value, with the alternative stating that p has a different value.
+
+The hypotheses are typically as follows:
+
+\subsubsection{Example}
+A manufacturer is interested in whether people can tell the difference between a new formulation of a soft drink and the original formulation. The new formulation is cheaper to produce so if people cannot tell the difference, the new formulation will be manufactured. A sample of 100 people is taken. Each person is given a taste of both formulations and asked to identify the original. Sixty-two percent of the subjects correctly identified the new formulation. Is this proportion significantly different from 50%?
+
+The first step in hypothesis testing is to specify the null hypothesis and an alternative hypothesis. In testing proportions, the null hypothesis is that p, the proportion in the population, is equal to 0.5. The alternate hypothesis is p not equal to 0.5.
+
+The computed p-values is compared to the pre-specified significance level of 5\%. Since the p-value (0.0214) is less than the significance level of 0.05, the effect is statistically significant.
+
+Since the effect is significant, the null hypothesis is rejected. It is concluded that the proportion of people choosing the original formulation is greater than 0.50.
+
+This result might be described in a report as follows:
+
+    The proportion of subjects choosing the original formulation (0.62) was significantly greater than 0.50, with p-value = 0.021.
+    Apparently at least some people are able to distinguish between the original formulation and the new formulation.
+Tests of Differences between Proportions
+This procedure is used to compare two proportions from two different populations. For two tailed tests, the null hypothesis states that the population proportion  has a specified value, with the alternative stating that .
+
+\subsection{Example}
+An experiment is conducted investigating the long-term effects of early childhood intervention programs (such as head start). In one (hypothetical) experiment, the high-school drop out rate of the experimental group (which attended the early childhood program) and the control group (which did not) were compared. In the experimental group, 73 of 85 students graduated from high school. In the control group, only 43 of 82 students graduated. Is this difference statistically significant?
+
+The computed p-values is compared to the pre-specified significance level of 5\%. Since the p-value (<0.0001) is less than the significance level of 0.05, the effect is statistically significant.
+
+Since the effect is significant, the null hypothesis is rejected. The conclusion is that the probability of graduating from high school is greater for students who have participated in the early childhood intervention program than for students who have not.
+
+The results could be described in a report as:
+\begin{quote}
+The proportion of students from the early-intervention group who graduated from high school was 0.86 whereas the proportion from the control group who graduated was only 0.52. The difference in proportions is significant, with p < 0.0001.
+\end{quote}
+
+\section{One Way ANOVA}
+
+A One-Way Analysis of Variance is a way to test the equality of three or more means at one time by using variances.
+
+\subsection{Assumptions}
+\begin{itemize}\item The populations from which the samples were obtained must be normally or approximately normally distributed.
+\item The samples must be independent.
+\item The variances of the populations must be equal.
+\end{itemize}
+\subsection{Hypotheses}
+The null hypothesis will be that all population means are equal, the alternative hypothesis is that at least one mean is different.
+
+ Commonly lower case letters apply to the individual samples and capital letters apply to the entire set collectively. That is, n is one of many sample sizes, but N is the total sample size.
+
+\subsection{Decision Rule}
+The decision will be to reject the null hypothesis if the test statistic from the table is greater than the F critical value with $k-1$ numerator and $N-k$ denominator degrees of freedom.
+
+If the decision is to reject the null, then at least one of the means is different. However, the ANOVA does not tell you where the difference lies.
+
+
+\newpage
+
+
+\section{Confidence Intervals }
+\section{Using the p-value for Hypothesis tests}
+
+Significance
+
+The P value  commonly, but mistakenly, understood to be the probability that the null hypothesis is correct. If it is a below a certain threshold value (like <0.05), the null hypothesis is rejected.
+
+The P-value is the probability of having observed our data (or more extreme data) when the null hypothesis is true.
+The smaller the p-value, the less likely it is that the sample results come from a situation where the null hypothesis is true.\\
+
+$P  >  0.05   :$   no evidence against $H_0$ in favour of $H_a$.\\
+$P  <  0.05   :$   evidence against $H_0$ in favour of $H_a$.\\
+
+\subsubsection{Examples}
+With a p-value of zero to three decimal places, the model is statistically very significant.
+
+
+\section{Chi Square test for goodness of fit}
+The chi-squared test applied to contingency tables.
+
+The Chi-squared test is the most commonly used test for frequency data and goodness-of-fit. In theory, it is nonparametric but because it has no parametric equivalent, it is not classified as such. It is not an exact test and with the current level of computing facilities, there is not much excuse not to use Fisher’s exact test for 2x2 contingency table analysis instead of Chi-squared test. Also for larger contingency tables, the G-test (log-likelihood ratio test) may be a better choice. The Chi-square value is obtained by summing up the values (residual2/fit) for each cell in a contingency. In this formula, residual is the difference between the observed value and its expected counterpart and fit is the expected value.
+
+\subsection{Yates's correction}
+
+The approximation of the Chi-square statistic in small $2\times2$ tables can be improved by reducing the absolute value of differences between expected and observed frequencies by 0.5 before squaring. This correction, which makes the estimation more conservative, is usually applied when the table contains only small observed frequencies (<20).
+
+The effect of this correction is to bring the distribution based on discontinuous frequencies nearer to the continuous Chi-squared distribution. This correction is best suited to the contingency tables with fixed marginal totals. Its use in other types of contingency tables (for independence and homogeneity) results in very conservative significance probabilities. This correction is no longer needed since exact tests are available.
+
+
+
+%-----------------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------------------%
+\newpage
+\chapter{Regression and Correlation}
+\section{Revision of Simple Linear Regression}
+
+The intecept estimate is denoted $a$, while the slope estimate is denoted $b$.
+
+
+\section{Scatterplots and Anscombe's quartet}
+Anscombe’s quartet is a fine example of this. The quartet is four sets of data that have the same sample statistics (mean, variance, correlation coefficient and regression equation), but when graphed, they are clearly very different.
+
+\newpage
+
+%-----------------------------------------------------------------------------------------%
+\newpage
+\section{ANOVA}
+\subsection{The F Distribution}
+F distribution: A continuous probability distribution of the ratio of two independent random variables, each having a Chi-squared distribution, divided by their respective degrees of freedom. The commonest use is to assign P values to mean square ratios (variance ratios) in ANOVA. In regression analysis, the F-test can be used to test the joint significance of all variables of a model.
+
+
+For regression analyses, the degrees of freedom are as follows.
+\begin{itemize}
+\item $n-k$
+\item $k+1$
+\end{itemize}
+
+%-----------------------------------------------------------------------------------------%
+\newpage
+\section{Variance Selection Procedures}
+\begin{itemize}
+\item Forward Selection
+\item Backward Elimination
+\item Stepwise Regression
+\end{itemize}
+
+A method in multiple regression studies aimed to find the best model. This method seeks a model that balances a relatively small number of variables with a good fit to the data by seeking a model with high R2a (the most parsimonious model with the highest percentage accounted for).
+
+The stepwise regression can be started from a null or a full model and can go forward or backward, respectively. At any step in the procedure, the statistically most important variable will be the one that produces the greatest change in the log-likelihood relative to a model lacking the variable. This would be the variable, which would result in the largest likelihood ratio statistics, G (a high percentage accounted for gives an indication that the model fits well).
+
+
+%-----------------------------------------------------------------------------------------%
+\section{Leverage and Influence}
+\begin{itemize}
+\item Outliers
+\item Leverage
+\item Influence
+\end{itemize}
+
+In our last chapter, we learned how to do ordinary linear regression with SPSS, concluding with methods for examining the distribution of variables to check for non-normally distributed variables as a first look at checking assumptions in regression.  Without verifying that your data have met the regression assumptions, your results may be misleading.  This chapter will explore how you can use SPSS to test whether your data meet the assumptions of linear regression.  In particular, we will consider the following assumptions.
+
+\begin{itemize}
+
+\item[(a)] Linearity - the relationships between the predictors and the outcome variable should be linear
+\item[(b)]Normality - the errors should be normally distributed - technically normality is necessary only for the t-tests to be valid, estimation of the coefficients only requires that the errors be identically and independently distributed
+\item[(c)]Homogeneity of variance (homoscedasticity) - the error variance should be constant
+\item[(d)]Independence - the errors associated with one observation are not correlated with the errors of any other observation
+\item[(e)]Model specification - the model should be properly specified (including all relevant variables, and excluding irrelevant variables)
+\end{itemize}
+
+Additionally, there are issues that can arise during the analysis that, while strictly speaking are not assumptions of regression, are none the less, of great concern to regression analysts.
+\begin{itemize}
+\item[(f)]Influence - individual observations that exert undue influence on the coefficients
+\item[(g)]Collinearity - predictors that are highly collinear, i.e. linearly related, can cause problems in estimating the regression coefficients.
+\end{itemize}
+Many graphical methods and numerical tests have been developed over the years for regression diagnostics and SPSS makes many of these methods easy to access and use. In this chapter, we will explore these methods and show how to verify regression assumptions and detect potential problems using SPSS.
+
+
+
+
+
+
+\textbf{Regression diagnostics} Tests to identify the main problem areas in regression analysis: normality, common variance and independence of the error terms; outliers, influential data points, collinearity, independent variables being subject to error, and inadequate specification of the functional form of the model. The purpose of the diagnostic techniques is to identify weaknesses in the regression model or the data. Remedial measures, correction of errors in the data, elimination of \textbf{true} outliers, collection of better data, or improvement of the model, will allow greater confidence in the final product.
+
+\textbf{Outlier} An extreme observations that is well separated from the remainder of the data. In regression analysis, not all outlying values will have an influence on the fitted function. Those outlying with regard to their X values (high leverage), and those with Y values that are not consistent with the regression relation for the other values (high residual) are expected to be influential. The test the influence of such values, the Cook statistics is used.
+
+Outlier or Unusual observation??
+
+\textbf{Influential points:} Observations that actually dominate a regression analysis (due to high leverage, high residuals or their combination). The method of ordinary least squares gives equal weight to every observation. However, every observation does not have equal impact on the least squares results. The slope, for example, is influenced most by the observations having values of the independent variable farthest from the mean. An observation is influential if deleting it from the dataset would lead to a substantial change in the fit of the generalized linear model.
+
+High-leverage points have the potential to dominate a regression analysis but not necessarily exert an influence (i.e., a point may have high leverage but low influence as measured by Cook statistics).
+
+Cook statistics is used to determine the influence of a data point on the model.
+
+\textbf{Leverage points} In regression analysis, these are the observations that have an extreme value on one or more explanatory variable. The leverage values indicate whether or not X values for a given observation are outlying (far from the main body of the data). A high leverage value indicates that the particular observation is distant from the centre of the X observations.
+
+High-leverage points have the potential to dominate a regression analysis but not necessarily influential. If the residual of the same data point and Cook's distance are also high, then it is an influential point.
+
+
+
+
+Cook statistics: A diagnostic influence statistics in regression analysis designed to show the influential observations.
+\textbf{Cook's distance} considers the influence of the $i$th value on all $n$ fitted values and not on the fitted value of the $i$th observation. It yields the shift in the estimated parameter from fitting a regression model when a particular observation is omitted. All distances should be roughly equal; if not, then there is reason to believe that the respective case(s) biased the estimation of the regression coefficients.
+
+Relatively large Cook statistics (or Cook's distance) indicates influential observations. This may be due to a high leverage, a large residual or their combination. An index plot of residuals may reveal the reason for it. The leverages depend only on the values of the explanatory variables (and the model parameters). Cook statistics depends on the residuals as well. Cook statistics may not be very satisfactory in binary regression models. Its formula uses the standardized residuals but the modified Cook statistics uses the deletion residuals.
+
+%--Maybe take this out--%
+\textbf{Half-normal plot} A diagnostic test for model inadequacy or revealing the presence of outliers. It compares the ordered residuals from the data to the expected values of ordered observations from a normal distribution. While the full-normal plots use the signed residuals, half-normal plots use the absolute values of the residuals. Outliers appear at the top right of the plot as distinct points, and departures from a straight line mean that the model is not satisfactory. It is appropriate to use a half-normal plot only when the distribution is symmetrical about zero because any information on symmetry will be lost.
+
+Normal probability plot of the residuals: A diagnostic test for the assumption of normal distribution of residuals in linear regression models. Each residual is plotted against its expected value under normality. A plot that is nearly linear suggests normal distribution of the residuals. A plot that obviously departs from linearity suggests that the error distribution is not normal.
+
+\subsection{Heteroskedasticity}
+
+Another assumption of ordinary least squares regression is that the variance of the residuals is homogeneous across levels of the predicted values, also known as homoskedasticity. If the model is well-fitted, there should be no pattern to the residuals plotted against the fitted values. If the variance of the residuals is non-constant then the residual variance is said to be "heteroskedastic." Below we illustrate graphical methods for detecting heteroskedasticity. A commonly used graphical method is to use the residual versus fitted plot to show the residuals versus fitted (predicted) values.
+
+Below we use the /scatterplot subcommand to plot *zresid (standardized residuals) by *pred (the predicted values).  We see that the pattern of the data points is getting a little narrower towards the right end, an indication of mild heteroscedasticity.
+
+\begin{verbatim}
+regression
+  /dependent api00
+  /method=enter meals ell emer
+  /scatterplot(*zresid *pred).
+\end{verbatim}
+
+
+%-----------------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------------------%
+
+
+\chapter{Data Quality}
+
+
+%-------------------------------------------------------%
+\subsection{Complete Data}
+
+Complete data means that the value of each sample unit is observed or known. Complete data is much easier to work with than censored data, and basic statistical analysis techniques assume that we have complete data.
+
+
+\subsection{Censored Data}
+
+There are three types of possible censoring schemes, right censored data (also called suspended data), interval censored data, and left censored data.
+
+
+
+Right Censored (Suspended)
+
+These are data for which we know only its minimum value. In reliability testing, for example, not all of the tested units will necessarily fail within the testing period. Then all we know is that the failure time exceeds the testing time. In microbiology, there is a practical threshold above which we cannot count colonies on a Petri dish. In sequential sifting, we known only the minimum diameter of the largest particles that don't pass through the first sieve. This type of data is commonly called right-censored or suspended data.
+
+
+\subsubsection{Interval Censored}
+
+These are data for which we know only that they lie between a certain minimum and maximum. Interval censoring arises commonly when we assign measurements into categories or intervals. For example, a survey may ask people which income range they have, and offer several contiguous intervals, rather than ask their exact income. In reliability testing, for example, we may only be inspecting the units every T hours, so can only record that a unit failed between nT and (n+1)T hours. This is sometimes called inspection data.
+
+
+Left Censored
+
+These are data for which we know only its maximum value. In scientific experiments, for example, we may not be able to measure some quantity because it is below the threshold of detection (e.g. chemical concentration).
+
+
+\section{Missing Data}
+
+
+\subsection{Missing completely at random}
+There are several reasons why the data may be missing. They may be missing because equipment malfunctioned, the weather was terrible, or people got sick, or the data were not entered correctly. Here the data are missing completely at random (MCAR). When we say that data are missing completely at random, we mean that the probability that an observation (Xi) is missing is unrelated to the value of Xi or to the value of any other variables. Thus data on family income would not be considered MCAR if people with low incomes were less likely to report their family income than people with higher incomes. Similarly, if Whites were more likely to omit reporting income than African Americans, we again would not have data that were MCAR because ``missingness" would be correlated with ethnicity. However if a participant's data were missing because he was stopped for a traffic violation and missed the data collection session, his data would presumably be missing completely at random. Another way to think of MCAR is to note that in that case any piece of data is just as likely to be missing as any other piece of data.
+
+Notice that it is the value of the observation, and not its "missingness," that is important. If people who refused to report personal income were also likely to refuse to report family income, the data could still be considered MCAR, so long as neither of these had any relation to the income value itself. This is an important consideration, because when a data set consists of responses to several survey instruments, someone who did not complete the Beck Depression Inventory would be missing all BDI subscores, but that would not affect whether the data can be classed as MCAR.
+
+This nice feature of data that are MCAR is that the analysis remains unbiased. We may lose power for our design, but the estimated parameters are not biased by the absence of data.
+
+\subsection{Missing at random}
+Often data are not missing completely at random, but they may be classifiable as \textbf{missing at random} (MAR). For data to be missing completely at random, the probability that Xi is missing is unrelated to the value of Xi or other variables in the analysis. But the data can be considered as missing at random if the data meet the requirement that ``missingness" does not depend on the value of $X_i$ after controlling for another variable.
+
+For example, people who are depressed might be less inclined to report their income, and thus reported income will be related to depression. Depressed people might also have a lower income in general, and thus when we have a high rate of missing data among depressed individuals, the existing mean income might be lower than it would be without missing data. However, if, within depressed patients the probability of reported income was unrelated to income level, then the data would be considered MAR, though not MCAR.
+
+The phraseology is a bit awkward here because we tend to think of randomness as not producing bias, and thus might well think that Missing at Random is not a problem. Unfortunately is is a problem, although in this case we have ways of dealing with the issue so as to produce meaningful and relatively unbiased estimates. But just because a variable is MAR does not mean that you can just forget about the problem.
+
+\subsection{Missing Not at random}
+If data are not missing at random or completely at random then they are classed as \textbf{Missing Not at Random} (MNAR). For example, if we are studying mental health and people who have been diagnosed as depressed are less likely than others to report their mental status, the data are not missing at random. Clearly the mean mental status score for the available data will not be an unbiased estimate of the mean that we would have obtained with complete data. The same thing happens when people with low income are less likely to report their income on a data collection form.
+
+When we have data that are MNAR we have a problem. The only way to obtain an unbiased estimate of parameters is to model missingness. In other words we would need to write a model that accounts for the missing data. That model could then be incorporated into a more complex model for estimating missing values. This is not a task anyone would take on lightly. See Dunning and Freedman (2008) for an example.
+
+
+\section{Theory of Research}
+Superficially the research process can appear to be relatively simple - if you carry out the basic steps methodically and carefully, then you should arrive at useful conclusions. However, the nature of research can be very complex and when you are reading textbooks on research methodology you will come across many unfamiliar words and terms. We first look at types of research and explain some of the terms.
+
+The main different types of research can be classified by its purpose, its process and its outcome. These can in turn be broken down further:
+
+The purpose of the research can be classified as:
+\begin{itemize}
+\item exploratory
+\item descriptive
+\item analytical
+\item predictive.
+\end{itemize}
+The process of the research can be classified as:
+\begin{itemize}\item Empirical
+\item Theoretical.
+\end{itemize}
+The outcome of the research can be classified as:
+\begin{itemize}\item applied
+\item basic or pure
+\item action.
+\end{itemize}
+\subsection{Exploratory research}
+This is conducted when there are few or no earlier studies to which references can be made for information. The aim is to look for patterns, ideas or hypotheses rather than testing or confirming a hypothesis. In exploratory research the focus is on gaining insights and familiarity with the subject area for more rigorous investigation later.
+Descriptive research
+This describes phenomena as they exist. It is used to identify and obtain information on the characteristics of a particular issue. It may answer such questions as:
+
+
+What is the absentee rate amongst a particular group of workers?
+What are the feelings of workers faced with redundancy?
+
+The data collected are often quantitative, and statistical techniques are usually used to summarise the information. Descriptive research goes further than exploratory research in examining a problem since it is undertaken to ascertain and describe the characteristics of the issue.
+Analytical or explanatory research
+This is a continuation of descriptive research. The researcher goes beyond merely describing the characteristics, to analyse and explain why or how something is happening. Thus, analytical research aims to understand phenomena by discovering and measuring causal relations among them. It may answer questions such as:
+
+How can the number of complaints made by customers be reduced?
+How can the absentee rate among employees be reduced?
+Why is the introduction of empowerment seen as a threat by departmental managers?
+Predictive research
+Predictive research goes further by forecasting the likelihood of a similar situation occurring elsewhere. It aims to generalise from the analysis by predicting certain phenomena on the basis of hypothesised, general relationships. It may attempt to answer questions such as:
+
+Will the introduction of an employee bonus scheme lead to higher levels of productivity?
+What type of packaging will improve our products?
+
+Predictive research provides ‘how’, ‘why’, and ‘where’ answers to current events as well as to similar events in the future. It is also helpful in situations where ‘What if?’ questions are being asked.
+
+\subsection{Process of research}
+
+There is no consensus about how to conceptualise the actual undertaking of research. There are, however, two main traditions of approaching a research topic – Empirical (quantitative in nature) and Theoretical (qualitative in nature). Each approach demands different research methods.
+\subsection{Empirical research}
+The quantitative approach usually starts with a theory or a general statement proposing a general relationship between variables. With this approach it is likely that the researchers will take an objective position and their approach will be to treat phenomena as hard and real. They will favour methods such as surveys and experiments, and will attempt to test hypotheses or statements with a view to generalising from the particular. This approach typically concentrates on measuring or counting and involves collecting and analysing numerical data and applying statistical tests.
+
+\subsection{Theorerical research}
+The alternative tradition is the theoretical approach. Here the investigator views the phenomena to be investigated as more personal and softer. He or she will use methods such as personal accounts, unstructured interviews and participant observation to gain an understanding of the underlying reasons and motivations for peoples’ attitudes, preferences or behaviours. With this approach, the emphasis is more on generating hypotheses from the data collection rather than testing a hypothesis.
+
+In reading around the subject you will find many alternative names for qualitative and quantitative research. It is good to have an understanding of these and to recognise them when you see them in research methods textbooks.
+
+The features and differences between the two research processes are detailed below.
+
+You should note the following points:
+
+Qualitative and quantitative research methods are not clear-cut nor mutually exclusive – most research draws on both methods.
+Both approaches can generate quantitative and qualitative data.
+The difference between the two methods is in the overall form and in the emphasis and objectives of the study.
+
+%--------------------------------------------------------------------------------
+
+\section{Outcome of research}
+\subsection{Applied research}
+Applied research is problem-oriented as the research is carried out to solve a specific problem that requires a decision, for example, the improvement of safety in the workplace, or market research. For your dissertation it is not usually acceptable to carry out applied research as it is very much limited to one establishment or company and you are required to look at issues of wider significance, perhaps to your industry as a whole or to a sector of it. You may have already carried out a problem-based piece of research related to your placement. It is important to understand that the dissertation requires you to carry out some form of basic research.
+
+Basic research is also called fundamental or pure research, and is conducted primarily to improve our understanding of general issues, without any emphasis on its immediate application. It is regarded as the most academic form of research since the principal aim is to make a contribution to knowledge, usually for the general good, rather than to solve a specific problem for one organisation. This may take the form of the following:
+
+Discovery – where a totally new idea or explanation emerges from empirical research which may revolutionise thinking on that particular topic. An example of this would be the Hawthorne experiments. (Gillespie 1991, note on Hawthorne experiments at end of paper.)
+
+Invention – where a new technique or method is created. An example of this would be the invention of TQM (total quality management).
+
+Reflection – where an existing theory, technique or group of ideas is re-examined possibly in a different organisational or social context.
+
+\subsection{Action research}
+This is a form of research where action is both an outcome and a part of the research. The researcher ‘interferes’ with or changes – deliberately – what is being researched. The critics of action research argue that since the researcher is changing what is being researched during the process of research, the work cannot be replicated. If it cannot be replicated its findings cannot be tested in other situations. This prevents general knowledge being developed and thus it cannot contribute to theory. Also, as the researcher is involved in the change process there is a loss of critical, detached objectivity. There are two approaches to action research:
+
+Classical action research begins with the idea that if you want to understand something you should try changing it.
+
+New paradigm research is based on a new model or framework for research. It claims that research can never be neutral and that even the most static and conventional research exposes the need for change in what is being researched. It involves inquiry into persons and relations between persons, and is based on a close relationship between researcher and those being researched. The research is a mutual activity of a ‘co-ownership’ involving shared power with respect to the process and the outcomes of the research. Those being researched can, for example, decide how the research will be undertaken, in what form and with what questions being asked. The researcher is a member of a ‘community’ and brings to it special skills and expertise. The researcher does not dictate what will happen. This type of research is most easily carried out when working with individuals or small groups. It means that the researcher must be highly skilled not only in research methods but also in the interpersonal skills of facilitating others. It is not, therefore, usually appropriate for an undergraduate student who is carrying out a major piece of research for the first time. Action research is often used by educationalists who are trying to improve their own practice by making changes to the delivery of their classes and by observing and asking students which actions work best.
+
+
+
+
+\section{The Research Question}
+
+
+A Research Question is a statement that identifies the phenomenon to be studied.
+
+For example, “What resources are helpful to new data analysis researchers?”
+
+To develop a strong research question from your ideas, you should ask yourself these things:
+
+Do I know the field and its literature well?
+What are the important research questions in my field?
+What areas need further exploration?
+Could my study fill a gap? Lead to greater understanding?
+Has a great deal of research already been conducted in this topic area?
+Has this study been done before? If so, is there room for improvement?
+Is the timing right for this question to be answered? Is it a hot topic, or is it becoming obsolete?
+Would funding sources be interested?
+If you are proposing a service program, is the target community interested?
+Most importantly, will my study have a significant impact on the field?
+
+\subsection{Business research}
+In general, business research refers to any type of researching done when starting or running any kind of business. For example, starting any type of business requires research into the target customer and the competition to create a business plan. Conducting business market research in existing businesses is helpful in keeping in touch with consumer demand. Small business research begins with researching an idea and a name and continues with research based on customer demand and other businesses offering similar products or services. All business research is done to learn information that could make the company more successful.
+
+Business research methods vary depending on the size of the company and the type of information needed. For instance, customer research may involve finding out both a customer’s feelings about and experiences using a product or service.
+
+The methods used to gauge customer satisfaction may  be questionnaires, interviews or seminars. Researching public data can provide businesses with statistics on financial and educational information in regards to customer demographics and product usage, such as the hours of television viewed per week by people in a certain geographic area.
+
+Business research used for advertising purposes is common because marketing dollars must be carefully spent to increase sales and brand recognition from ads.
+
+Other than business market research and advertising research, researching is done to provide information for investors.
+
+Business people aren't likely to invest in a company or organization without adequate research and statistics to show them that their investment is likely to pay off. Large or small business research can also help a company analyze its strengths and weaknesses by learning what customers are looking for in terms of products or services the business is offering. Then a company can use the business research information to adjust itself to better serve customers, gain over the competition and have a better chance of staying in business.
+
+Most industries have trade journals that include research reports and statistics that relate to a certain type of business.
+
+International information is especially important to businesses that have ties with other countries and need to understand more about the cultures and demographics of other nations. For example, International Business Research is a publication of the Canadian Center of Science and Education and includes business essays and academic editorials from businesspeople from different parts of the world such as Australia, India and Malaysia.
+\subsection{Applied Research}
+Every organizational entity engages in applied research. The basic definition for applied research is any fact gathering project that is conducted with an eye to acquiring and applying knowledge that will address a specific problem or meet a specific need within the scope of the entity. Just about any business entity or community organization can benefit from engaging in applied research. Here are a couple of examples of how applied research can help an organization grow.
+
+When most people think of applied research, there is a tendency to link the term to the function of research and development (R and D) efforts. For business entities, R and D usually is involved with developing products that will appeal to a particular market sector and generate revenue for the company. The research portion of the R and D effort will focus on uncovering what needs are not being met within a targeted market and use that information to begin formulating products or services that will be attractive and desirable. This simplistic though systematized approach may also be applied to existing products as well, leading to the development of new and improved versions of currently popular offerings. Thus, applied research can open up new opportunities within an existing client base, as well as allow the cultivation of an entirely new sector of consumers.
+
+Non-profit organizations also can utilize the principles of applied research. Most of these types of organizations have a specific goal in mind. This may be to attract more people to the organization, or to raise public awareness on a given issue, such as a disease. The concept of applied research in this scenario involves finding out what attracts people to a cause, and then developing strategies that will allow the non-profit entity to increase the public profile of the organization, and entice people to listen to what they have to say and offer.
+
+Applied research can be very simplistic within a given application or it can become quite complicated. While the principle of applied research is easily grasped, not every organization contains persons who are competent in the process of engaging in applied research. Fortunately, there are a number of professionals who are able to step in and help any entity create a working model for applied research.
+
+In some cases, this may be the most productive approach, since an outsider often notices information that may be easily overlooked by those who are part of the organization. Whether implemented as an internal effort or outsourced to professionals who routinely engage in applied research, the result is often a higher public profile for the organization, and improved opportunities for meeting the goals of the entity.
+
+
+\subsection{Research Techniques}
+There are two different types of research techniques: scientific and historical. The purpose of both techniques are to use a logical approach to obtain information about a specific subject. Research techniques can be applied to a broad range of issues or areas of research.
+
+Basic research techniques are based on a formal process. The exact order of the steps depend on the subject and the reason for the research. The eight steps are the same for both basic and applied research.
+
+The first four phases are: formation of a topic, hypothesis, conceptual definition and operational definition.
+
+\subsection{The formation phase}
+The formation of a topic is usually phrased as a question. The question is generally within the researchers field of expertise. The hypothesis is a theory proposed by the researcher, which is often phrased as a question. The conceptual and operational definitions provide the scope and focus for the research.
+
+\subsection{The Research process}
+The next four steps are: gathering data, analysis, testing and conclusion. The gathering of data, analysis and testing steps are the heart of all research. It is very important to use reliable sources, perform experiments, and test the hypothesis thoroughly. If the testing results do not support the hypothesis, the research is not a failure. On the contrary, these results provide an opportunity to revisit the hypothesis and new knowledge is gained.
+
+Historical research techniques, or methods, are most commonly used to review data from the past and draw conclusions that impact on the present or future. Although commonly used by historians, these techniques are also used by scientific researchers. Using these techniques, they attempt to identify trends, and theorize on the causes of disease outbreaks and epidemics.
+
+
+There are six steps in historical research. The first three are: define the starting date, locate independent verification of basic background information and investigate the author. These steps are necessary to confirm the evidence used is factual, reporting on by multiple sources and that the bias of the author.
+
+The next three steps are to analyze the information, validate against other sources and measure the creditability of the information. These steps require the use of multiple sources and a process of questioning all aspects of the information. This includes using generally accepted knowledge about the time period in question, historical facts and physical evidence.
+
+The process of historical research requires a significant amount of reading, translating, researching and discussion. The volume of information required to support a historical theory is quite substantial. This method is often used by professionals with an extensive background in a specific subject.
+
+
+\end{document}
+
+\chapter{Data Protection}
+
