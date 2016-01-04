@@ -1,0 +1,261 @@
+\documentclass[14pt, a4paper]{article}
+\usepackage{epsfig}
+\usepackage{subfigure}
+%\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{amsthm}
+%\usepackage[dvips]{graphicx}
+\usepackage{natbib}
+\bibliographystyle{chicago}
+\usepackage{vmargin}
+% left top textwidth textheight headheight
+% headsep footheight footskip
+\setmargins{3.0cm}{2.5cm}{15.5 cm}{22cm}{0.5cm}{0cm}{1cm}{1cm}
+\renewcommand{\baselinestretch}{1.5}
+\pagenumbering{arabic}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{ill}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{axiom}{Axiom}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{notation}{Notation}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\renewcommand{\thenotation}{}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\title{MA4605}
+\author{ } \date{ }
+
+
+\begin{document}
+\author{Kevin O'Brien}
+\title{MA4605}
+
+\tableofcontents \setcounter{tocdepth}{2}
+
+
+\section{Statistical Inference} What is Statistical Inference?
+\begin{itemize}\item Hyptothesis testing \item Confidence
+Intervals \item Sample size estimation.\end{itemize}
+
+\subsection{Hypothesis testing: introduction}
+The objective of hypothesis testing is to access the validity of a claim against a counterclaim using sample data
+\begin{itemize}\item The claim to be “proved” is the alternative hypothesis($H_1$).\item The competing claim is called the null hypothesis($H_0$).\item One begins by assuming that $H_0$ is true. \end{itemize}
+
+If the data fails to contradict $H_0$ beyond a reasonable doubt, then $H_0$ is not rejected. However, failing to reject $H_0$ does not mean that we accept it as true. It simply means that $H_0$ cannot be ruled out as a possible explanation for the observed data. A proof by insufficient data is not a proof at all.
+
+\begin{quote}
+“The process by which we use data to answer questions about parameters
+is very similar to how juries evaluate evidence about a defendant.” –from
+Geoffrey Vining, Statistical Methods for Engineers, Duxbury, 1st edition,
+1998.
+\end{quote}
+
+\section{Hypothesis Testing}
+
+
+Hypothesis testing is a common practice in science that involves conducting tests and experiments to see if a proposed explanation for an observed phenomenon works in practice. A hypothesis is a tentative explanation for some kind of observed phenomenon, and is an important part of the scientific method. The scientific method is a set of steps that is commonly employed by those in scientific fields to give scientific explanations for various phenomena.
+
+Any tentative explanation can be referred to as a hypothesis if it can be submitted to hypothesis testing. There are, however, a set of guidelines for an explanation to be considered a true scientific hypothesis. The first major point is testability; a scientific hypothesis must be able to proceed to the stage of hypothesis testing to be considered a scientifically legitimate hypothesis. It is generally suggested that a hypothesis be relatively simple, though this is not always possible. Hypotheses must also be able to explain the phenomena under any set of conditions; if a hypothesis can only explain a phenomenon in one set of conditions, it is generally considered unacceptable.
+
+Hypotheses are generally considered useful only if they are likely to improve on the current body of knowledge on a subject and pave the way for greater knowledge to be acquired in the future. Also, a hypothesis is generally not acknowledged if it defies other commonly recognized knowledge. If a hypothesis meets all of these requirements, it will typically proceed to the hypothesis testing phase.
+
+In hypothesis testing, the testers seek to discover evidence that either validates or disproves a given hypothesis. Usually, this involves a series of experiments being conducted in many different conditions. If the hypothesis does not stand up to the tests in all conditions, something is usually wrong with the hypothesis and a new one must be formed to take the new information into account. The new hypothesis is submitted to the same hypothesis testing. If it passes and is not proven wrong, it can eventually be considered a scientific theory or law, though nothing in science can be proven to be absolutely true.
+
+One common method of hypothesis testing is known as statistical hypothesis testing, and typically deals with large quantities of data. Experiments and tests are conducted and the data is collected. If the data collected shows that it is unlikely that the results occurred by chance, it is considered statistically significant and can be used to support a hypothesis.
+
+
+
+
+\subsection{Hypothesis testing}
+The standard deviation of the life for a particular brand of
+ultraviolet tube is known to be $S = 500 hr$, and the operating
+life of the tubes is normally distributed. The manufacturer claims
+that average tube life is at least 9,000hr. Test this claim at the
+5 percent level of significance against the alternative hypothesis
+that the mean life is less than 9,000 hr, and given that for a
+sample of $n = 18$ tubes the mean operating life was $\bar{X}=
+8,800 hr.$
+
+
+\subsection{two populations}
+
+Two samples drawn from two populations are independent samples if
+the selection of the sample from population 1 does not affect the
+selection of the sample from population 2. The following notation
+will be used for the sample and population measurements:
+
+\begin{itemize}
+\item $p_1$ and $p_2$ = means of populations 1 and 2,
+
+\item $\sigma_1$ and $\sigma_2$ = standard deviations of
+populations 1 and 2,
+
+\item $n_l$ and $n_2$ = sizes of the samples drawn from
+populations 1 and 2 ($n_1 >30 $, $n_2 >30 $),
+
+\item $x_1$ and $x_2$, = means of the samples selected from
+populations 1 and 2,
+
+\item $s_{1}$ and $s_{2}$ = standard deviations of the samples
+selected from populations 1 and 2.
+
+\end{itemize}
+\newpage
+
+
+\subsection{Standard Error}
+
+\begin{equation}
+S.E(\bar{X}_{1}-\bar{X}_{2}) =
+\sqrt(\frac{s^2_{1}}{n_{1}}+\frac{s^2_{2}}{n_{2}})
+\end{equation}
+
+\subsection{Example}
+The mean height of adult males is 69 inches and the standard
+deviation is 2.5 inches. The mean height of adult females is 65
+inches and the standard deviation is 2.5 inches. Let population 1
+be the population of male heights, and population 2 the population
+of female heights. Suppose samples of 50 each are selected from
+both populations.
+
+
+
+\subsection{Example 3} Ten replicate analyses of the concentration
+of mercury in a sample of commercial gas condensate gave the
+following results (in ng/ml) :
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+  \hline
+23.3 & 22.5 & 21.9 & 21.5 & 19.9 & 21.3 & 21.7 & 23.8 & 22.6 &
+24.7\\
+  \hline
+\end{tabular}
+
+Compute 99\% confidence limits for the mean.
+\section{Hypothesis Tests for Two Means}
+
+If the population standard deviations $\sigma_1$ and $\sigma_2$
+are known, the test statistic is of the form:
+
+\begin{equation}
+Z = \frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2 ) }{\sqrt{
+\frac{\sigma^2_1}{n_1}+\frac{\sigma^2_2}{n_2}} }
+\end{equation}
+The critical value and p-value are looked up in the normal tables.
+
+
+
+\section{Modelling}
+
+The purpose of modelling can be twofold. The first is prediction. Given a set of analytical data, we want to be able to predict properties of the samples that cannot be measured easily. An example is the assessment of whether a specific treatment will be useful for a patient with particular characteristics.
+
+Such an application is known as classification - one is interested in modelling class membership (will or will not respond).
+
+The other major field is regression, where the aim is to model continuous real variables (blood
+pressure, protein content, ...). Such predictive models can mean a big improvement in quality of life, and save large amounts of money.
+
+The prediction error is usually taken as a quality measure: a model that is able to predict with high
+accuracy must have captured some real information about the system under study. Unfortunately, in most cases no analytical expressions can be derived for prediction accuracy, and other ways of estimating prediction accuracy are
+required in a process called validation. A popular example is \textbf{\emph{cross-validation}}.
+
+
+
+
+
+
+\subsection{Independent one-sample $t$-test}
+In testing the null hypothesis that the population mean is equal to a specified value $\mu_{0}$, one uses the statistic
+
+\begin{equation}t = \frac{\overline{x} - \mu_0}{s / \sqrt{n}}\end{equation}
+
+where $s$ is the sample standard deviation and $n$ is the sample size. The degrees of freedom used in this test is $n - 1$.
+
+\subsection{difference of two proportions - example}
+Two time-sharing systems are compared according to their response time to an editing command. The mean response time of 100 requests submitted to system 1 was measured to be 600 milliseconds with a
+known standard deviation of 20 milliseconds. The mean response time
+of 100 requests on system 2 was 592 milliseconds with a known standard deviation of 23 milliseconds. Using a significance level of $5\%$,test the hypothesis that system 2 provides a faster response time than
+system 1. Clearly state your null and alternative hypotheses and your conclusion.
+
+
+
+
+
+
+
+\subsection{Difference between two population proportions}
+When we wish to test the hypothesis that the proportions in two
+populations are not different, the two sample proportions are
+pooled as a basis for determining the standard error of the
+difference between proportions. Note that this differs from the
+procedure used in Section 9.5 on statistical estimation, in which
+the assumption of no difference was not made.
+
+Further, the present procedure is conceptually similar to that
+presented in Section 11.1, in which the two sample variances are
+pooled as the basis for computing the standard error of the
+difference between means. The pooled estimate of the population
+proportion, based on the proportions obtained in two independent
+samples
+
+
+\subsection{F-test of equality of variances}
+The test statistic is
+
+\begin{equation} F = \frac{S_X^2}{S_Y^2}\end{equation}
+
+has an F-distribution with $n-1$ and $m-1$ degrees of freedom if the null hypothesis of equality of variances is true.
+
+
+\chapter{Further Inference}
+
+\section{Fractional factorial design}
+
+(d)	Define the following terms used in fractional factorial design; Defining relation,
+	Generator, Confounding, Resolution. Which design resolution is considered
+	optimal?
+
+
+
+
+\section{Inference}
+
+\subsection{Confidence interval of a mean (small sample)}
+
+If the data have a normal probability distribution and the sample
+standard deviation $s$ is used to estimate the population
+standard deviation $\sigma$, the interval estimate is given by:
+\begin{equation}
+\bar{X} \pm t_{1-\alpha/2,n-1}\frac{s}{\sqrt{n}}
+\end{equation}
+where $t_{1-\alpha/2,n-1}$ is the value providing an area of $\alpha/2$ in the upper tail of a Student’s t distribution with n - 1 degrees of freedom.
+
+\subsubsection{Example using R}
+Finding confidence intervals for the mean for the nitrate ion
+concentrations in Example 2.7.1.
+\begin{verbatim}
+#Typing data in
+x=c(102,97,99,98,101,106)
+mean(x)
+sd(x)
+n=length(x)
+#setting the confidence level
+CL=0.95
+#computing confidence interval
+pm=sd(x)*c(qt(0.025,n-1),qt(0.975,n-1))/sqrt(n)
+CI=mean(x)+pm
+\end{verbatim}
+
+%------------------------------------------------%
+%\newpage
+%\addcontentsline{toc}{section}{Bibliography}
+%\bibliography{MA4125bib}
+\end{document} 
