@@ -1,0 +1,467 @@
+\documentclass[serif]{beamer} % Get Computer Modern math font.
+\hypersetup{colorlinks,linkcolor=,urlcolor=red}
+\usepackage{amsmath} % Supposedly unnecessary wiht Beamer
+%  To create handout using article mode: Comment above and uncomment below (2 places)
+%\documentclass[12pt]{article}
+%\usepackage{beamerarticle}
+%\usepackage[colorlinks=true, pdfstartview=FitV, linkcolor=blue, citecolor=blue, urlcolor=red]{hyperref} % For live Web links with href in article mode
+% \usepackage{amsmath} % For \binom{n}{y}
+%\usepackage{graphicx} % To include pdf files!
+%\usepackage{fullpage}
+
+\usefonttheme{serif} % Looks like Computer Modern for non-math text -- nice!
+\setbeamertemplate{navigation symbols}{} % Suppress navigation symbols
+% \usetheme{Berlin} % Displays sections on top
+\usetheme{Frankfurt}  % Displays section titles on top: Fairly thin but still swallows some material at bottom of crowded slides
+%\usetheme{Berkeley}
+
+
+
+
+\usepackage[english]{babel}
+\usepackage{amsmath} % for binom
+% \usepackage{graphicx} % To include pdf files!
+% \definecolor{links}{HTML}{2A1B81}
+% \definecolor{links}{red}
+
+\setbeamertemplate{footline}[frame number] 
+
+\mode<presentation>
+% \mode<handout>{\setbeamercolor{background canvas}{bg=black!5}}
+
+
+% Comment this out for handout
+\title{Generalized Linear Models\footnote{See last slide for copyright information.}}
+\subtitle{STA 2101/442: Fall 2012}
+\date{} % To suppress date
+
+
+\begin{document}
+
+% More material required for handout in article mode. Also eliminate vspace
+%\title{The Multinomial Model\footnote{See last slide for copyright information.}}
+%\subtitle{STA 312: Fall 2012}
+%\date{} % To suppress date
+%\maketitle
+
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Suggested Reading: Davison's \emph{Statistical models}}
+%\framesubtitle{} 
+  \begin{itemize}
+    \item Exponential families of distributions Sec. 5.2
+    \item Chapter 10 is on nonlinear regression models
+    \item See pp. 468-492
+  \end{itemize}
+
+\end{frame}
+
+
+% \section{Overview}
+
+ \begin{frame}
+ \frametitle{Overview}
+ \tableofcontents
+ \end{frame}
+
+\section{Basics} %%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Examples of Generalized Linear Models}
+%\framesubtitle{} 
+  \begin{itemize}
+    \item Normal regression
+    \item Logistic regression
+    \item Poisson regression
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Components of a Generalized Linear Model}
+%\framesubtitle{} 
+  \begin{itemize}
+    \item \textbf{Random Component}:  Probability distribution for $Y$
+    \item \textbf{Systematic component}:  Specifies explanatory variables in the form of a ``linear predictorâ€ that looks like a regression equation.
+    \item \textbf{Link function}:  Connects $\mu = E(Y|\mathbf{X})$ to the linear predictor
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Random Component: Distribution of $Y$}
+%\framesubtitle{} 
+  \begin{itemize}
+    \item Ordinary regression: Normal
+    \item Logistic regression: Bernoulli
+    \item Poisson regression: Poisson
+
+\vspace{20mm}
+
+    \item Other possibilities: Binomial, Exponential, Gamma, Geometric  \ldots
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Systematic component: A regression-like equation called the \emph{linear predictor}}
+{\LARGE
+\begin{displaymath}
+    \eta = \beta_0 + \beta_1 x_1 + \ldots, + \beta_{p-1}x_{p-1} 
+\end{displaymath}
+} % End size
+\end{frame}
+
+\begin{frame}
+\frametitle{Link Function: The linear predictor is an increasing function of the expected value}
+%\framesubtitle{} 
+{\LARGE
+\begin{displaymath}
+    g(\mu) = \beta_0 + \beta_1 x_1 + \ldots, + \beta_{p-1}x_{p-1} 
+\end{displaymath} }
+
+  \begin{itemize}
+    \item The function $g(x)$ is strictly increasing.
+    \item The linear predictor is an increasing function of $\mu$.
+    \item So $\mu$ is an increasing function of the linear predictor.
+  \end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Normal Distribution}
+\framesubtitle{Link function $g(\mu) = \beta_0 + \beta_1 x_1 + \ldots, + \beta_{p-1}x_{p-1}$} 
+  \begin{itemize}
+    \item $E(Y)=\mu$
+    \item $g(\mu) = \mu$
+    \item $\mu = \beta_0 + \beta_1 x_1 + \ldots, + \beta_{p-1}x_{p-1}$
+    \item The identity link
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Bernoulli Distribution}
+\framesubtitle{Link function $g(\mu) = \beta_0 + \beta_1 x_1 + \ldots, + \beta_{p-1}x_{p-1}$} 
+  \begin{itemize}
+    \item $E(Y)=\mu=\pi$
+    \item $g(\mu) = \log \frac{\mu}{1-\mu}$
+    \item $\log \frac{\mu}{1-\mu} =  \beta_0 + \beta_1 x_1 + \ldots, + \beta_{p-1}x_{p-1}$
+    \item The logit link
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Poisson Distribution}
+\framesubtitle{Link function $g(\mu) = \beta_0 + \beta_1 x_1 + \ldots, + \beta_{p-1}x_{p-1}$} 
+  \begin{itemize}
+    \item $E(Y)=\mu=\lambda$
+    \item $g(\mu) = \log(\mu)$
+    \item $\log(\mu) = \beta_0 + \beta_1 x_1 + \ldots, + \beta_{p-1}x_{p-1}$
+    \item The log link
+  \end{itemize}
+\end{frame}
+
+
+\section{The Exponential Family of Distributions} %%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{``Natural" Exponential Family of Distributions}
+%\framesubtitle{} 
+  \begin{itemize}
+    \item Includes most of the familiar distributions
+    \item Provides a unified theory for generalized linear models
+    \item Leads to a general, highly efficient method for finding MLEs numerically
+        \begin{itemize}
+            \item Iterative weighted least squares
+            \item Closely related to Newton-Raphson
+        \end{itemize}
+    \item Points to a \emph{natural} link function.
+    \item The ``natural" parameter of a one-parameter exponential family is $\theta=g(\mu)$.
+    \item The link functions we have been using are natural links.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Natural exponential family of distributions}
+%\framesubtitle{} 
+{\LARGE
+\begin{displaymath}
+    f(y|\theta,\phi) = 
+    \exp\left\{ \frac{y\theta-b(\theta)}{\phi} + c(y,\phi)\right\}
+\end{displaymath} }
+  \begin{itemize}
+    \item Support does not depend on $\theta$ or $\phi$.
+    \item $\theta$ is the natural parameter.
+    \item $\phi$ is the dispersion parameter, often known.
+    \item $\theta=g(\mu)$, where $\mu=E(Y)$
+%    \item This is the \emph{natural} link function: set $g(\mu) =  \beta_0 + \beta_1 x_1 + \ldots, + \beta_{p-1}x_{p-1}$
+    \item $E(Y) = b^\prime(\theta)$ gives $\mu=g^{-1}(\theta)$
+    \item $Var(Y) =  \phi \, b^{\prime\prime}(\theta) = \phi V(\mu)$
+    \item $V(\mu)$ is called the \emph{variance function}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Normal}
+\framesubtitle{$ f(y|\theta,\phi) = 
+    \exp\left\{ \frac{y\theta-b(\theta)}{\phi} + c(y,\phi)\right\}$} 
+
+\begin{eqnarray*}
+    \frac{1}{\sigma\sqrt{2\pi}} e^{\frac{(y-\mu)^2}{2\sigma^2}} 
+    & = & \frac{1}{\sigma\sqrt{2\pi}}  \exp\left\{ \frac{y^2-2y\mu+\mu^2}{2\sigma^2} \right\}\\
+    & = &  \exp\left\{ \frac{y\mu-\frac{\mu^2}{2}}{\sigma^2} + 
+           \left( -\frac{y^2}{2\sigma^2} - \log\sqrt{\sigma^2} - \log 2\pi\right)\right\}
+\end{eqnarray*} 
+  \begin{itemize}
+    \item Natural parameter is $\theta=\mu$
+    \item Natural link is the identity function.
+    \item Dispersion parameter is $\phi=\sigma^2$
+    \item $b(\theta) = \frac{\theta^2}{2}$
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Bernoulli}
+\framesubtitle{$ f(y|\theta,\phi) = 
+    \exp\left\{ \frac{y\theta-b(\theta)}{\phi} + c(y,\phi)\right\}$} 
+
+\begin{eqnarray*}
+    \pi^y (1-\pi)^{1-y} 
+    & = & \exp\left\{ y\log\pi + (1-y)\log(1-\pi) \right\}\\
+    & = &  \exp\left\{ y\left(\log\pi-\log(1-\pi)\right) + \log(1-\pi)\right\} \\
+    & = &  \exp\left\{ y\left(\log\frac{\pi}{1-\pi}\right) + \log(1-\pi)\right\} \\
+    & = &  \exp\left\{ \frac{y\left(\log\frac{\pi}{1-\pi}\right) - (-\log(1-\pi))}{1} + 0
+\right\} \\
+\end{eqnarray*} 
+  \begin{itemize}
+    \item Natural parameter is $\theta=\log\frac{\pi}{1-\pi} = \log\frac{\mu}{1-\mu}$
+    \item Natural link is the logit function.
+    \item Dispersion parameter is $\phi=1$
+    \item $b(\theta) = \log(1+e^\theta)$
+  \end{itemize}
+
+\end{frame}
+
+
+\section{Deviance} %%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Deviance}
+%\framesubtitle{} 
+  \begin{itemize}
+    \item Goal is to compare a model to a ``Super" model that fits the data as well as possible.
+    \item Example: If an experiment has $c$ outcomes, you can't beat a multinomial with $c$ categories. 
+    \item The $c-1$ parameters soak up all $c-1$ degrees of freedom, so in this case you could call the \textbf{S}uper model ``\textbf{S}aturated."
+  \end{itemize}
+\end{frame}
+
+\begin{frame} % Fix notation for 2101
+\frametitle{Deviance = $-2(\ell_M-\ell_S)$}
+\framesubtitle{$\ell$ is the maximized log likelihood} 
+\begin{itemize}
+     \item Denote the parameter of the Model by $\theta$ and the parameter of the Supermodel by $\sigma$
+     \item The models might look very different, including the parameter spaces.
+\end{itemize}
+
+\begin{eqnarray*}
+    -2(\ell_M-\ell_S) & = & -2log\frac{ \prod_{i=1}^n f(y_i|\widehat{\theta}) }
+                                { \prod_{i=1}^n f(y_i|\widehat{\sigma}) }\\
+ & = &  -2log \prod_{i=1}^n \frac{f(y_i|\widehat{\theta})}
+                                 {f(y_i|\widehat{\sigma})} \\
+ & = & \sum_{i=1}^n -2\log \left(\frac{f(y_i|\widehat{\theta})}
+                                 {f(y_i|\widehat{\sigma})} \right) \\
+ & = & \sum_{i=1}^n d_i
+\end{eqnarray*} 
+\end{frame}
+
+\begin{frame}
+\frametitle{Deviance = $-2log\frac{ \prod_{i=1}^n f(y_i|\widehat{\theta}) }
+                                { \prod_{i=1}^n f(y_i|\widehat{\sigma}) }
+                     = \sum_{i=1}^n d_i$}
+%\framesubtitle{} 
+  \begin{itemize}
+    \item The deviance terms $d_i$ are contributions to a difference in fit (deviance) between the model and the best possible model.
+    \item They are somewhat like residuals.
+    \item Maybe big ones are worth investigating.
+    \item Deviance residuals are defined as $r^D_i = $sign$(y_i-\widehat{\mu}_i)\sqrt{d_i}$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Deviance looks like the likelihood ratio statistic $G^2$}
+Deviance = $-2log\frac{ \prod_{i=1}^n f(y_i|\widehat{\theta}) }
+                                { \prod_{i=1}^n f(y_i|\widehat{\sigma}) }
+                     = \sum_{i=1}^n d_i$
+  \begin{itemize}
+    \item Looks like the model represents a null hypothesis.
+    \item The Supermodel is somehow less restricted.
+    \item So \emph{sometimes} it must be a chi-squared test for goodness of model fit.
+    \item What is that ideal ``Supermodel" that fits as well as possible?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{What is the model that fits as well as possible?}
+%\framesubtitle{} 
+  \begin{itemize}
+    \item If just a few ($c$) categories and plenty of observations in each category (say at least 5), the best model is a multinomial. 
+        \begin{itemize}
+            \item Any model with $c-1$ parameters that are 1-1 with $\pi_1, \ldots, \pi_{c-1}$ will \emph{soak up} all the degrees of freedom and is said to be ``saturated."
+            \item For a saturated model, the deviance is zero.
+            \item A model with fewer than $c-1$ parameters cannot be saturated, and the deviance is a likelihood ratio test statistic, null hypothesis that the model is true.
+        \end{itemize}
+    \item There are some other examples of super-models that are reasonable. In structural equation models, an example is the unrestricted multivariate normal.
+    \item Often, the super-model is not a reasonable model.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{An unreasonable model}
+Logistic regression with continuous explanatory variables
+  \begin{itemize}
+    \item One observation only in each of $n$ combinations of explanatory, response variable values.
+    \item One parameter for each observation.
+    \item Model fits perfectly.
+    \item Likelihood equals one.
+    \item All parameter estimates on the boundary of the parameter space.
+    \item \emph{Not} chi-squared under $H_0$.
+    \item Denominator of deviance equals one.
+    \item Deviance is just -2 log likelihood of the model.
+    \item Deviance is not a test of model fit, or anyway nobody knows the distribution under $H_0$.
+  \end{itemize}
+What happens when there are \emph{a few} ties in the explanatory variable values \ldots
+\end{frame}
+
+\begin{frame}
+\frametitle{R's \texttt{help glm} defines the deviance as}
+``\dots up to a constant, minus twice the maximized log-likelihood. Where sensible, the constant is chosen so that a saturated model has deviance zero."
+
+\vspace{10mm}
+
+At least, Deviance = $-2(\ell_M-\ell_S)$ is -2log likelihood  plus a constant, so the \emph{difference} in deviance values between 2 nested models should be the large-sample likelihood ratio test of full \emph{vs.} reduced.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{One last scary question}
+\framesubtitle{And a reassuring answer}
+If you fit a full and a reduced model separately, might they use a different definition of the supermodel, and hence the deviance?
+  \begin{itemize}
+    \item I have tried unsuccessfully to make R misbehave this way.
+    \item The null deviance is the deviance of a model with just an intercept.
+    \item Compare the null deviance of your full and reduced models. If they are the same, both models are using the same definition of deviance and everything is okay.
+    \item And in my experience with R's \texttt{glm} function, they are always the same.
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\section{Copyright}
+
+\begin{frame}
+\frametitle{Copyright Information}
+
+This slide show was prepared by  \href{http://www.utstat.toronto.edu/~brunner}{Jerry Brunner},
+Department of Statistics, University of Toronto. It is licensed under a 
+\href{http://creativecommons.org/licenses/by-sa/3.0/deed.en_US}
+     {Creative Commons Attribution - ShareAlike 3.0 Unported License}. Use any part of it as you like and share the result freely. The \LaTeX~source code is available from the course website:
+\href{http://www.utstat.toronto.edu/~brunner/oldclass/appliedf12} {\texttt{http://www.utstat.toronto.edu/$^\sim$brunner/oldclass/appliedf12}}
+
+\end{frame}
+
+\end{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{}
+%\framesubtitle{} 
+  \begin{itemize}
+    \item 
+    \item 
+    \item 
+  \end{itemize}
+\end{frame}
+
+
+
+  \begin{itemize}
+    \item 
+    \item 
+    \item 
+  \end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\tiny
+\begin{center}
+\begin{tabular}{|c|c|c|}  \hline
+ $x$               & $a-x$          &{\color{red} $a$ } \\ \hline
+ $b-x$        & $1-a-b+x$          &{\color{red} $1-a$ } \\ \hline
+{\color{red} $b$ } &{\color{red} $1-b$ } & {\color{red} $1$ } \\ \hline
+\end{tabular}
+\end{center}
+} % End small size
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|}  \hline
+                  &  Heart attack &  Stroke & Both & Neither & Total  \\ \hline
+Drug              & $\pi_{11}$ & $\pi_{12}$ &{\color{red} $\pi_{1+}$ } \\ \hline
+Drug and Exercise & $\pi_{21}$ & $\pi_{22}$ &{\color{red} $\pi_{2+}$ } \\ \hline
+Total &{\color{red} $\pi_{+1}$ } &{\color{red} $\pi_{+2}$ } & {\color{red} $1$} \\ \hline
+\end{tabular}
+\end{center}
+
+
+\begin{frame}
+\frametitle{Save}
+%\framesubtitle{} 
+
+{\tiny
+\begin{center}
+\begin{tabular}{|l|c|c|}  \hline
+      &   $Y=1$ &  $Y=2$     \\ \hline
+$X=1$ & $\pi_{11}$ & $\pi_{12}$  \\ \hline
+$X=2$ & $\pi_{21}$ & $\pi_{22}$  \\ \hline
+\end{tabular}
+\end{center}
+} % End small size
+
+
+
+{\tiny
+\begin{center}
+\begin{tabular}{|c|c|}  \hline
+ $\pi_{11}$ & $\pi_{12}$  \\ \hline
+ $\pi_{21}$ & $\pi_{22}$  \\ \hline
+\end{tabular}
+\end{center}
+} % End small size
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{R example}
+
+Skip to the \href{http://www.utstat.toronto.edu/~brunner/312f12/lectures/312f12Independence1.pdf}
+             {Independence Part One handout}.
+
+\vspace{5mm}
+
+If that doesn't work, 
+\href{http://www.utstat.toronto.edu/~brunner/oldclass/312f12/lectures/312f12Independence1.pdf}
+             {Try this}.
+\end{frame}
+
