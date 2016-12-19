@@ -1,0 +1,15 @@
+Fishers Least Significant Difference (LSD) test in Prism
+
+Following one-way (or two-way) analysis of variance (ANOVA), you may want to explore further and compare the mean of one group with the mean of another. One way to do this is by using  Fisher's Least Significant Difference (LSD) test.
+
+Key facts about Fisher's LSD test
+
+•	The Fishers LSD test is basically a set of individual t tests.
+•	Unlike the Bonferroni, Tukey, Dunnett and Holm methods, Fisher's LSD does not correct for multiple comparisons.
+•	If you choose to use the Fisher's LSD test, you'll need to account for multiple comparisons when you interpret the data, since the computations themselves do not correct for multiple comparisons.
+•	The only difference a set of t tests and the Fisher's LSD test, is that t tests compute the pooled SD from only the two groups being compared, while the Fisher's LSD test computes the pooled SD from all the groups (which gains power).
+•	Prism performs the unprotected LSD test. Unprotected simply means that calculations are reported regardless of the results of the  ANOVA. The unprotected Fisher's LSD test is essentially a set of t tests, without any correction for multiple comparisons.
+•	Prism does not perform a protected Fisher's LSD test. Protection means that you only perform the calculations described above when the overall ANOVA resulted in a P value less than 0.05 (or some other value set in advance). This first step sort of controls the false positive rate for the entire family of comparisons. While the protected Fisher's LSD test is of historical interest as the first multiple comparisons test ever developed, it is no longer recommended. It pretends to correct for multiple comparisons, but doesn't do so very well.
+How the Fisher's LSD test works
+
+The Fisher's LSD test begins like the Bonferroni multiple comparison test. It takes the square root of the Residual Mean Square from the ANOVA and considers that to be the pooled SD. Taking into account the sample sizes of the two groups being compared, it computes a standard error of the difference between those two means. Then it computes a t ratio by dividing the difference between means by the standard error of that difference. To compute a P value and confidence interval, the Fisher's LSD test does not account for multiple comparisons.

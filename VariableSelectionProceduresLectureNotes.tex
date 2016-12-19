@@ -1,0 +1,31 @@
+
+variable selection procedures includes regression models in which the choice of predictive variables is carried out by an automatic procedure
+%==========================================================%
+The main approaches are:
+Forward selection, which involves starting with no variables in the model, trying out the variables one by one and including them if they are 'statistically significant'.
+Backward elimination, which involves starting with all candidate variables and testing them one by one for statistical significance, deleting any that are not significant.
+Methods that are a combination of the above, testing at each stage for variables to be included or excluded.
+
+%==========================================================%
+Step-wise Regression:
+Step-wise regression is one of several computer-based iterative variable-selection procedures. At each step we first determine whether any of the variables (already included in the model) can be removed. If none of the variables can be removed, we determine whether a non-yet-included variable can be added. A variable can be added to the model at a step, removed at a following step, etc.
+Backward Elimination:
+Backward elimination is one of several computer-based iterative variable-selection procedures. It begins with a model containing all the independent variables of interest. Then, at each step the variable with smallest F-statistic is deleted (if the F is not higher than the chosen cutoff level).
+%==========================================================%
+Forward selection 
+
+It resembles step-wise regression except that a variable added to the model is not permitted to be removed in the subsequent steps.
+%==========================================================%
+Criticism of Stepwise regression
+
+Stepwise regression procedures are used in data mining, but are controversial. Several points of criticism have been made.
+Critics regard the procedure as a paradigmatic example of data dredging, intense computation often being an inadequate substitute for subject area expertise.
+Stepwise regression is a systematic method for adding and removing terms from a multilinear model based on their statistical significance in a regression. The method begins with an initial model and then compares the explanatory power of incrementally larger and smaller models. At each step, the p value of an F-statistic is computed to test models with and without a potential term. 
+
+If a term is not currently in the model, the null hypothesis is that the term would have a zero coefficient if added to the model. If there is sufficient evidence to reject the null hypothesis, the term is added to the model. Conversely, if a term is currently in the model, the null hypothesis is that the term has a zero coefficient. If there is insufficient evidence to reject the null hypothesis, the term is removed from the model. The method proceeds as follows:
+%==========================================================%
+Fit the initial model.
+If any terms not in the model have p-values less than an entrance tolerance (that is, if it is unlikely that they would have zero coefficient if added to the model), add the one with the smallest p value and repeat this step; otherwise, go to step 3.
+If any terms in the model have p-values greater than an exit tolerance (that is, if it is unlikely that the hypothesis of a zero coefficient can be rejected), remove the one with the largest p value and go to step 2; otherwise, end.
+
+Depending on the terms included in the initial model and the order in which terms are moved in and out, the method may build different models from the same set of potential terms. The method terminates when no single step improves the model. There is no guarantee, however, that a different initial model or a different sequence of steps will not lead to a better fit. In this sense, stepwise models are locally optimal, but may not be globally optimal.
