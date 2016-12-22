@@ -2,16 +2,18 @@
 
 Youden's J statistic (also called Youden's index) is a single statistic that captures the performance of a diagnostic test.
 
-Definition
-\[ J = Sensitivity + Specificity − 1 \]
+\textbf{Definition}
+\[ J = \mbox{Sensitivity} + \mbox{Specificity} − 1 \]
 
 with the two right-hand quantities being sensitivity and specificity.
 The index was suggested by W.J. Youden in 1950 [1] as a way of summarising the performance of a diagnostic test. 
 
-Its value ranges from 0 to 1, and has a zero value when a diagnostic test gives the same proportion of positive results for groups with and without the disease, i.e the test is useless. A value of 1 indicates that there are no false positives or false negatives, i.e. the test is perfect. 
-
+\begin{itemize}
+\item Its value ranges from 0 to 1, and has a zero value when a diagnostic test gives the same proportion of positive results for groups with and without the disease, i.e the test is useless. A value of 1 indicates that there are no false positives or false negatives, i.e. the test is perfect. 
+\item 
 The index gives equal weight to false positive and false negative values, so all tests with the same value of the index give the same proportion of total misclassified results.
-
+\item 
 Example of a Receiver Operating Characterisitc curve. Solid red: ROC curve; Dashed line: Chance level; Vertical line (J) maximimum value of Youden's index for the ROC curve
-
-Youden's index is often used in conjunction with Receiver Operating Characteristic (ROC) analysis.[2] The index is defined for all points of an ROC curve, and the maximum value of the index may be used as a criterion for selecting the optimum cut-off point when a diagnostic test gives a numeric rather than a dichotomous result. The index is represented graphically as the height above the chance line, and it is also equivalent to the Area under the Curve subtended by a single operating point.[3]
+\item 
+Youden's index is often used in conjunction with Receiver Operating Characteristic (ROC) analysis. The index is defined for all points of an ROC curve, and the maximum value of the index may be used as a criterion for selecting the optimum cut-off point when a diagnostic test gives a numeric rather than a dichotomous result. The index is represented graphically as the height above the chance line, and it is also equivalent to the Area under the Curve subtended by a single operating point.
+\end{itemize}
