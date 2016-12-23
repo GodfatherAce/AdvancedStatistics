@@ -14,31 +14,17 @@ Unusual and Influential data
 Multicollinearity
 
 
---------------------------------------------------------------------------------
- Statistical Conclusion valdity measures
-•
-alpha level
 
-•
-power
+%--------------------------------------------------------------------------------%
+\subsection*{Variance Inflation Factor (VIF)}
 
-•
-sample size
-
-
- 
-
-
---------------------------------------------------------------------------------
-Variance Inflation Factor (VIF)
-
-Interpretation
+\subsection*{Interpretation}
 
 The square root of the variance inflation factor tells you how much larger the standard error is, compared with what it would be if that variable were uncorrelated with the other independent variables in the equation.
 
  
 
-Example
+\subsection*{Example}
 
 If the variance inflation factor of an independent variable were 5.27 (√5.27 = 2.3) this means that the standard error for the coefficient of that independent variable is 2.3 times as large as it would be if that independent variable were uncorrelated with the other independent variables.
 
@@ -79,25 +65,27 @@ If, however, the independent variables are not perfectly correlated, but only hi
 As a rule of thumb, if reading an article or seeing a presentation, whenever you see estimated beta weights larger than 1.0, you should consider the possibility of multicollinearity.
 
 
-We need to examine the R2's of each independent variable regressed on the other independent variables. This is easy with SPSS since we can ask for multicollinearity diagnostics. The tolerance printed on the output is the proportion of variance in the independent variable NOT explained by it's relationship with the other independent variables. Thus, it is 1 - R2, with the R2 resulting from regressing that particular independent variable on all other independent variables.
+We need to examine the R2's of each independent variable regressed on the other independent variables. This is easy with SPSS since we can ask for multicollinearity diagnostics. 
+
+The tolerance printed on the output is the proportion of variance in the independent variable NOT explained by it's relationship with the other independent variables. Thus, it is 1 - R2, with the R2 resulting from regressing that particular independent variable on all other independent variables.
 
 
 
 
 %================================================================================================================%
-•
+\item 
 Linearity - the relationships between the predictors and the outcome variable should be linear
 
-•
+\item 
 Normality - the errors should be normally distributed - technically normality is necessary only for the t-tests to be valid, estimation of the coefficients only requires that the errors be identically and independently distributed
 
-•
+\item 
 Homogeneity of variance (homoscedasticity) - the error variance should be constant
 
-•
+\item 
 Independence - the errors associated with one observation are not correlated with the errors of any other observation
 
-•
+\item 
 Model specification - the model should be properly specified (including all relevant variables, and excluding irrelevant variables)
 
 
@@ -106,16 +94,9 @@ Model specification - the model should be properly specified (including all rele
 Additionally, there are issues that can arise during the analysis that, while strictly speaking are not assumptions of regression, are none the less, of great concern to regression analysts.
 
  
-•
+\item 
 Influence - individual observations that exert undue influence on the coefficients
 
-•
+\item 
 Collinearity - predictors that are highly collinear, i.e. linearly related, can cause problems in estimating the regression coefficients.
-
-
- 
-
-Tolerance
-
- 
-
+%--------------------------------------------------------------------------------%
