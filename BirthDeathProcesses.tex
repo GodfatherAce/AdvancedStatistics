@@ -7,8 +7,8 @@ The birth-death process
 Important Identities
 Forward Equations
 Example
-Websites
 
+%======================================================================================================%
 
 The birth-death process is a special case of continuous-time Markov process where the states represent the current size of a population and where the transitions are limited to births  and deaths.
 
@@ -24,12 +24,13 @@ dsdz=s(s-1)
 lns1-s = -s
 
 
+%======================================================================================================%
 
 
-The birth-death process
+\subsection*{The birth-death process}
 The birth-death process is a special case of continuous time Markov process, where the states (for example) represent a current size of a population and the transitions are limited to birth and death. When a birth occurs, the process goes from state i to state i + 1. Similarly, when death occurs, the process goes from state i to state i − 1. It is assumed that the birth and death events are independent of each other.
 
-Important Identities
+\subsubsection*{Important Identities}
 
 
 pn(t) = P(N(t) = n | N(0) = a)					(n0)
@@ -37,7 +38,7 @@ pn(t) = P(N(t) = n | N(0) = a)					(n0)
 G(z,t) =n=0pn(t)zn
 
 
-Forward Equations
+\subsubsection*{Forward Equations}
 
 Derive the forward equations for the pn(t) (n0).
 
@@ -58,7 +59,7 @@ Gt=-(+)zGz+z2Gz+Gz= (z -)(z - 1)Gz
 
 N.B. z2-z +z += (z -)(z-1)
 
-Example
+\subsubsection*{Example}
 There are two machines, one of which is used as a spare. A working machine will function for an exponential time with rate  and will then fail. Upon failure, it is immediately replaced by the other machine if that one is in working order, and it goes to the repair facility. The repair facility consists of a single person who takes an exponential time with rate  to repair a failed machine. At the repair facility, the newly failed machine enters service if the repair person is free. If the repairperson is busy, it waits until the other machine is fixed; at that time, the newly repaired machine is put in service and repair begins on the other one. Starting at both machines working, find the expected value of the time until both are in the repair facility. In the long run, what proportion of time is there a working machine?
 
 E[T0] =1
@@ -67,10 +68,14 @@ E[T1] =1+E[T0] =1+2
 
 E[T2] =E[T0] +E[T1] =1+1+2 =2+2  
 
-Websites
+\subsubsection*{Websites}
 
+\begin{verbatim}
 http://classweb.gmu.edu/jshortle/VolumeII/Sample_Teaching_Material/OR645/Lectures/Lecture7.pdf
 
 http://amath.colorado.edu/courses/5560/2004fall/birthanddeath.pdf
 
 http://cs.nyu.edu/mishra//COURSES/09.HPGP/scribe3
+\end{verbatim}
+
+\end{document}
