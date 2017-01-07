@@ -1,15 +1,6 @@
-SciLab
-
-Scilab is an open source, cross-platform numerical computational package and a high-level, 
-numerically oriented programming language. It can be used for signal processing, 
-statistical analysis, image enhancement, fluid dynamics simulations, numerical 
-optimization, and modeling and simulation of explicit and implicit dynamical systems. 
-MATLAB code, which is similar in syntax, can be converted to Scilab.
 
 
-Octave
 
-http://www.omegahat.org/ROctave/ROctave.pdf
 
 GRETL
 
