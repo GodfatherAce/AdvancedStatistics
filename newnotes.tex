@@ -1,0 +1,647 @@
+%============================================================%
+\documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{framed}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{chngpage}
+%\usepackage{bigints}
+
+
+\setcounter{MaxMatrixCols}{10}
+
+\begin{document}
+	\begin{center}
+		\includegraphics[scale=0.55]{images/shieldtransparent2}
+	\end{center}
+	
+	\begin{center}
+		\vspace{1cm}
+		\large \bf {FACULTY OF SCIENCE AND ENGINEERING} \\[0.5cm]
+		\normalsize DEPARTMENT OF MATHEMATICS AND STATISTICS \\[1.25cm]
+		\large \bf {END OF SEMESTER EXAMINATION PAPER 2015} \\[1.5cm]
+	\end{center}
+	
+	\begin{tabular}{ll}
+		MODULE CODE: MA4605 & SEMESTER: Autumn 2015 \\[1cm]
+		MODULE TITLE: Chemometrics& DURATION OF EXAM: 2.5 hours  \\[1cm]
+		LECTURER: Mr. Kevin O'Brien & GRADING SCHEME: 100 marks \\
+		& \phantom{GRADING SCHEME:} \footnotesize {70\% of module grade} \\[1cm]
+		ASSESSORS: Dr. C.F. Ryback &  \\[1cm]
+		
+	\end{tabular}
+	\vspace{-0.5cm}
+	\begin{center}
+		{\bf INSTRUCTIONS TO CANDIDATES}
+	\end{center}
+	
+	{\noindent \\ Scientific calculators approved by the University of Limerick can be used. \\
+		Formula sheet and statistical tables provided at the end of the exam paper.\\
+		There are 5 questions in this exam. Students must attempt any 4 questions.}
+	%====================================================================== %
+	\newpage
+	\subsection*{Question 1 Inference Procedures}
+	
+	\begin{framed}
+		What is going here?
+		\begin{itemize}
+			\item Using the Murdoch Barnes Table for Normal Distribution Problems
+			\item Testing that Data is normally distributed (may appear elsewhere)
+			\item Transformation of Data (Tukey's Ladder)
+			\item Outliers and Boxplots (Grubbs Test, Dixon Q-test)
+			\item Non-Parametric Procedures (e.g. Wilcoxon test, Kolmogorov Smirnov Test)
+		\end{itemize}
+	\end{framed}
+\newpage
+\subsubsection*{Part A Dixon Q Test For Outliers (4 Marks)}
+
+The typing speeds for one group of 12 Engineering students were recorded both at the beginning of year 1 of their studies. The results (in words per minute) are given below:
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		% Subject& A& B& C& D& E &F &G &H \\ \hline
+		118 & 146 & 149 & 142 & 170& 153\\ \hline
+		137 & 161 & 156& 165&  178& 159
+		\\ \hline
+	\end{tabular}
+\end{center}
+Use the Dixon Q-test to determine if the lowest value (118) is an outlier. You may assume a significance level of 5\%.
+\begin{itemize}
+	\item[i.](1 Mark)	State the Null and Alternative Hypothesis for this test.
+	\item[ii.](1 Marks) Compute the test statistic
+	\item[iii.](1 Mark) State the appropriate critical value.
+	\item[iv.](1 Mark) What is your conclusion to this procedure
+\end{itemize}
+
+% Review of Univariate Normal Distribution
+% Test for Univariate normality
+% - Graphical Procedures
+% - Formal Tests
+% (Later Multivariate Normality)
+% Boxplots, Outliers and Transformations
+%
+% (Hint: there are no outliers in these data sets)
+
+
+%--------------------------------------------------------------------------------------- %
+\subsubsection*{Part B Normal Distribution (3 Marks)} 
+% Normal %6 MARKS
+Assume that the diameter of a critical component is normally distributed with a Mean of 250 mm and a Standard Deviation of 15 mm. You are required  to estimate the approximate probability of the following measurements occurring on an individual component.
+\begin{itemize}
+	\item[i.](1 Mark)	Greater than 104.1mm
+	\item[ii.](2 Marks) Less than 95.2 mm
+	\item [iii.](2 Marks)[$\ast$] Between 94.2 and 103 mm
+\end{itemize}
+\bigskip
+\noindent Use the normal tables to determine the probabilities for the above exercises. You are required to show all of your workings.
+
+%==========================================================%
+\newpage
+
+Q
+
+44 36 56 38 63 89 58 37 41 54 71 24 51 49
+
+	%====================================================================== %
+	\newpage
+\subsection*{Question 2 Chi-Squared and One-Way ANOVA F-test}
+%	\begin{framed}
+%		What is going here?
+%		\begin{itemize}
+%			\item Interpreting Output for Inference Procedures
+%			\item F-test for Equality of Variance
+%			\item Chi-Square Tests for independence of categorical variables (HAND)
+%			\item One Way ANOVA Tests for Multiple Means (may appear elsewhere) (HAND)
+%		\end{itemize}
+%	\end{framed}
+
+\begin{itemize}
+	\item State the Null and Alternative Hypothesis
+\end{itemize}
+
+%==================================%
+
+%\subsection*{Q3. Chi-Square Test (8 Marks)} %4 
+
+A market research survey was carried out to assess preferences for three brands of chocolate bar, A, B, and C. 
+The study group was categorised by gender to determine any difference in preferences.
+
+
+{
+	\large
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			& X & Y & Z &  Total\\ \hline
+			Children  & 50 & 70 & 80 & 200 \\ \hline
+			Teenagers  & 90 & 50 & 20 &  160\\ \hline
+			Adults  & 140 & 120 & 100 & 360\\ \hline
+		\end{tabular} 
+	\end{center}
+}
+\begin{itemize}
+	\item[i.](1 Mark)Formally state the null and alternative hypotheses.
+	\item[ii.] (2 Marks) Compute the cell values expected under the null hypothesis. Show your workings for two cells.
+	\item[iii.](3 Marks) Compute the Test Statistic.
+	\item[iv.](1 Mark) State the appropriate Critical Value for this hypothesis test.
+	\item[v.](1 Mark) Discuss your conclusion to this test, supporting your statement with reference to appropriate values.
+\end{itemize}
+\newpage
+
+	%====================================================================== %
+	\newpage
+\subsection*{Question 3 Linear Models (25 Marks)}
+%	\begin{framed}
+%		What is going here?
+%		\begin{itemize}
+%			\item Simple and Multiple Linear Regression
+%			\item Correlation and Coefficient of Determination (HAND)
+%			\item Regression ANOVA (HAND)
+%			\item Model Fit Metrics such as AIC, and both R Squared
+%			\item Theory Topics Such as Overfitting, Law of Parsimony
+%			\item Multicollinearity and associated measures such as VIF
+%			\item Residuals - DFBetas and Cook's Distances
+%			\item Variable Selection Procedures
+%		\end{itemize}
+%	\end{framed}
+	
+%======================================================
+%Q4
+
+
+
+State the regression equation for this model.
+Use this equation to predict a value for $y$ when the predictor variables take the following values.
+
+
+\subsubsection*{Test for Correlation}
+
+\begin{framed}
+	\begin{verbatim}
+	cor.test(X,Y)
+	\end{verbatim}
+\end{framed}
+
+%====================================================== %
+\newpage
+\subsubsection*{Multiple Linear Regression}
+
+Given the AIC for each candidate model, use \textbf{\textit{Backward Selection}} to determine the optimal model for predicting values of $y$ with predictor variables
+$x_1$, $x_2$,$x_3$ and $x_4$.
+
+Suppose there were 10 possible predictor variables. How many ways are there to fit a model.
+
+Combinatorial Explosion
+
+Multicollinearity - 
+
+
+\newpage
+%=====================================================
+
+%Write a short note to compare and contrast the multiple R squared and asjusted R squared.
+%%% - Overfitting
+	
+	%====================================================================== %
+	\newpage
+
+\subsubsection*{Model Selection}
+
+\begin{itemize}
+	\item Suppose we have 5 predictor variables.
+	\item Use \textbf{Forward Selection} and \textbf{Backward Selection} to choose the optimal set of predictor variables, based on the AIC measure.
+\end{itemize}
+{
+	\large
+	\begin{center}
+		\begin{tabular}{||c|c||c|c||}
+			\hline
+			Variables & AIC & Variables & AIC \\ \hline \hline
+			$\emptyset$	&	200	&	x1, x2, x3	&	74	\\ \hline
+			\phantom{makemakespace}
+			&	\phantom{makespace}
+			&	x1, x2, x4	&	75	\\ \hline
+			x1	&	150	&	x1, x2, x5	&	79	\\ \hline
+			x2	&	145	&	x1, x3, x4	&	72	\\ \hline
+			x3	&	135	&	x1, x3, x5	&	85	\\ \hline
+			x4	&	136	&	x1, x4, x5	&	95	\\ \hline
+			x5	&	139	&	x2, x3, x4	&	83	\\ \hline
+			&		&	x2, x3, x5	&	82	\\ \hline
+			x1, x2	&	97	&	x2, x4, x5	&	78	\\ \hline
+			x1, x3	&	81	&	x3, x4, x5	&	85	\\ \hline
+			x1, x4	&	94	&	\phantom{makemakespace}
+			&	\phantom{makespace}
+			\\ \hline
+			x1, x5	&	88	&	x1, x2, x3, x4	&	93	\\ \hline
+			x2, x3	&	87	&	x1, x2, x3, x5	&	120	\\ \hline
+			x2, x4	&	108	&	x1, x2, x4, x5	&	104	\\ \hline
+			x2, x5	&	87	&	x1, x3, x4, x5	&	101	\\ \hline
+			x3, x4	&	105	&	x2, x3, x4, x5	&	89	\\ \hline
+			x3, x5	&	82	&		&		\\ \hline
+			x4, x5	&	86	&	x1, x2, x3, x4, x5	&	100	\\ \hline
+		\end{tabular} 
+	\end{center}
+}
+%================================================= %
+\newpage
+\subsubsection*{Regression ANOVA}
+
+Suppose we have a regression model, described by the following equation
+\[ \hat{y} = 28.81 + 6.45x_1 + 7.82 x_2\]
+We are given the following pieces of information.
+\begin{itemize}
+	\item The standard deviation of the response variance $y$ is 10 units.
+	\item There are 53 observations.
+	\item The \textit{Coefficient of Determination} (also known as the \textit{Multiple R-Squared}) is 0.75.
+\end{itemize}
+Complete the \textit{Analysis of Variance} Table for a linear regression model.
+The required values are indicated by question marks.
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|} \hline
+	\phantom{makespace}	& DF & 	Sum Sq &	Mean Sq &	F value &   	Pr($>$F)    \\ \hline
+		Regression &  \phantom{make}?\phantom{make} &	? &	? &	 ? &	$< 2.2e^{-16}$ \\ \hline
+		Error  & ? &	? &  	?   &            &       \\ \hline
+		Total  & ?  &	? &  \phantom{makespace}	  &   \phantom{makespace}         &    \phantom{makespace}    \\ \hline
+	\end{tabular} 
+\end{center}
+
+
+\newpage
+%======================================================
+\subsection*{Question 4 (25 Marks)}
+
+%
+%	
+%		What is going here?
+%		\begin{itemize}
+%			\item One Way Anova Tests for Multiple Means (HAND)
+%			\item Two Way ANOVA Testing (HAND)
+%			\item Checking Model Assumptions (Bartlett Test)
+%			\item Introduction to Experimental Design (Theory Questions)
+%		\end{itemize}
+%
+%Q3 ANOVA
+%
+%Two Way ANOVA - 10 Marks
+%
+%Two Way Interactions - Partial Completion
+%Interaction Plots - 10 Marks
+%Bartlett's Test + residuals - 5 Marks	
+
+
+
+\subsubsection*{ANOVA}
+Three species of tree were grown in a forestry plantation. Not all the
+seedlings survived and so the sample size, $n_i$, were not the same for
+each species. The data shown in the following table are the heights (in
+metres) of growth made in a fixed time.
+
+{
+\Large
+\begin{centering}
+	\begin{tabular}{|l|c|l|c|c|}
+		\hline
+Species & $n_i$ & Observations & Total & $S^2_x$ \\ \hline
+Pinus & 10 & 4.9 5.1 4.5 5.0 4.1 4.0  & 44.0 & 0.32\\ 
+Caribea  & & 4.4 4.8 3.8 3.4
+
+ & &\\  \hline
+Pinus  & 12 & 4.2 3.5 4.7 4.1 3.9 4.6    &  48.0 & 0.22\\ 
+Kesiya & & 4.3 3.4 4.0 3.3 3.6 4.4 &&\\  \hline
+Eucalyptus 
+ & 8 & 5.6 4.6 5.7 6.3 5.4 5.0  & 42.4 & 0.32
+  \\ 
+Deglupta & & 5.1 4.7
+ &&\\  \hline
+	\end{tabular} 
+\end{centering}
+}
+
+\begin{itemize}
+	\item The overall mean is 4.48
+	\item The overall variance is 0.543
+\end{itemize}
+
+\begin{itemize}
+\item Carry out the usual one-way analysis of variance to examine whether
+there are overall differences between the species. 
+\end{itemize}
+{
+	\large
+\begin{tabular}{|c|c|c|c|c|c|}
+	\hline Source & DF & SS & MS & F & $p-$values \\ \hline
+	\hline Between & \phantom{ma} ? \phantom{ma} & \phantom{mak} ? \phantom{mak} & \phantom{mak} ? \phantom{mak} & \phantom{mak} ? \phantom{mak} &  $7.69\times10^{-05}$ 	  \\ 
+	\hline Within & \phantom{ma} ? \phantom{ma} &  \phantom{mak} ? \phantom{mak} &  \phantom{mak} ? \phantom{mak}&  \phantom{mak}&  \\ \hline
+	\hline  Total & \phantom{ma} ? \phantom{ma} & \phantom{mak} ? \phantom{mak} &  &  &   \\ 
+	\hline 
+\end{tabular} 
+}
+	%====================================================================== %
+	\newpage
+%=====================================================
+
+%Introduction to Six Sigma
+%Phases of Six Sigma
+%Tools for Quality
+%Statistical Process Control 
+%Pareto Analysis
+%Control Charts
+%Rules for Control Charts
+%Process Capability Indices
+%Multivariate Normal Distribution
+%Multivariate SQC
+
+\newpage
+\subsection*{Question 5. (25 marks) Statistical Process Control }
+
+%\begin{framed}
+%	What is going here?
+%	\begin{itemize}
+%		\item Statistical Process Control
+%		\item Control Charts : Rules and Interpretation
+%		\item Process Capability Indices (HAND)
+%		\item Testing for Univariate Normality (may appear in Q1)
+%		\item Skewness and Kurtosis
+%		\item Multivariate Normality : DAgostino Test
+%	\end{itemize}
+%\end{framed}
+
+
+
+
+\begin{itemize}
+	\item[(a)] Answer the following questions.
+	
+	\begin{itemize}
+		\item[i] (1 marks) Differentiate common causes of variation in the quality of process output from assignable causes.
+		\item[ii.] (1 marks) What is tampering in the context of statistical process control?
+		\item[iii] (4 marks) Other than applying the \emph{Three Sigma} rule for detecting the presence of an assignable cause, what else do we look for when studying a control chart? Support your answer with sketches.
+	\end{itemize}
+	
+	\item[(b)] A normally distributed quality characteristic is monitored through the use of control charts. These charts have the following parameters. All charts are in control.
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline  & LCL & Centre Line & UCL \\
+			\hline $\bar{X}$-Chart & 542 & 550 & 558 \\
+			\hline $R$-Chart & 0 & 8.236 & 16.504 \\ \hline
+		\end{tabular}
+	\end{center}
+	
+	\begin{itemize}
+		\item[i] (2 marks) What sample size is being used for this analysis?
+		\item[ii.] (2 marks) Estimate the standard deviation of this process.
+		\item[iii.] (2 marks) Compute the control limits for the process standard deviation chart (i.e. the s-chart).
+	\end{itemize}
+	
+	\item[(c)] An automobile assembly plant concerned about quality improvement measured sets of five camshafts on twenty occasions throughout the day. The specifications for the process state that the design specification limits at 600$\pm$3mm.
+	
+	
+	\begin{itemize}
+		\item[i.] (4 marks) Determine the \emph{Process Capability Indices} $C_p$ and $C_{pk}$, commenting on the respective values. You may use the \texttt{R} code output on the following page.
+		\item[ii.] (2 marks)  The value of $C_{pm}$ is $1.353$. Explain why there would be a discrepancy between $C_p$ and $C_{pm}$.
+		\item[iii.] (2 marks) Comment on the graphical output of the \emph{Process Capability Analysis}, also presented on the next page.
+	\end{itemize}
+	
+	
+	\newpage
+	\begin{framed}
+		\begin{verbatim}
+		Process Capability Analysis
+		
+		Call:
+		process.capability(object = obj, spec.limits = c(597, 603))
+		Number of obs = 100          Target = 600
+		Center = 599.548         LSL = 597
+		StdDev = 0.5846948       USL = 603
+		
+		Capability indices:
+		Value   2.5%  97.5%
+		Cp    ...
+		Cp_l  ...
+		Cp_u  ...
+		Cp_k  ...
+		Cpm   1.353  1.134  1.572
+		Exp<LSL 0%   Obs<LSL 0%
+		\end{verbatim}
+	\end{framed}
+	
+	
+	
+
+	\newpage
+	%
+	%Lengths = Values
+	%
+	%obj <- qcc(Lengths, type="xbar")
+	%
+	%process.capability(obj, spec.limits=c(597,603))
+\end{itemize}
+
+\newpage
+%============================================================%
+\subsubsection*{Control Charts}
+SPC
+
+Control Charts
+\subsubsection*{Testing for Normality}
+Shapiro-Wilk Test
+
+Tukey ladder
+
+D'Agostino Test (Multivariate Normality)
+
+
+
+Process Capability Indices
+
+%======================================================================== %
+	\newpage
+\subsection*{Critical Values for the $F$ distribution}
+\begin{itemize}
+	\item 
+	The significance level is 5\%.
+	\item 
+	The first degree of freedom $\nu_1$ is arranged along the columns
+	\item 
+	The second degree of freedom $\nu_2$ is arranged along the rows.
+\end{itemize}
+
+
+
+%======================================================================= %
+	\subsection*{Critical Values for Dixon Q Test}
+	{
+		\Large
+		\begin{center}
+			\begin{tabular}{|c|c|c|c|}
+				\hline  N  & $\alpha=0.10$  & $\alpha=0.05$  & $\alpha=0.01$  \\ \hline
+				3  & 0.941 & 0.97  & 0.994 \\ \hline
+				4  & 0.765 & 0.829 & 0.926 \\ \hline
+				5  & 0.642 & 0.71  & 0.821 \\ \hline
+				6  & 0.56  & 0.625 & 0.74  \\ \hline
+				7  & 0.507 & 0.568 & 0.68  \\ \hline
+				8  & 0.468 & 0.526 & 0.634 \\ \hline
+				9  & 0.437 & 0.493 & 0.598 \\ \hline
+				10 & 0.412 & 0.466 & 0.568 \\ \hline
+				11 & 0.392 & 0.444 & 0.542 \\ \hline
+				12 & 0.376 & 0.426 & 0.522 \\ \hline
+				13 & 0.361 & 0.41  & 0.503 \\ \hline
+				14 & 0.349 & 0.396 & 0.488 \\ \hline
+				15 & 0.338 & 0.384 & 0.475 \\ \hline
+				16 & 0.329 & 0.374 & 0.463 \\ \hline
+			\end{tabular} 
+		\end{center}
+	}
+	\subsection*{Critical Values for Chi Square Test}
+	{
+		\Large
+		\begin{center}
+			\begin{tabular}{|c|c|c|c|c|}
+				\hline 
+				n	&	$\alpha=0.10$	&	$\alpha=0.05$	&	$\alpha=0.01$	&	$\alpha=0.001$	\\ \hline
+				1	& 	2.705	&	3.841	&	6.634	&	10.827	\\ \hline
+				2	&	4.605	&	5.991	&	7.378	&	9.21	\\ \hline
+				3	&	6.251	&	7.815	&	9.348	&	11.345	\\ \hline
+				4	&	7.779	&	9.488	&	11.143	&	13.277	\\ \hline
+				5	&	9.236	&	11.07	&	12.833	&	15.086	\\ \hline
+				6	&	10.645	&	12.592	&	14.449	&	16.812	\\ \hline
+				7	&	12.017	&	14.067	&	16.013	&	18.475	\\ \hline
+				8	&	13.362	&	15.507	&	17.535	&	20.09	\\ \hline
+				9	&	14.684	&	16.919	&	19.023	&	21.666	\\ \hline
+				10	&	15.987	&	18.307	&	20.483	&	23.209	\\ \hline
+			\end{tabular} 
+		\end{center}
+	}
+	\subsection*{Process Capability Indices}
+	\[ \hat{C}_p = \frac{\mbox{USL} - \mbox{LSL}}{6s}\]
+	
+	\[ \hat{C}_{pk} = \mbox{min} \left[\frac{\mbox{USL} - \bar{x}}{3s},\frac{\bar{x} - \mbox{LSL}}{3s} \right] \]
+	
+	\[ \hat{C}_{pm} = \frac{\mbox{USL} - \mbox{LSL}}{6\sqrt{s^2+(\bar{x}-T)^2}}\]
+	\bigskip
+	%\subsection*{2^3 Design: Main Effect}
+	%
+	%\[X= \frac{1}{4n} \left[ x + xy + xz + xyz - (1) - y - z - yz \right]\]
+	%\bigskip
+	
+	
+	%------------------------------------------------------------------------ %
+	\Large{
+		\subsection*{Factors for Control Charts}
+		\begin{tabular}{|c|c|c|c|c|c|c|}
+			\hline
+			Sample Size (n) 	&	c4 	&	c5 	&	d2 	&	d3 	&	D3 	&	D4	\\	\hline
+			2	&	0.7979	&	0.6028	&	1.128	&	0.853	&	0	&	3.267	\\	
+			3	&	0.8862	&	0.4633	&	1.693	&	0.888	&	0	&	2.574	\\	
+			4	&	0.9213	&	0.3889	&	2.059	&	0.88	&	0	&	2.282	\\	
+			5	&	0.9400	&	0.3412	&	2.326	&	0.864	&	0	&	2.114	\\	
+			6	&	0.9515	&	0.3076	&	2.534	&	0.848	&	0	&	2.004	\\	
+			7	&	0.9594	&	0.282	&	2.704	&	0.833	&	0.076	&	1.924	\\	
+			8	&	0.9650	&	0.2622	&	2.847	&	0.82	&	0.136	&	1.864	\\	
+			9	&	0.9693	&	0.2459	&	2.970	&	0.808	&	0.184	&	1.816	\\	
+			10	&	0.9727	&	0.2321	&	3.078	&	0.797	&	0.223	&	1.777	\\	
+			11	&	0.9754	&	0.2204	&	3.173	&	0.787	&	0.256	&	1.744	\\	
+			12	&	0.9776	&	0.2105	&	3.258	&	0.778	&	0.283	&	1.717	\\	
+			13	&	0.9794	&	0.2019	&	3.336	&	0.770	&	0.307	&	1.693	\\	
+			14	&	0.9810	&	0.1940	&	3.407	&	0.763	&	0.328	&	1.672	\\	
+			15	&	0.9823	&	0.1873	&	3.472	&	0.756	&	0.347	&	1.653	\\	
+			16	&	0.9835	&	0.1809	&	3.532	&	0.750	&	0.363	&	1.637	\\
+			17	&	0.9845	&	0.1754	&	3.588	&	0.744	&	0.378	&	1.622	\\
+			18	&	0.9854	&	0.1703	&	3.64	&	0.739	&	0.391	&	1.608	\\
+			19	&	0.9862	&	0.1656	&	3.689	&	0.734	&	0.403	&	1.597	\\
+			20	&	0.9869	&	0.1613	&	3.735	&	0.729	&	0.415	&	1.585	\\
+			21	&	0.9876	&	0.1570	&	3.778	&	0.724	&	0.425	&	1.575	\\
+			22	&	0.9882	&	0.1532	&	3.819	&	0.720	&	0.434	&	1.566	\\
+			23	&	0.9887	&	0.1499	&	3.858	&	0.716	&	0.443	&	1.557	\\
+			24	&	0.9892	&	0.1466	&	3.895	&	0.712	&	0.451	&	1.548	\\
+			25	&	0.9896	&	0.1438	&	3.931	&	0.708	&	0.459	&	1.541	\\
+			\hline
+		\end{tabular}
+	} % End Large Font
+	
+\end{document}
+
+Outliers
+Boxplots Outliers ( Upper Fence Lower Fence)
+Dixon Q-Test
+%----------------------------------%
+Chi Square 12 Marks
+%=====================================================
+
+
+
+
+
+%========================================================%
+
+\section{R Code for Part 3}
+\begin{verbatim}
+ALL <- c(84.32, 84.51, 84.63, 84.61, 84.64, 84.51, 84.62, 84.24, 84.25, 
+84.41, 84.13, 84, 84.3, 84.02, 84.29, 84.4, 84.68, 84.28, 84.4, 
+84.36, 84.63, 84.14, 84.22, 84.02, 84.48, 84.27, 84.33, 84.22, 
+84.5, 83.88, 84.49, 83.91, 84.11, 84.06, 83.99, 84.7, 84.17, 
+84.11, 84.36, 84.61, 83.81, 84.15)
+
+\end{verbatim}
+%==================================================%
+library(xtable)
+
+nu1 <- 2:10
+nu2 <- c(5:15,18,21,24,27,30)
+
+L1 <- length(nu1)
+L2 <- length(nu2)
+CVs <- matrix(ncol=L1,nrow=L2)
+
+
+for( i in 1:L2){
+	for( j in 1:L1){ 
+		CVs[i,j] <- round( qf(0.95,i,j),3)
+	}
+	
+}
+
+colnames(CVs)<- nu1
+
+rownames(CVs)<- nu2
+
+xtable(CVs) 
+
+%======================================================================= %
+Dixon
+
+chi Square
+
+Normal
+
+One Way ANOVA
+
+Two Way ANOVA interactions
+
+Test Normality
+
+SPC definitions
+
+
+
+
+
+min=23
+max=89
+range=65
+gap=31
+TS =31/65 = 0.47692
+CV =0.396 (5\%)
+Reject Ho
+
+
