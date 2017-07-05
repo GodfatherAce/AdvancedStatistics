@@ -1,0 +1,279 @@
+Growth Curve Analysis
+
+Contents
+1 Overview
+2 Key challenges in analyzing time series data
+3 The big picture
+3.1 A simple example
+4 Applying GCA to VWP data
+4.1 Orthogonal polynomials
+4.2 A complete example
+4.3 Reporting results
+4.4 Another example
+5 Analyzing individual differences
+5.1 Another example
+6 Visualizing growth curve models
+
+Overview
+
+Growth curve analysis (GCA) is a multilevel regression technique designed for analysis of time course or longitudinal data. A major advantage of this approach is that it can be used to simultaneously analyze both group-level effects (e.g., experimental manipulations) and individual-level effects (i.e., individual differences). We have been using this method for several years, particularly in the context of visual world paradigm (VWP) eye tracking data and learning curves, though it can be applied to any time course data. Our first article describing this method was:
+
+Mirman, D., Dixon, J.A., & Magnuson, J.S. (2008). Statistical and computational models of the visual world paradigm: Growth curves and individual differences. Journal of Memory and Language, 59(4), 475-494.
+
+Our original GCA page provides the example data sets and analysis code used for that article, along with (old) tutorial materials. Since that original report, we have improved the method in various ways. This "new and improved" version of growth curve analysis is described in a much more detailed way in:
+
+Mirman, D. (2014). Growth Curve Analysis and Visualization Using R. Chapman and Hall / CRC.
+    The Examples.Rdata file contains example data sets that are discussed in the book and can be used to complete the exercises. 
+    Solutions to the exercises are provided in ExerciseSolutions.pdf.
+
+The basics are summarized below. All of the analyses are conducted using the R package lme4 and the graphs generated using the ggplot2 package. For more information about R, check out our R Resources page.
+
+Key challenges in analyzing time series data
+
+Using separate analyses for individual time bins or time windows creates a trade-off between power (more data in each bin) and temporal resolution (smaller time bins) and introduces experimenter bias in selection of time bins/windows.
+Statistical thresholding (i.e., p < 0.05 is significant but p > 0.05 is not) creates false discretization of continuous processes.
+There is no clear way to quantify individual differences, which are an important source of constraints for theories of cognition.
+The big picture
+
+Growth curve analysis provides a way to address those challenges by explicitly modeling change over time and quantifying both group-level and individual-level differences. To specify a growth curve model, you need to decide on three key components:
+The functional form: the overall shape of the data. What family of mathematical functions are you going to use to model the data? For growth curve analysis (and multilevel regression in general) the functional form needs to be "dynamically consistent", meaning that the model of the average is equal to the average of the individual models (see our technical report on dynamic consistency for more information). Polynomial models (starting from linear and going up through quadratic, cubic, quartic, etc.) satisfy this property and are able to capture any data shape, so they are a good option. Unfortunately, polynomials are not very good at capturing flat asymptotes and extrapolation (i.e., predicting what will happen outside the observed time window) is generally not possible. If you are not very interested in asymptotic portions of your data and don't plan on making out-of-time-window prediction, then a polynomial functional form is probably best for you. 
+The fixed effects: What are your group-level predictors? Usually these are the experimental manipulations like word frequency, stimulus relatedness, etc. They can be continuous or categorical and they can refer to either the stimuli (e.g., word frequency) or the participants (e.g., age, short-term memory span, lesion location, etc.).
+The random effects: the randomly sampled observations over which you plan to generalize. Typically these are either participants or items. By capturing individual variability, the random effects provide another way to quantify individual differences.
+A simple example
+
+To see how these components come together, consider the ChickWeight data set (part of the default R installation), which has data from an experiment on the effect of diet on early growth of chicks. We start out with just a "base" model of chick growth allowing for individual variability in weight (in technical terms, a random intercept for each Chick: (1 | Chick) ):
+
+> m.base <- lmer(weight ~ Time + (1 | Chick), data=ChickWeight, REML=F)
+
+To this, we can add fixed effects of diet on the intercept (i.e., a constant difference in weights among chicks randomly assigned to different diets):
+> m.0 <- lmer(weight ~ Time + Diet + (1 | Chick), data=ChickWeight, REML=F)
+
+and on the slope (i.e., effects of diet on the rate of growth):
+> m.1 <- lmer(weight ~ Time * Diet + (1 | Chick), data=ChickWeight, REML=F)
+
+We can visually examine the effect of adding these terms by plotting the model fits against the observed data. The observed data are on the left, the m.0 (intercept model) fit is in the middle, and the m.1 (linear model) fit is on the right:
+
+
+To statistically evaluate the effects of adding these terms, we can examine the change in the goodness of fit (log likelihood) through model comparisons:
+> anova(m.base, m.0, m.1)
+
+       Df    AIC    BIC  logLik deviance   Chisq Chi Df Pr(>Chisq)    
+m.base  4 5630.3 5647.8 -2811.2   5622.3                              
+m.0     7 5619.2 5649.7 -2802.6   5605.2  17.143      3  0.0006603 ***
+m.1    10 5508.0 5551.6 -2744.0   5488.0 117.184      3  < 2.2e-16 ***
+The critical statistic is a chi-square with degrees of freedom equal to the number of parameters added. Since there were 4 diets, each effect of Diet added 3 parameters to the model (diet 1 is considered the reference condition by default and parameters are estimated for each of the 3 other diets relative to this baseline). The print command will give us the actual parameter estimates:
+ > coef(summary(m.1))
+               Estimate Std. Error     t value
+(Intercept)  31.5080726  5.9112888  5.33015279
+Time          6.7130158  0.2573086 26.08935872
+Diet2        -2.8744770 10.1918475 -0.28203690
+Diet3       -13.2577473 10.1918475 -1.30081885
+Diet4        -0.3982789 10.2006418 -0.03904449
+Time:Diet2    1.8961205  0.4267194  4.44348327
+Time:Diet3    4.7098552  0.4267194 11.03735892
+Time:Diet4    2.9494975  0.4322552  6.82350985
+Of course, in addition to different baseline weights, the chicks might have other (unmeasured) individual properties that affect their growth rate. To capture this, we can add a linear effect on time of Chick to the random effects, and we can use model comparisons to examine whether this effect improved model fit:
+> m.t1 <- lmer(weight ~ Time * Diet + (1 + Time | Chick), data=ChickWeight, REML=F)
+> anova(m.1, m.t1)
+
+     Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)    
+m.1  10 5508.0 5551.6 -2744.0   5488.0                             
+m.t1 12 4824.2 4876.5 -2400.1   4800.2 687.78      2  < 2.2e-16 ***
+
+> coef(summary(m.t1))
+
+              Estimate Std. Error   t value
+(Intercept)  33.654115  2.8023251 12.009354
+Time          6.279857  0.7303555  8.598357
+Diet2        -5.020519  4.8072243 -1.044370
+Diet3       -15.403790  4.8072243 -3.204300
+Diet4        -1.747533  4.8145791 -0.362967
+Time:Diet2    2.329279  1.2507982  1.862234
+Time:Diet3    5.143014  1.2507982  4.111785
+Time:Diet4    3.252804  1.2515485  2.599023
+Adding the random slopes did improve model fit. As a general rule, the model should include all random effects that are licensed by the design, that is, all the ones that could vary across participants (Barr et al., 2013). Notice that adding the random slope effect caused slight changes in the fixed effect parameter estimates because some of the variance was now captured by that random effect. This is why Barr et al. recommend using the "maximal" random effect structure -- even when a random effect does not improve model fit, it can still affect the fixed effect estimates and excluding it can elevate the false positive rate.
+Applying GCA to VWP data
+
+Orthogonal polynomials
+
+Often, our data are not perfectly straight, so we want to capture that curvature with higher-order polynomial terms (time squared, time cubed, etc.). Because our time variable is usually only positive, natural polynomials are correlated, so the estimated parameters will be interdependent. Given a particular time range and a maximum polynomial order, we can transform the polynomial time vectors to make them independent, that is, "orthogonal". This is illustrated in the figure below for linear and quadratic time in the range 1-10. Since orthogonal polynomial time terms are independent, the parameter estimates can be interpreted independently.
+ 
+With orthogonal polynomials, the intercept term reflects the average overall curve height, rather than the height at the left edge of the time window, so if you are interested in differences at the very beginning of the time window, you may be better off sticking with natural polynomials.
+A complete example
+
+For this example, we will consider the simple target fixation data shown on the right from a VWP experiment with a word frequency manipulation (High frequency words recognized faster than Low frequency words). Note that since Condition (High vs. Low frequency) was manipulated within-participants, we will want to include nested random effects of Condition with Subject.
+
+The starting data frame is shown below. Subject is the the subject ID, Time is time (in ms) from word onset, timeBin identifies the 100ms time bin corresponding to this time point (convenient for aligning orthogonal time), Condition is the word frequency condition, and meanFix is the mean proportion of fixations to the target object.
+
+
+> summary(TargetFix)
+     Subject         Time         timeBin   Condition     meanFix       
+ 708    : 30   Min.   : 300   Min.   : 1   High:150   Min.   :0.02857  
+ 712    : 30   1st Qu.: 450   1st Qu.: 4   Low :150   1st Qu.:0.27778  
+ 715    : 30   Median : 650   Median : 8              Median :0.45584  
+ 720    : 30   Mean   : 650   Mean   : 8              Mean   :0.44827  
+ 722    : 30   3rd Qu.: 850   3rd Qu.:12              3rd Qu.:0.61111  
+ 725    : 30   Max.   :1000   Max.   :15              Max.   :0.82857  
+ (Other):120                      
+The first step is to create a third-order polynomial in the range of timeBin.
+> t <- poly((unique(TargetFix$timeBin)), 3)
+The next step is to create variables ot1, ot2, ot3 corresponding to the orthogonal polynomial time terms and populate their values with the timeBin-appropriate orthogonal polynomial values:
+> TargetFix[,paste("ot", 1:3, sep="")] <- t[TargetFix$timeBin, 1:3]
+
+Since this is a simple case with just one within-subjects fixed effect that has only two levels, we can skip to the full model and examine its parameter estimates:
+> m.full <- lmer(meanFix ~ (ot1+ot2+ot3)*Condition + 
+                 (ot1+ot2+ot3 | Subject) + 
+                 (ot1+ot2 | Subject:Condition), 
+               control = lmerControl(optimizer="bobyqa"),
+               data=TargetFix, REML=F)
+
+> coef(summary(m.full))
+                      Estimate Std. Error      t value
+(Intercept)       0.4773227513 0.01385240 34.457775306
+ot1               0.6385603705 0.05993519 10.654181583
+ot2              -0.1095979256 0.03848819 -2.847573180
+ot3              -0.0932611870 0.02041640 -4.567955536
+ConditionLow     -0.0581122429 0.01901291 -3.056462582
+ot1:ConditionLow  0.0003188189 0.06330556  0.005036191
+ot2:ConditionLow  0.1635455113 0.05426498  3.013831365
+ot3:ConditionLow -0.0020869051 0.02014728 -0.103582452
+
+Notice that the parameter estimates do not have p-values. There are good reasons for that (see this FAQ for more information), but this is cold comfort to most experimental psychologists, who need to report p-values. The quick and easy solution is to assume that, because we have relatively many observations, the t-distribution converges to the z-distribution, so we can use a normal approximation:
+> coefs <- data.frame(coef(summary(m.full))) 
+> coefs$p <- format.pval(2*(1-pnorm(abs(coefs$t.value))), digits=2, eps=0.0001) #also make the p-values a bit more readable
+> coefs
+                      Estimate Std..Error      t.value      p
+(Intercept)       0.4773227513 0.01385240 34.457775306 <1e-04
+ot1               0.6385603705 0.05993519 10.654181583 <1e-04
+ot2              -0.1095979256 0.03848819 -2.847573180 0.0044
+ot3              -0.0932611870 0.02041640 -4.567955536 <1e-04
+ConditionLow     -0.0581122429 0.01901291 -3.056462582 0.0022
+ot1:ConditionLow  0.0003188189 0.06330556  0.005036191 0.9960
+ot2:ConditionLow  0.1635455113 0.05426498  3.013831365 0.0026
+ot3:ConditionLow -0.0020869051 0.02014728 -0.103582452 0.9175
+
+Another approach is to selectively remove individual effects of Condition and use model comparisons to evaluate each effect. This method would have produced very similar results:
+                                  Chisq Df Pr(>Chisq) 
+ConditionLow         4.1481 1 0.0417  *
+ot1:ConditionLow 3.4292 1 0.0641 . 
+ot2:ConditionLow 7.4845 1 0.0062  **
+ot3:ConditionLow 0.0107 1 0.9175 
+
+The results confirm that fixation proportion was lower overall for the Low condition than the High condition (Condition effect on the intercept - ConditionLow - had a statistically significant negative estimate) and there was a difference in curvature between the conditions (statistically significant effect of condition on the quadratic term: ot2:ConditionLow)
+Reporting results
+
+There are two rules of thumb for reporting growth curve analysis results:
+Clearly describe each of the three key components of the model: the functional form (third-order orthogonal polynomial), the fixed effects (effect of Condition on all time terms), and the random effects (effect of Subject on each of the time terms and nested effects of Subject-by-Condition on each of the time terms except the cubic). Depending on the circumstances and complexity of the model, you may want to include additional information about the factors and why they were included or not. It's also a good idea to report which method was used for computing p-values.
+For key findings, report parameter estimates and standard errors along with significance tests. In some cases the model comparison is going to be enough, but for key findings, the readers should want to see the parameter estimates. The parameter estimate standard errors are critical for interpreting the estimates, so those should be reported as well. The t-values are not critical to report (they are just Estimate divided by the Std Error, so they can always be computed from the reported estimates and standard errors). If there are many estimated parameters, it may be a good idea to focus the main text discussion on the most important ones and report the full set in a table or appendix.
+Here is how we might report the results from the target fixation example above:
+Growth curve analysis (Mirman, 2014) was used to analyze the target gaze data from 300ms to 1000ms after word onset. The overall time course of target fixations was modeled with a third-order (cubic) orthogonal polynomial and fixed effects of Condition (Low vs. High frequency; within-participants) on all time terms. The model also included participant random effects on all time terms and participant-by-condition random effects on all time terms except the cubic (estimating random effects is “expensive” in terms of the number of observation required, so this cubic term was excluded because it tends to capture less-relevant effects in the tails). There was a significant effect of Condition on the intercept term, indicating lower overall target fixation proportions for the Low condition relative to the High condition (Estimate = -0.058, SE = 0.019, p < 0.01). There was also a significant effect on the quadratic term, indicating shallower curvature - slower word recognition - in the Low condition relative to the High condition (Estimate = 0.16, SE = 0.054, p < 0.01). All other effects of Condition were not significant (see Table 1 for full results).
+Another example
+
+Here is another example based on data from an experiment examining the link between statistical learning and word learning (Mirman et al., 2008). In this experiment the critical manipulation was between-participants and the data shape is a little different (requiring only a second-order polynomial). 
+Analyzing individual differences
+
+Here we will consider cohort and rhyme competition data from 5 participants with Broca's aphasia, 3 participants with Wernicke's aphasia, and 12 age-matched controls (Mirman et al., 2011). The group means are shown below, with cohort competition in the top row and rhyme competition in the bottom row. Visually, it seems that the participants with Wernicke's exhibited more cohort competition and less rhyme competition, whereas participants with Broca's aphasia exhibited the opposite pattern.
+ 
+The data frame looks like this:
+> summary(CohortRhyme)
+
+     subjID          Group          Time         timeBin             Object        Type        FixProp      
+ 101    :  80   Control :960   Min.   :  50   Min.   : 1.00   Competitor:800   Cohort:800   Min.   :0.0000  
+ 102    :  80   Broca   :400   1st Qu.: 525   1st Qu.: 5.75   Unrelated :800   Rhyme :800   1st Qu.:0.0000  
+ 103    :  80   Wernicke:240   Median :1000   Median :10.50   Target    :  0                Median :0.0417  
+ 104    :  80                  Mean   :1000   Mean   :10.50                                 Mean   :0.0665  
+ 105    :  80                  3rd Qu.:1475   3rd Qu.:15.25                                 3rd Qu.:0.1000  
+ 106    :  80                  Max.   :1950   Max.   :20.00                                 Max.   :0.5833
+
+
+We'll use fourth-order polynomials to capture the rise and fall of the competition curves:
+> t <- poly(unique(CohortRhyme$timeBin), 4)
+> CohortRhyme[,paste("ot", 1:4, sep="")] <- t[CohortRhyme$timeBin, 1:4]
+
+When the individual differences are "experiment external", such as aphasia subtype (or continuous variables like age), the best option is to add the individual difference variable as a fixed effect to the model. So we start with a base model of the overall competition effect (Object fixed effect) and add a fixed effect of Group. It would be a good idea to build up the Group effects gradually, but we'll skip to the full model to keep this example more brief:
+> cohort.base <- lmer(FixProp ~ (ot1+ot2+ot3+ot4)*Object + (1+ot1+ot2+ot3+ot4 | subjID) + (1+ot1+ot2 | subjID:Object), control = lmerControl(optimizer="bobyqa"), data=subset(CohortRhyme, Type == "Cohort"), REML=F)
+
+> cohort.group <- lmer(FixProp ~ (ot1+ot2+ot3+ot4)*Object*Group + (1+ot1+ot2+ot3+ot4 | subjID) + (1+ot1+ot2 | subjID:Object), control = lmerControl(optimizer="bobyqa"), data=subset(CohortRhyme, Type == "Cohort"), REML=F)
+
+> anova(cohort.base, cohort.group)
+             Df     AIC     BIC logLik deviance  Chisq Chi Df Pr(>Chisq)    
+cohort.base  32 -2277.6 -2127.7 1170.8  -2341.6                             
+cohort.group 52 -2303.6 -2060.0 1203.8  -2407.6 65.997     20  8.089e-07 ***
+Using the same approach as before to get normal-approximation p-values, we can see that this overall Group difference is due to the Wernicke's aphasia group differing from the Control (baseline reference) group. We're just going to look at the effects up to the quadratic term because the higher order terms are just capturing differences in the tails. Note that the parameter estimates are for the Unrelated object relative to the Related object, so a negative estimate for the Intercept term (e.g., ObjectUnrelated:GroupWernicke) corresponds to a larger competition effect (i.e., for the Wernicke's group compared to the Control group, the Unrelated object has an even lower intercept than the Competitor does).
+                                      Estimate  Std. Error     t value       p
+ObjectUnrelated:GroupBroca         0.007168833 0.016841402   0.4256673 0.67035
+ObjectUnrelated:GroupWernicke     -0.049674167 0.020423200  -2.4322421 0.01501
+ot1:ObjectUnrelated:GroupBroca    -0.047473215 0.059871004  -0.7929250 0.42782
+ot1:ObjectUnrelated:GroupWernicke  0.009277717 0.072604257   0.1277848 0.89832
+ot2:ObjectUnrelated:GroupBroca     0.044092440 0.058847796   0.7492624 0.45370
+ot2:ObjectUnrelated:GroupWernicke  0.279205510 0.071363435   3.9124449 < 1e-04
+
+The same steps for the rhyme competition data reveal that only the Broca's group differed from controls:
+> rhyme.base <- lmer(FixProp ~ (ot1+ot2+ot3+ot4)*Object + (1+ot1+ot2+ot3+ot4 | subjID) + (1+ot1+ot2 | subjID:Object), control = lmerControl(optimizer="bobyqa"), data=subset(CohortRhyme, Type == "Rhyme"), REML=F)
+> rhyme.group <- lmer(FixProp ~ (ot1+ot2+ot3+ot4)*Object*Group + (1+ot1+ot2+ot3+ot4 | subjID) + (1+ot1+ot2 | subjID:Object), control = lmerControl(optimizer="bobyqa"), data=subset(CohortRhyme, Type == "Rhyme"), REML=F)
+> anova(rhyme.base, rhyme.group)
+
+            Df     AIC     BIC logLik deviance  Chisq Chi Df Pr(>Chisq)  
+rhyme.base  32 -2269.6 -2119.7 1166.8  -2333.6                           
+rhyme.group 52 -2265.2 -2021.6 1184.6  -2369.2 35.597     20    0.01715 *
+
+> coefs.rhyme <- as.data.frame(coef(summary(rhyme.group)))
+> coefs.rhyme$p <- format.pval(2*(1-pnorm(abs(coefs.rhyme[,"t value"]))))
+
+                                                                            Estimate  Std. Error     t value          p 
+ObjectUnrelated:GroupBroca        -0.035564333 0.015761359 -2.25642560  0.0240440
+ObjectUnrelated:GroupWernicke      0.017755000 0.019113455  0.92892677  0.3529270
+ot1:ObjectUnrelated:GroupBroca     0.122036460 0.064618493  1.88856865  0.0589497
+ot1:ObjectUnrelated:GroupWernicke -0.128382147 0.078361433 -1.63833333  0.1013522
+ot2:ObjectUnrelated:GroupBroca    -0.006877810 0.055995864 -0.12282711  0.9022440
+ot2:ObjectUnrelated:GroupWernicke -0.011219074 0.067904959 -0.16521729  0.8687730
+So far, we have established a double dissociation -- one group has larger cohort competition, the other group has larger rhyme competition -- but we can also ask whether there is an association between the effects. That is, do participants with larger cohort effects tend to show smaller rhyme effects? To test this kind of "experiment internal" individual differences, we can use the random effects to estimate each participants effect size and then test the correlation between the effect sizes.
+
+The random effects are the systematic deviations from the "mean" pattern predicted by the fixed effects. So we'll use the random effects from the base model, which did not distinguish between participant groups so we can get individual effect sizes relative to the overall mean (otherwise we'd be looking at individual effect sizes relative to the sub-group mean). The key function for extracting random effects is ranef and in our case it will be a list with two elements, because we had a random effect by subjID and a random effect by subjID:Object. We're interested in the latter, because it is the one that will capture individual differences in competition effect size. In particular, we'll want to subtract the random effect estimate for the Unrelated object from the estimate for the Competitor for each subject to get that subject's individual competition effect size. Extracting the random effects is relatively easy (e.g., ranef(cohort.base)$'subjID:Object'), but there is a moderate amount of data manipulation involved in getting them into a convenient form (requiring the reshape2 and plyr packages). There are many ways to do the data manipulation, here is my way:
+#get cohort effect sizes
+> blup.cohort <- data.frame(colsplit(row.names(ranef(cohort.base)$'subjID:Object'), ":", c("Subject", "Object")), ranef(cohort.base)$'subjID:Object')
+> ES.coh <- ddply(blup.cohort, .(Subject), summarize, Intercept = X.Intercept.[Object=="Competitor"] - X.Intercept.[Object=="Unrelated"], Quadratic = ot2[Object=="Competitor"] - ot2[Object=="Unrelated"])
+
+#get rhyme effect sizes
+> blup.rhyme <- data.frame(colsplit(row.names(ranef(rhyme.base)$'subjID:Object'), ":", c("Subject", "Object")), ranef(rhyme.base)$'subjID:Object')
+> ES.rhy <- ddply(blup.rhyme, .(Subject), summarize, Rhyme.Intercept = X.Intercept.[Object=="Competitor"] - X.Intercept.[Object=="Unrelated"])
+
+#combine
+> ES <- merge(ES.coh, ES.rhy, by="Subject")
+> group <- unique(subset(CohortRhyme, select=c(subjID, Group))) #get group assignments from original data frame
+> ES <- merge(ES, group, by.x="Subject", by.y="subjID")
+
+ Now we can examine a scatterplot of the individual cohort and rhyme competition effect sizes (effects on the intercept, shown on the right) and compute correlations across the complete sample and just for the participants with aphasia:
+> cor.test(ES$Intercept, ES$Rhyme.Intercept)
+> cor.test(ES$Intercept[ES$Group != "Control"], ES$Rhyme.Intercept[ES$Group != "Control"])
+> cor.test(ES$Intercept[ES$Group == "Control"], ES$Rhyme.Intercept[ES$Group == "Control"])
+
+The correlation is significant for participants with aphasia (r = -0.86, p = 0.006), but not for control participants (r = 0.34, p > 0.25). This suggests that there may be a single mechanism behind this pattern, in contrast to the standard separable components interpretation of a double dissociation. 
+
+Another example
+
+Here is another example based on data from an experiment that examined the time course of activation of function and thematic semantic knowledge in 17 participants with left hemisphere stroke (Kalenine, Mirman, & Buxbaum, 2012).
+Visualizing growth curve models
+
+I highly recommend the ggplot2 package for plotting (if you are not already familiar with it, you may want to start with a tutorial and the online documentation is a useful reference). To start, plot the target fixation data discussed above:
+
+ggplot(TargetFix, aes(Time, meanFix, color=Condition)) + 
+  stat_summary(fun.data=mean_se, geom="pointrange") + 
+  labs(y="Fixation Proportion", x="Time since word onset (ms)") + 
+  theme_bw() + scale_color_manual(values=c("red", "blue"))
+TargetFixData
+You can now add the model fits by adding another stat_summary with the y-variable mapped to the predicted values in the lmer model object, which can be accessed using the fitted() function:
+last_plot() + stat_summary(aes(y=fitted(m.full)), fun.y=mean, geom="line")
+ T
+The other aesthetics (mappings) are automatically inherited (e.g., mapping of color to Condition), so the plot will automatically remain consistent. This is particularly useful for multi-panel plots as in the cohort and rhyme competition example from above. When the model was fit to a data subset, it's not a good idea to rely on ggplot to align the data and the model-predicted values. Instead, create a new data frame that has just the data subset and add the model-predicted values to that data frame:
+
+dat <- subset(CohortRhyme, Type == "Cohort")
+dat$mfit <- fitted(cohort.group)
+ggplot(dat, aes(Time, FixProp, color=Object)) + 
+  facet_wrap(~ Group) + theme_bw() + 
+  stat_summary(fun.y=mean, geom="point") +
+  stat_summary(aes(y=mfit), fun.y=mean, geom="line") +
+  labs(y="Fixation Proportion", x="Time since word onset (ms)") + 
+  scale_color_manual(values=c("red", "blue"))
+ Cohort data and model fit
+Subpages (1): Growth Curve Analysis of VWP Data
